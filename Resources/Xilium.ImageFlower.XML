@@ -1,0 +1,1920 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Xilium.ImageFlower</name>
+    </assembly>
+    <members>
+        <member name="T:Xilium.ImageFlower.Config.CacheUniqueKeyItemConfig">
+            <summary>
+            Definisce la configurazione della cache dei file generati.
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.CacheUniqueKeyItemConfig.ItemType">
+            <summary>
+            Tipo di item
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.CacheUniqueKeyItemConfig.Name">
+            <summary>
+            Nome identificativo della risorsa
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.CacheUniqueKeyItemConfig.GetItemValue(Xilium.ImageFlower.Processing.ContextInfo)">
+            <summary>
+            Restituisce il valore della chiave
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Config.CacheConfig">
+            <summary>
+            Definisce la configurazione della cache dei file generati.
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.CacheConfig.Settings">
+            <summary>
+            Oggetto Settings di appartenenza
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.CacheConfig.Name">
+            <summary>
+            Nome identificativo della Cache
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.CacheConfig.Folder">
+            <summary>
+            Cartella contenente i dati di cache
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.CacheConfig.ResourceTimeSpan">
+            <summary>
+            Durata della cache per una risorsa.
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.CacheConfig.FullTimeSpan">
+            <summary>
+            Durata complessiva della cache. Dopo il termine verrà invocato un comando di reset generale.
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.CacheConfig.UniqueKeyParts">
+            <summary>
+            Elenco delle parti che compongono l'identificativo univoco del valore in cache
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.CacheConfig.IsEnabled">
+            <summary>
+            Indica se la cache è attiva oppure è spenta.
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.CacheConfig.FolderInfo">
+            <summary>
+            Riferimento alla cartella di cache
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.CacheConfig.Reset">
+            <summary>
+            Esegue un reset dei valori calcolati
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.CacheConfig.GetUniqueKey(Xilium.ImageFlower.Processing.ContextInfo)">
+            <summary>
+            Genera il codice univoco
+            </summary>
+            <param name="contextInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.ImageFlower.Config.ClassConfig">
+            <summary>
+            Definisce la configurazione della Classe-di-manipolazione dei file
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.ClassConfig.Settings">
+            <summary>
+            Oggetto Settings di appartenenza
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.ClassConfig.StyleList">
+            <summary>
+            Restituisce la lista di stili definiti nell'oggetto Class.
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.ClassConfig.PictureCss">
+            <summary>
+            Stili CSS compilati sull'oggetto Picture, per la condizione di default: senza varianti.
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.Support.HSLAColor.H">
+            <summary>
+            Componente colore, da 0 a 1.
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.Support.HSLAColor.S">
+            <summary>
+            Componente saturazione, da 0 a 1.
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.Support.HSLAColor.L">
+            <summary>
+            Componente luminosità, da 0 a 1.
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.Support.HSLAColor.A">
+            <summary>
+            Componente Alpha, da 0 a 1.
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.Support.HSLAColor.ColorFromHSLA(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Given H,S,L in range of 0-1
+            Returns a Color (RGB struct) in range of 0-255
+            http://www.geekymonkey.com/Programming/CSharp/RGB2HSL_HSL2RGB.htm
+            </summary>
+            <param name="alpha">trasparenza, da 0 a 1</param>
+            <param name="h"></param>
+            <param name="sl"></param>
+            <param name="l"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.Support.HSLAColor.ColorToHSLA(System.Drawing.Color)">
+            <summary>
+            Given H,S,L in range of 0-1
+            Returns a Color (RGB struct) in range of 0-255
+            http://www.geekymonkey.com/Programming/CSharp/RGB2HSL_HSL2RGB.htm
+            </summary>
+            <param name="rgbColor">colore in formato HSL da convertire</param>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.ImageFlower.Config.Support.ConfigHelper">
+            <summary>
+            Descrizione di riepilogo per ConfigHelper
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.Support.ConfigHelper.MapPath(System.String)">
+            <summary>
+            Restituisce il percorso assoluto del path indicato.
+            <para>Se Path inizia per "./" Se Path è relativo, si intenderà </para>
+            </summary>
+            <param name="path">Percorso relativo (es. "~/config/nomefile.config", "/config/nomefile.config")</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.Support.ConfigHelper.ReadResource(System.String)">
+            <summary>
+            Restituisce uno stream della risorsa richiesta.
+            <para>Questa può trovarsi in un percorso locale, su percorso samba, o su un server HTTP.</para>
+            </summary>
+            <param name="resourceFileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.Support.ConfigHelper.ReadLocalResource(System.String)">
+            <summary>
+            Restituisce uno stream della risorsa richiesta, collocata nel fileSystem.
+            </summary>
+            <param name="resourceFileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.Support.ConfigHelper.ReadHttpResource(System.String)">
+            <summary>
+            Restituisce uno stream della risorsa richiesta, raggiungibile tramite protocollo HTTP.
+            </summary>
+            <param name="resourceUri"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.Support.ConfigHelper.ReadDataResource(System.String)">
+            <summary>
+            Restituisce uno stream della risorsa richiesta, interpretando il contenuto passato.
+            </summary>
+            <param name="resourceData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.Support.ConfigHelper.getMimeType(System.String)">
+            <summary>
+            Restituisce il MimeType associato all'estensione
+            </summary>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.Support.ConfigHelper.GetChildElementValue(System.Xml.XmlElement,System.String,System.String)">
+            <summary>
+            Cerca il primo nodo col nome indicato, e restituisce il suo contenuto.
+            </summary>
+            <param name="xmlElement"></param>
+            <param name="childTagName"></param>
+            <param name="fallback"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.Support.ConfigHelper.GetCssPropertyDataType(System.String)">
+            <summary>
+            Decodifica il valore di stile e ne restituisce il tipo.
+            </summary>
+            <param name="propertyValue">Valore di proprietà di stile (es. #ff0000, 50%, 12pt, auto, url(...), 123)</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.Support.ConfigHelper.PropertyValueParse(System.String)">
+            <summary>
+            Determina le informazioni del valore di una Property
+            </summary>
+            <param name="propertyValue"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.ImageFlower.Config.Support.CssPropertyDataType">
+            <summary>
+            Tipi di dato memorizzati in uno stile CSS
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Config.Support.CssPropertyValue">
+            <summary>
+            Rappresenta il valore di una property CSS
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Config.Support.ParameterConfig">
+            <summary>
+            Parametro di configurazione
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.Support.ParameterConfig.FindParameterRegex">
+            <summary>
+            Restituisce la Regex per la ricerca dei parametri
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.Support.ParameterConfig.FindAndCompileParameterConfigs(System.String,System.Func{Xilium.ImageFlower.Config.Support.ParameterConfig,System.String})">
+            <summary>
+            Cerca i parametri e compila i valori
+            </summary>
+            <param name="source"></param>
+            <param name="parameterValueDelegate">Dato un parametro ne restituisce il valore.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.Support.ParameterConfig.ExistsParameterConfig(System.String)">
+            <summary>
+            Esegue una verifica se `source` contiene un ParameterConfig
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.Support.ParameterConfig.CreateParameterConfig(System.String,System.Text.RegularExpressions.Match)">
+            <summary>
+            Crea un ParameterConfig partendo da un Match di `FindParameterRegex`.
+            </summary>
+            <param name="source"></param>
+            <param name="regexMatch"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.Support.ParameterConfig.Source">
+            <summary>
+            Codice sorgente del valore proprietà
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.Support.ParameterConfig.Name">
+            <summary>
+            Nome parametro
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.Support.ParameterConfig.DefaultValue">
+            <summary>
+            Valore di default del parametro
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Config.Support.CacheUniqueKeyItemTypes">
+            <summary>
+            Tipi di item per la determinazione di UniqueKey di una risorsa in Cache
+            </summary>
+        </member>
+        <member name="F:Xilium.ImageFlower.Config.Support.CacheUniqueKeyItemTypes.undefined">
+            <summary>
+            Elemento sconosciuto
+            </summary>
+        </member>
+        <member name="F:Xilium.ImageFlower.Config.Support.CacheUniqueKeyItemTypes.Parameter">
+            <summary>
+            Elemento "Parameter"
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Config.Support.ResourceContent">
+            <summary>
+            Rappresenta una risorsa, col suo contenuto
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.Support.ResourceContent.MimeType">
+            <summary>
+            MimeType della risorsa
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.Support.ResourceContent.ContentStream">
+            <summary>
+            Stream del contenuto
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Config.Support.RoleCheckDataTypes">
+            <summary>
+            Tipi di dato
+            </summary>
+        </member>
+        <member name="F:Xilium.ImageFlower.Config.Support.RoleCheckDataTypes.String">
+            <summary>
+            Tipo dato "string"
+            </summary>
+        </member>
+        <member name="F:Xilium.ImageFlower.Config.Support.RoleCheckDataTypes.Int">
+            <summary>
+            Tipo dato "integer"
+            </summary>
+        </member>
+        <member name="F:Xilium.ImageFlower.Config.Support.RoleCheckDataTypes.Double">
+            <summary>
+            Tipo dato "double"
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Config.Support.RoleCheckMethods">
+            <summary>
+            Metodi di confronto
+            </summary>
+        </member>
+        <member name="F:Xilium.ImageFlower.Config.Support.RoleCheckMethods.Gte">
+            <summary>
+            Confronto "Greatest or equal that"
+            </summary>
+        </member>
+        <member name="F:Xilium.ImageFlower.Config.Support.RoleCheckMethods.Gt">
+            <summary>
+            Confront "Greatest that"
+            </summary>
+        </member>
+        <member name="F:Xilium.ImageFlower.Config.Support.RoleCheckMethods.Eq">
+            <summary>
+            Confronto "Equal to"
+            </summary>
+        </member>
+        <member name="F:Xilium.ImageFlower.Config.Support.RoleCheckMethods.Not">
+            <summary>
+            Confronto "Not equal to"
+            </summary>
+        </member>
+        <member name="F:Xilium.ImageFlower.Config.Support.RoleCheckMethods.Lt">
+            <summary>
+            Confronto "Lower that"
+            </summary>
+        </member>
+        <member name="F:Xilium.ImageFlower.Config.Support.RoleCheckMethods.Lte">
+            <summary>
+            Confronto "Lower or equal that"
+            </summary>
+        </member>
+        <member name="F:Xilium.ImageFlower.Config.Support.RoleCheckMethods.Pattern">
+            <summary>
+            Confronto con pattern
+            </summary>
+        </member>
+        <member name="F:Xilium.ImageFlower.Config.Support.RoleCheckMethods.StartsWith">
+            <summary>
+            Confronto "Starts with"
+            </summary>
+        </member>
+        <member name="F:Xilium.ImageFlower.Config.Support.RoleCheckMethods.EndsWith">
+            <summary>
+            Confronto "Ends with"
+            </summary>
+        </member>
+        <member name="F:Xilium.ImageFlower.Config.Support.RoleCheckMethods.Contains">
+            <summary>
+            Confronto "Contains"
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.Support.StandardCssDefinitions.DefaultCss">
+            <summary>
+            Definizione CSS standard che definisce gli stili di partenza per gli oggetti supportati da ImageFlower
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.Support.StandardCssDefinitions.RootLockedStyle">
+            <summary>
+            Definizioni immutabili da applicare all'elemento Root del Picture
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.ImageFlower.Config.PictureConfig">
+            <summary>
+            Definisce un item "Picture" del file config.
+            L'item definisce la rappresentazione dell'immagine da generare.
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.PictureConfig.Settings">
+            <summary>
+            Oggetto Settings di appartenenza
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Config.PictureCssConfig">
+            <summary>
+            Memorizza gli stili applicati agli oggetti Picture, in dictionary, per oggetto.
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.PictureCssConfig.#ctor(System.String,System.Collections.Generic.List{Xilium.ImageFlower.Config.PictureCssSelectorConfig})">
+            <summary>
+            Genera l'istanza compilando gli stili sul picture. Gli stili usati saranno quelli passati, più quelli definiti sul picture stesso.
+            </summary>
+            <param name="name"></param>
+            <param name="cssSelectors"></param>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.PictureCssConfig.CompileCss(System.String,Xilium.ImageFlower.Config.PictureConfig,Xilium.ImageFlower.Config.StyleConfig[])">
+            <summary>
+            Esegue la compilazione del CSS, applicando gli stili delle definizioni CSS direttamente sugli elementi di Picture.
+            La compilazione risultante terrà conto anche delle definizioni già in-line sugli elementi di Picture.
+            </summary>
+            <param name="pictureCssName">Nome del nuovo oggetto PictureCss</param>
+            <param name="picture">Oggetto Picture su cui eseguire la compilazione CSS</param>
+            <param name="styleList">Elenco di definizioni di stili CSS da compilare</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.PictureCssConfig.CompileCss(System.String,Xilium.ImageFlower.Config.PictureConfig,Xilium.WebLib.HtmlStyleMerger.StyleDefinitionConverterDelegate,Xilium.ImageFlower.Config.StyleConfig[])">
+            <summary>
+            Esegue la compilazione del CSS, applicando gli stili delle definizioni CSS direttamente sugli elementi di Picture.
+            La compilazione risultante terrà conto anche delle definizioni già in-line sugli elementi di Picture.
+            </summary>
+            <param name="pictureCssName">Nome del nuovo oggetto PictureCss</param>
+            <param name="picture">Oggetto Picture su cui eseguire la compilazione CSS</param>
+            <param name="styleDefinitionConverter">Permette di eseguire una conversione dei valori in altri.</param>
+            <param name="styleList">Elenco di definizioni di stili CSS da compilare</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.PictureCssConfig.GetElementCssSelector(System.String)">
+            <summary>
+            Cerca e restituisce il CssSelector dell'elemento indicato
+            </summary>
+            <param name="pictureEementId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.PictureCssConfig.GetElementCssSelector(System.Xml.XmlElement)">
+            <summary>
+            Cerca e restituisce il CssSelector dell'elemento indicato
+            </summary>
+            <param name="xmlPictureElement"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.ImageFlower.Config.PictureCssPropertyConfig">
+            <summary>
+            Memorizza il singolo stile applicato ad un oggetto del Picture
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.PictureCssPropertyConfig.HasParameters">
+            <summary>
+            Indica se il valore della proprietà-di-stile contiene parametri.
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Config.PictureCssSelectorConfig">
+            <summary>
+            Memorizza gli stili applicati ad un oggetto del Picture
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.PictureCssSelectorConfig.CssProperty(System.String)">
+            <summary>
+            Se presente, restituisce l'oggetto CssProperty richiesto.
+            </summary>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.ImageFlower.Config.RoleCheckConfig">
+            <summary>
+            Definisce un singolo controllo da eseguire sulla circorstanza corrente, per determinare se il ruolo a cui appartiene è applicabile al contesto.
+            E' contenuto in un oggetto RoleItemConfig.
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.RoleCheckConfig.ParameterName">
+            <summary>
+            Nome parametro di confronto
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.RoleCheckConfig.Method">
+            <summary>
+            Metodo di confronto
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.RoleCheckConfig.DataType">
+            <summary>
+            Tipo di dato
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.RoleCheckConfig.Value">
+            <summary>
+            Valore di confronto, nel tipo definito con DataType
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.RoleCheckConfig.ToDataType(System.String)">
+            <summary>
+            Tenta la conversione del valore dal formato stringa al tipo definito con DataType.
+            Se fallisce verrà restituito Null.
+            </summary>
+            <param name="strValue">Valore in formato stringa</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.RoleCheckConfig.Check(Xilium.ImageFlower.Processing.ContextInfo)">
+            <summary>
+            Esegue il controllo, restituisce True se la verifica va a buon fine.
+            </summary>
+            <param name="contextInfo">Contesto di esecuzione</param>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.ImageFlower.Config.RoleGroupConfig">
+            <summary>
+            Definisce un gruppo di regole per determinare eventuali variazioni di stili. Contiene oggetti RoleItemConfig.
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.RoleGroupConfig.Settings">
+            <summary>
+            Oggetto Settings di appartenenza
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Config.RoleItemConfig">
+            <summary>
+            Definisce una singola regola di di identificazione variazione. L'oggetto appartiene ad un oggetto RoleGroupConfig.
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Config.StyleConfig">
+            <summary>
+            Definisce un item "Style" del file config.
+            L'item memorizza un foglio di stile, che verrà usato per creare il Bitmap.
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.StyleConfig.Settings">
+            <summary>
+            Oggetto Settings di appartenenza
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Config.VariantsCaseConfig">
+            <summary>
+            Definisce un insieme di stili da applicare sull'elenco di stili default di un ClassConfig. Gli stili si applicheranno se l'ambiente in cui ci si trova soddisfa la regola puntata
+            da questa istanza.
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.VariantsCaseConfig.Settings">
+            <summary>
+            Oggetto Settings di appartenenza
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.VariantsCaseConfig.PictureCss">
+            <summary>
+            Restituisce le definizioni CSS per l'immagine dichiarate nell'oggetto ClassConfig e combinate con gli stili definiti nel VariantsCaseConfig.
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Config.VariantsConfig">
+            <summary>
+            Definisce la collection di variazioni possibili sulla lista di stili della ClassConfig di appartenenza, applicabile in base al contesto corrente.
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Config.VariantsConfig.Settings">
+            <summary>
+            Oggetto Settings di appartenenza
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.VariantsConfig.SearchCase(Xilium.ImageFlower.Processing.ContextInfo)">
+            <summary>
+            Cerca la variante più adatta al contesto corrente. Se non trova una variante idonea restituisce NULL.
+            </summary>
+            <param name="contextInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.VariantsConfig.GetRightPictureCss(Xilium.ImageFlower.Processing.ContextInfo)">
+            <summary>
+            Restituisce l'oggetto PictureCss adatto al contesto corrente. Questo può essere ottenuto da una variante
+            oppure può essere l'oggetto PictureCss di default per l'oggetto ClassConfig.
+            </summary>
+            <param name="contextInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.ImageFlower.Exception.LoadSettingsException">
+            <summary>
+            Errore nella configurazione dell'oggetto Class
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Exception.BaseException">
+            <summary>
+            Eccezione generica sollevata da Xilium ImageFlower
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Exception.RoleItemConfigException">
+            <summary>
+            Errore nella configurazione dell'oggetto Role.Item
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Exception.RoleGroupConfigException">
+            <summary>
+            Errore nella configurazione dell'oggetto RoleGroup
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Exception.VariantsCaseConfigException">
+            <summary>
+            Errore nella configurazione dell'oggetto VariantsCase
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Exception.VariantsConfigException">
+            <summary>
+            Errore nella configurazione dell'oggetto Variants
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Exception.ClassConfigException">
+            <summary>
+            Errore nella configurazione dell'oggetto Class
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Exception.ClassNotFoundException">
+            <summary>
+            L'oggetto Class non è stato trovato.
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Filters.MaskFilter">
+            <summary>
+            Descrizione di riepilogo per HeightFilter
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.MaskFilter.calcolaProperty_maskColorkey(Xilium.ImageFlower.Processing.PictureElementPropertyInfo)">
+            <summary>
+            Esegue il calcolo del fattore di zoom per un asse.
+            </summary>
+            <param name="elementPropertyInfo"></param>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.MaskFilter.ApplyToGraphics(Xilium.ImageFlower.Processing.ProcessInfo,Xilium.ImageFlower.Processing.PictureElementInfo,Xilium.ImageFlower.Processing.MultiFiltersWorker.MultiFiltersWorker)">
+            <summary>
+            
+            </summary>
+            <param name="processInfo"></param>
+            <param name="elementInfo"></param>
+            <param name="multiFiltersWorker"></param>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.MaskFilter.eachPixelArea(System.Drawing.Point,System.Double,System.Double,System.Int32,System.Int32,System.Int32,System.Int32,Xilium.ImageFlower.Filters.MaskFilter.eachPixelMethod)">
+            <summary>
+            Esegue `method` per ogni pixel che si trova all'interno dei raggi `fromRadius` e `toRadius`.
+            </summary>
+            <param name="center">Coordinata del centro dell'area di elaborazione</param>
+            <param name="fromRadius">Raggio di inizio dell'area di elaborazione</param>
+            <param name="toRadius">Raggio di fine dell'area di elaborazione</param>
+            <param name="minX">Valore minimo per la coordinata X</param>
+            <param name="maxX">Valore massimo per la coordinata X</param>
+            <param name="minY">Valore minimo per la coordinata Y</param>
+            <param name="maxY">Valore massimo per la coordinata Y</param>
+            <param name="method">Metodo da eseguire; se ritorna FALSE il ciclo sarà interrotto</param>
+        </member>
+        <member name="T:Xilium.ImageFlower.Filters.MaskFilter.eachPixelMethod">
+            <summary>
+            Metodo eseguito dai cicli `eachPixel`.
+            <para>Se restituisce FALSE il ciclo viene interrotto.</para>
+            </summary>
+            <param name="point"></param>
+            <param name="angle"></param>
+            <param name="radius"></param>
+        </member>
+        <member name="T:Xilium.ImageFlower.Filters.MaskFilter.pointEqualityComparer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Filters.FilterFilter">
+            <summary>
+            Descrizione di riepilogo per HeightFilter
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.FilterFilter.calcolaProperty_filter(Xilium.ImageFlower.Processing.PictureElementPropertyInfo)">
+            <summary>
+            Esegue il calcolo del fattore di zoom per un asse.
+            </summary>
+            <param name="elementPropertyInfo"></param>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.FilterFilter.ApplyToGraphics(Xilium.ImageFlower.Processing.ProcessInfo,Xilium.ImageFlower.Processing.PictureElementInfo,Xilium.ImageFlower.Processing.MultiFiltersWorker.MultiFiltersWorker)">
+            <summary>
+            
+            </summary>
+            <param name="processInfo"></param>
+            <param name="elementInfo"></param>
+            <param name="multiFiltersWorker"></param>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.FilterFilter.setGamma(Xilium.ImageFlower.Processing.MultiFiltersWorker.MultiFiltersWorker,System.Single)">
+            <summary>
+            
+            </summary>
+            <param name="multiFiltersWorker"></param>
+            <param name="gamma">Gamma, valore 1 significa nessuna variazione.</param>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.FilterFilter.setContrast_withLockBitmap(Xilium.ImageFlower.Processing.MultiFiltersWorker.MultiFiltersWorker,Xilium.ImageFlower.Processing.Support.LockBitmap,System.Single)">
+            <summary>
+            
+            </summary>
+            <param name="multiFiltersWorker"></param>
+            <param name="lockedBitmap"></param>
+            <param name="value">Valore di contrasto, dove 1 significa senza variazione.</param>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.FilterFilter.setContrast_withMatrix(Xilium.ImageFlower.Processing.MultiFiltersWorker.MultiFiltersWorker,System.Single)">
+            <summary>
+            
+            </summary>
+            <param name="multiFiltersWorker"></param>
+            <param name="value">Valore di contrasto, dove 1 significa senza variazione.</param>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.FilterFilter.setBrightness_withLockBitmap(Xilium.ImageFlower.Processing.MultiFiltersWorker.MultiFiltersWorker,Xilium.ImageFlower.Processing.Support.LockBitmap,System.Single)">
+            <summary>
+            
+            </summary>
+            <param name="multiFiltersWorker"></param>
+            <param name="lockedBitmap"></param>
+            <param name="value">Valore di luminosità, dove 1 significa senza variazione.</param>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.FilterFilter.setBrightness_withMatrix(Xilium.ImageFlower.Processing.MultiFiltersWorker.MultiFiltersWorker,System.Single)">
+            <summary>
+            
+            </summary>
+            <param name="multiFiltersWorker"></param>
+            <param name="value">Valore di luminosità, dove 1 significa senza variazione.</param>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.FilterFilter.setOpacity_withLockBitmap(Xilium.ImageFlower.Processing.MultiFiltersWorker.MultiFiltersWorker,Xilium.ImageFlower.Processing.Support.LockBitmap,System.Single)">
+            <summary>
+            
+            </summary>
+            <param name="multiFiltersWorker"></param>
+            <param name="lockedBitmap"></param>
+            <param name="opacity"></param>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.FilterFilter.setOpacity_withMatrix(Xilium.ImageFlower.Processing.MultiFiltersWorker.MultiFiltersWorker,System.Single)">
+            <summary>
+            
+            </summary>
+            <param name="multiFiltersWorker"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.FilterFilter.setInvert_withLockBitmap(Xilium.ImageFlower.Processing.MultiFiltersWorker.MultiFiltersWorker,Xilium.ImageFlower.Processing.Support.LockBitmap,System.Single)">
+            <summary>
+            
+            </summary>
+            <param name="multiFiltersWorker"></param>
+            <param name="lockedBitmap"></param>
+            <param name="value">Inverte i colori, dove 0 significa senza variazione, 1 inversione massima.</param>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.FilterFilter.setInvert_withMatrix(Xilium.ImageFlower.Processing.MultiFiltersWorker.MultiFiltersWorker,System.Single)">
+            <summary>
+            
+            </summary>
+            <param name="multiFiltersWorker"></param>
+            <param name="value">Inverte i colori, dove 0 significa senza variazione, 1 inversione massima.</param>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.FilterFilter.setSaturateGrayscale(Xilium.ImageFlower.Processing.MultiFiltersWorker.MultiFiltersWorker,System.Single)">
+            <summary>
+            
+            </summary>
+            <param name="multiFiltersWorker"></param>
+            <param name="saturateGrayscale">
+            Esegue una saturazione di colore o una conversione a bianco-nero.
+            Con valori "maggiori 1" abbiamo una saturazione di colore, con valori "minori 1" abbiamo una conversione a bianco-nero.
+            </param>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.FilterFilter.setSepia(Xilium.ImageFlower.Processing.MultiFiltersWorker.MultiFiltersWorker,System.Single)">
+            <summary>
+            Applica l'effetto seppia.
+            </summary>
+            <param name="multiFiltersWorker"></param>
+            <param name="sepia">Valore 0: senza cambiamenti. Valore 1: effetto seppia massimo.</param>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.FilterFilter.setHueRotate(Xilium.ImageFlower.Processing.MultiFiltersWorker.MultiFiltersWorker,System.Single)">
+            <summary>
+            
+            </summary>
+            <param name="multiFiltersWorker"></param>
+            <param name="value">Esegue una sostituzione dei colori, dove 0 (e 1) significa senza variazione, 0.25 significa 1/4 di giro.</param>
+        </member>
+        <member name="T:Xilium.ImageFlower.Filters.BackgroundFilter">
+            <summary>
+            Descrizione di riepilogo per HeightFilter
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Filters.ClipFilter">
+            <summary>
+            Descrizione di riepilogo per ClipFilter
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.ClipFilter.calcolaMisuraInOrientamento_absolute_firstSide(Xilium.ImageFlower.Processing.PictureElementPropertyInfo,System.String,System.String,System.String)">
+            <summary>
+            Calcola la banda dell'elemento non visibile sul Bitmap.
+            Il calcolo tiene conto anche della property "overflow" dell'elemento corrente e degli oggetti "parent".
+            Metodo per "left" e "top".
+            </summary>
+            <param name="elementPropertyInfo"></param>
+            <param name="cssPropertyName"></param>
+            <param name="cssSizePropertyName"></param>
+            <param name="cssOppositePropertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.ClipFilter.calcolaMisuraInOrientamento_absolute_lastSide(Xilium.ImageFlower.Processing.PictureElementPropertyInfo,System.String,System.String,System.String)">
+            <summary>
+            Calcola la banda dell'elemento non visibile sul Bitmap.
+            Il calcolo tiene conto anche della property "overflow" dell'elemento corrente e degli oggetti "parent".
+            Metodo per "right" e "bottom".
+            </summary>
+            <param name="elementPropertyInfo"></param>
+            <param name="cssPropertyName"></param>
+            <param name="cssSizePropertyName"></param>
+            <param name="cssOppositePropertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.ImageFlower.Filters.Contracts.IPropertyFilter">
+            <summary>
+            Interfaccia per i filtri di stile
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.Contracts.IPropertyFilter.CalculateProperty(Xilium.ImageFlower.Processing.PictureElementPropertyInfo)">
+            <summary>
+            Esegue il calcolo della property in questione
+            </summary>
+            <param name="elementPropertyInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.ImageFlower.Filters.TextFilter">
+            <summary>
+            Descrizione di riepilogo per HeightFilter
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.TextFilter.calcolaPropEreditabile_element(Xilium.ImageFlower.Processing.PictureElementPropertyInfo,System.String)">
+            <summary>
+            Calcola le property che non hanno calcoli, e che sono semplicemente ereditabili da Parent
+            </summary>
+            <param name="elementPropertyInfo"></param>
+            <param name="fallbackValue">Valore di "scorta", restituito se non ne viene trovato uno diverso.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.TextFilter.calcolaFontSize_element(Xilium.ImageFlower.Processing.PictureElementPropertyInfo)">
+            <summary>
+            Calcola il Font-size dell'elemento.
+            </summary>
+            <param name="elementPropertyInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.ImageFlower.Filters.TransformFilter">
+            <summary>
+            Descrizione di riepilogo per HeightFilter
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.TransformFilter.calcolaRotate_element(Xilium.ImageFlower.Processing.PictureElementPropertyInfo)">
+            <summary>
+            Calcola la property "Rotate" dell'elemento nel contesto Parent.
+            Metodo per "left" e "top".
+            </summary>
+            <param name="elementPropertyInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.TransformFilter.calcolaRotate_absolute(Xilium.ImageFlower.Processing.PictureElementPropertyInfo)">
+            <summary>
+            Calcola la property "opacity" dell'elemento nel contesto di Root.
+            Metodo per "left" e "top".
+            </summary>
+            <param name="elementPropertyInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.ImageFlower.Filters.OpacityFilter">
+            <summary>
+            Descrizione di riepilogo per HeightFilter
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.OpacityFilter.calcolaOpacity_element(Xilium.ImageFlower.Processing.PictureElementPropertyInfo)">
+            <summary>
+            Calcola la property "opacity" dell'elemento nel contesto Parent.
+            </summary>
+            <param name="elementPropertyInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.OpacityFilter.calcolaOpacity_absolute(Xilium.ImageFlower.Processing.PictureElementPropertyInfo)">
+            <summary>
+            Calcola la property "opacity" dell'elemento nel contesto di Root.
+            </summary>
+            <param name="elementPropertyInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.ImageFlower.Filters.PositionFilter">
+            <summary>
+            Descrizione di riepilogo per PositionFilter
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.PositionFilter.calcolaMisuraInOrientamento_relative(Xilium.ImageFlower.Processing.PictureElementPropertyInfo,System.String,System.String,System.String)">
+            <summary>
+            Calcola la posizione dell'elemento nel contesto del suo Parent.
+            Il calcolo considera (ad esempio) le property "left"/"right" e "margin-left"/"margin-right", e il possibile valore "auto".
+            </summary>
+            <param name="elementPropertyInfo"></param>
+            <param name="cssPropertyName"></param>
+            <param name="cssSizePropertyName"></param>
+            <param name="cssOppositePropertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.PositionFilter.calcolaMisuraInOrientamento_absolute(Xilium.ImageFlower.Processing.PictureElementPropertyInfo,System.String,System.String,System.String)">
+            <summary>
+            Calcola la posizione dell'elemento nel contesto di Root, considerando la sola area visibile dell'elemento.
+            Il calcolo tiene conto anche della property "overflow" dell'elemento corrente e degli oggetti "parent".
+            Metodo per "left" e "top".
+            </summary>
+            <param name="elementPropertyInfo"></param>
+            <param name="cssPropertyName"></param>
+            <param name="cssSizePropertyName"></param>
+            <param name="cssOppositePropertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.PositionFilter.calcolaMisuraInOrientamento_cropperPosition(Xilium.ImageFlower.Processing.PictureElementPropertyInfo,System.String,System.String,System.String)">
+            <summary>
+            Calcola la posizione dell'elemento nel contesto del primo elemento Parent di tipo Cropper.
+            <para>L'elaborazione viene sempre fatta nel contesto del Cropper di contenimento dell'elemento corrente.</para>
+            </summary>
+            <param name="elementPropertyInfo"></param>
+            <param name="cssPropertyName"></param>
+            <param name="cssSizePropertyName"></param>
+            <param name="cssOppositePropertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.ImageFlower.Filters.SimpleFilter">
+            <summary>
+            Descrizione di riepilogo per HeightFilter
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Filters.SizeFilter">
+            <summary>
+            Calcola le misure ContentWidth e ContentHeight dell'elemento.
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.SizeFilter.calcolaMisuraInOrientamento_elementSize(Xilium.ImageFlower.Processing.PictureElementPropertyInfo,System.String,System.String,System.String)">
+            <summary>
+            Esegue il calcolo della dimensione dell'elemento indicato.
+            Attenzione: il metodo è progettato per calcolare SOLO le misure [Width] o [Height].
+            </summary>
+            <param name="elementPropertyInfo"></param>
+            <param name="cssPropertyName"></param>
+            <param name="firstSideName"></param>
+            <param name="lastSideName"></param>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.SizeFilter.calcolaMisuraInOrientamento_elementWillFollowParent(Xilium.ImageFlower.Processing.PictureElementPropertyInfo,System.String,System.String,System.String)">
+            <summary>
+            Verifica se l'elemento verrà ridiensionato seguendo le dimensioni del parent o dei children.
+            </summary>
+            <param name="elementPropertyInfo"></param>
+            <param name="cssPropertyName"></param>
+            <param name="sideNameA"></param>
+            <param name="sideNameB"></param>
+            <returns></returns>
+        </member>
+        <member name="F:Xilium.ImageFlower.Filters.SizeFilter.elementWillFollowParentResults.Parent">
+            <summary>
+            Seguirà il parent
+            </summary>
+        </member>
+        <member name="F:Xilium.ImageFlower.Filters.SizeFilter.elementWillFollowParentResults.Childrens">
+            <summary>
+            Seguirà il contenuto
+            </summary>
+        </member>
+        <member name="F:Xilium.ImageFlower.Filters.SizeFilter.elementWillFollowParentResults.Sized">
+            <summary>
+            L'elemento ha una sua dimensione
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.SizeFilter.calcolaMisuraInOrientamento_elementLimitSize(Xilium.ImageFlower.Processing.PictureElementPropertyInfo,System.String,System.String,System.String)">
+            <summary>
+            Esegue il calcolo del "limite di dimensione" dell'elemento indicato.
+            Attenzione: il metodo è progettato per calcolare SOLO le misure [Width] o [Height].
+            </summary>
+            <param name="elementPropertyInfo">propertyInfo di cui calcolare il valore</param>
+            <param name="cssPropertyName">nome property rettificata dal limite (es. "width")</param>
+            <param name="firstSideName">nome property del primo lato (es. "left")</param>
+            <param name="lastSideName">nome property del secondo lato (es. "right")</param>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.SizeFilter.calcolaMisuraInOrientamento_clientSize(Xilium.ImageFlower.Processing.PictureElementPropertyInfo,System.String,System.String,System.String)">
+            <summary>
+            Esegue il calcolo della dimensione dell'elemento indicato.
+            Attenzione: il metodo è progettato per calcolare SOLO le misure [Client-Width] o [Client-Height].
+            </summary>
+            <param name="elementPropertyInfo"></param>
+            <param name="cssPropertyName">Nome della property di riferimento. Sarà "width" o "height", e NON "client-width" o "client-height".</param>
+            <param name="firstSideName">Nome property (o suffisso) della proprietà di misurazione primo lato (es. "left")</param>
+            <param name="lastSideName">Nome property (o suffisso) della proprietà di misurazione ultimo lato (es. "right")</param>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.SizeFilter.calcolaAspectRatio_clientSize(Xilium.ImageFlower.Processing.PictureElementPropertyInfo)">
+            <summary>
+            Calcolo dell'aspect-ratio rispetto al contenuto
+            </summary>
+            <param name="elementPropertyInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.SizeFilter.calcolaLimiteDimensioni_elementSize(Xilium.ImageFlower.Processing.PictureElementPropertyInfo,System.String,System.String,System.Decimal)">
+            <summary>
+            Rettifica valore calcolato tramite controllo dei limiti:
+            - min-[size]
+            - max-[size]
+            - aspect-ratio
+            - min-aspect-ratio
+            - max-aspect-ratio
+            </summary>
+            <param name="elementPropertyInfo"></param>
+            <param name="cssPropertyName"></param>
+            <param name="cssOppositePropertyName"></param>
+            <param name="currentValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.SizeFilter.calcolaLimiteSuLimiteDimensioni_elementLimitSize(Xilium.ImageFlower.Processing.PictureElementPropertyInfo,System.String,System.String,System.String)">
+            <summary>
+            Modifica il risultato del limite dimensioni (es "min-width") applicando le regole di:
+            - aspect-ratio
+            - min-aspect-ratio
+            - max-aspect-ratio
+            Perchè questo? se abbiamo una definizione di stile "width:auto; height:auto; min-width:100px; min-height:100px; aspect-ratio.1.5;" è inutile che faccio una rettifica
+            di misura di WIDTH a 100px, perchè in realtà dovrei considerare 150px come limite.
+            Questa regola si può applicare solo se il limite minore o superiore è applicato su entrambi i lati (es. "min-width" e anche "min-height").
+            </summary>
+            <param name="elementPropertyInfo"></param>
+            <param name="cssSizePropertyName"></param>
+            <param name="cssOppositeSizePropertyName"></param>
+            <param name="currentValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.SizeFilter.calcolaAspectRatio_absoluteSize(Xilium.ImageFlower.Processing.PictureElementPropertyInfo,System.String,System.String)">
+            <summary>
+            Calcola la dimensione definitiva dell'elemento che verrà mostrata nell'output finale. Considera la property "overflow".
+            </summary>
+            <param name="elementPropertyInfo"></param>
+            <param name="cssSizePropertyName">proprietà dimensione (es. "width")</param>
+            <param name="cssFirstSidePropertyName">proprietà principale di posizione (es. "left")</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.SizeFilter.calcolaAspectRatio_cropperSize(Xilium.ImageFlower.Processing.PictureElementPropertyInfo,System.String,System.String)">
+            <summary>
+            Calcola la dimensione del primo elemento con "overflow:hidden", comprendendo se stesso.
+            <para>Considera la property "rotate".</para>
+            </summary>
+            <param name="elementPropertyInfo"></param>
+            <param name="cssSizePropertyName">proprietà dimensione (es. "width")</param>
+            <param name="cssFirstSidePropertyName">proprietà principale di posizione (es. "left")</param>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.ImageFlower.Filters.Support.FilterHelper">
+            <summary>
+            Descrizione di riepilogo per FilterHelper
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.Support.FilterHelper.IsCropperElement(Xilium.ImageFlower.Processing.PictureElementInfo)">
+            <summary>
+            Indica se l'oggetto è Cropper
+            </summary>
+            <param name="elementInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.Support.FilterHelper.GetCropperElement(Xilium.ImageFlower.Processing.PictureElementInfo,System.Boolean)">
+            <summary>
+            Restituisce il primo nodo Parent con "overflow:hidden"
+            </summary>
+            <param name="elementInfo">Elemento di partenza</param>
+            <param name="allowItself">Se True, l'oggetto ElementInfo è considerato nell'analisi.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.Support.FilterHelper.IsStaticValue(Xilium.ImageFlower.Processing.PictureElementPropertyInfo)">
+            <summary>
+            Restituisce True se la property ha valore è costante
+            </summary>
+            <param name="propertyInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.Support.FilterHelper.IsPercentValue(Xilium.ImageFlower.Processing.PictureElementPropertyInfo)">
+            <summary>
+            Restituisce True se la property ha un valore percentuale
+            </summary>
+            <param name="propertyInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.Support.FilterHelper.IsElemSizeSideContributerValue(Xilium.ImageFlower.Processing.PictureElementPropertyInfo)">
+            <summary>
+            Restituisce True se la property di Side (left/right/top/bottom o margin) ha un valore che può contribuire
+            alla determinazione della dimensione dell'elemento.
+            </summary>
+            <param name="propertyInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.Support.FilterHelper.TryCalcPropertyElementSize(Xilium.ImageFlower.Processing.PictureElementInfo,Xilium.ImageFlower.Processing.PictureElementInfo,Xilium.ImageFlower.Processing.PictureElementPropertyInfo,System.Boolean,System.Nullable{System.Decimal}@)">
+            <summary>
+            Tenta di calcolare il valore di `elementPropertyInfo` nella sua corrispondenza in Pixel, considerando
+            che `elementPropertyInfo` si riferisce ad una proprietà dimensionale.
+            </summary>
+            <param name="parentInfo"></param>
+            <param name="elementInfo"></param>
+            <param name="elementPropertyInfo"></param>
+            <param name="readHorizontal">se True indica di leggere le misure orizzontali, altrimenti verranno lette quelle verticali.</param>
+            <param name="outValue">restituisce il valore ottenuto; sarà NULL se il valore non è calcolabile.</param>
+            <returns>Restituisce TRUE l'unità di misura è supportata.</returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.Support.FilterHelper.TryCalcElementSizeRecursive(Xilium.ImageFlower.Processing.PictureElementInfo,System.String,System.Boolean,System.Nullable{System.Decimal}@)">
+            <summary>
+            Tenta di leggere il valore della dimensione `width/height` dell'elemento, se non è possibile prova con Parent, e così fino a `body`.
+            </summary>
+            <param name="elementInfo"></param>
+            <param name="propertyAliasPrefix"></param>
+            <param name="readHorizontal"></param>
+            <param name="outValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.Support.FilterHelper.TryCalcElementSize(Xilium.ImageFlower.Processing.PictureElementInfo,System.String,System.Boolean,System.Nullable{System.Decimal}@)">
+            <summary>
+            Tenta di leggere il valore della dimensione `width/height` dell'elemento.
+            </summary>
+            <param name="elementInfo"></param>
+            <param name="propertyAliasPrefix">Eventuale prefisso della property `width/height`</param>
+            <param name="readHorizontal">se True indica di leggere le misure orizzontali, altrimenti verranno lette quelle verticali.</param>
+            <param name="outValue">restituisce il valore ottenuto; sarà NULL se il valore non è calcolabile.</param>
+            <returns>Restituisce TRUE se è stato possibile determinare la risposta finale.</returns>
+        </member>
+        <member name="T:Xilium.ImageFlower.Filters.ContentFilter">
+            <summary>
+            Descrizione di riepilogo per ZoomFilter
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.ContentFilter.calcolaProperty_content(Xilium.ImageFlower.Processing.PictureElementPropertyInfo)">
+            <summary>
+            Esegue il calcolo del fattore di zoom per un asse.
+            </summary>
+            <param name="elementPropertyInfo"></param>
+        </member>
+        <member name="T:Xilium.ImageFlower.Filters.ZoomFilter">
+            <summary>
+            Descrizione di riepilogo per ZoomFilter
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Filters.ZoomFilter.calcolaMisuraInOrientamento_elementSize(Xilium.ImageFlower.Processing.PictureElementPropertyInfo,System.String)">
+            <summary>
+            Esegue il calcolo del fattore di zoom per un asse.
+            </summary>
+            <param name="elementPropertyInfo"></param>
+            <param name="cssSizePropertyName"></param>
+        </member>
+        <member name="T:Xilium.ImageFlower.ImageFlowerSettings">
+            <summary>
+            Descrizione di riepilogo per ImageFlowerSettings
+            </summary>
+        </member>
+        <member name="F:Xilium.ImageFlower.ImageFlowerSettings.DefaultFileName">
+            <summary>
+            Percorso e nome del file di configurazione di default.
+            </summary>
+        </member>
+        <member name="F:Xilium.ImageFlower.ImageFlowerSettings.AppConfigXPath">
+            <summary>
+            XPath di selezione del nodo di configurazione all'interno del file di configurazione dell'applicazione.
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerSettings.#ctor(System.Boolean)">
+            <summary>
+            Crea una nuova istanza della classe usando il file di configurazione di default
+            </summary>
+            <param name="findInAppConfig">Indica se tentare di trovare la configurazione nel file di configurazione dell'applicazione, nodo "configuration/ImageFlower".</param>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerSettings.#ctor(System.String)">
+            <summary>
+            Crea una nuova istanza della classe usando il file di configurazione indicato per argomento
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerSettings.#ctor(System.Xml.XmlDocument)">
+            <summary>
+            Crea una nuova istanza della classe usando il documento Xml passato per argomento
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerSettings.#ctor(System.Xml.XmlElement)">
+            <summary>
+            Crea una nuova istanza della classe leggendo la configurazione dall'elemento Xml passato per argomento
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerSettings.Instance">
+            <summary>
+            Restituisce l'istanza di default
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerSettings.defaultConfigFileName(System.Boolean)">
+            <summary>
+            Determina il percorso del file di configurazione.
+            </summary>
+            <param name="findInAppConfig">Indica se tentare di trovare la configurazione nel file di configurazione dell'applicazione, nodo "configuration/ImageFlower".</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerSettings.load(System.Xml.XmlElement)">
+            <summary>
+            Esegue il caricamento della configurazone.
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerSettings.initCacheConfig">
+            <summary>
+            Preparazione cacheConfig
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerSettings.initRolesConfig">
+            <summary>
+            Preparazione oggetti roleConfig
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerSettings.initStylesConfig">
+            <summary>
+            Preparazione oggetti styleConfig
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerSettings.initClassesConfig">
+            <summary>
+            Preparazione oggetti classConfig
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerSettings.SaveDefaultConfigFile(System.String)">
+            <summary>
+            Salva il file di configurazione di default nel path indicato
+            </summary>
+            <param name="fileName">Percorso e nome file di destinazone</param>
+        </member>
+        <member name="P:Xilium.ImageFlower.ImageFlowerSettings.LastWriteTime">
+            <summary>
+            Restituisce la data dell'ultima scrittura del file di configurazione, nel sistema UTC.
+            <para>Se la configurazione dovesse essere passata per documento XML, il valore sarà DateTime.MinValue</para>
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.ImageFlowerCache">
+            <summary>
+            Gestore del sistema di cache dei file generati.
+            </summary>
+        </member>
+        <member name="F:Xilium.ImageFlower.ImageFlowerCache.DefaultFolderName">
+            <summary>
+            Nome della cartella di default, quando non si dispone di un valore alternativo.
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerCache.FindImage(Xilium.ImageFlower.Processing.ContextInfo,Xilium.ImageFlower.Config.ClassConfig,Xilium.ImageFlower.Config.VariantsCaseConfig)">
+            <summary>
+            Esegue la ricerca della risorsa in cache, quindi verifica la scadenza.
+            Restituisce il FullName del file.
+            </summary>
+            <param name="contextInfo"></param>
+            <param name="classConfig"></param>
+            <param name="variantsCaseConfig"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerCache.FindImage(Xilium.ImageFlower.Processing.ContextInfo,Xilium.ImageFlower.Config.CacheConfig,Xilium.ImageFlower.Config.ClassConfig,Xilium.ImageFlower.Config.VariantsCaseConfig)">
+            <summary>
+            Esegue la ricerca della risorsa in cache, quindi verifica la scadenza.
+            Restituisce il FullName del file.
+            </summary>
+            <param name="contextInfo">Contesto di esecuzione</param>
+            <param name="cacheConfig"></param>
+            <param name="classConfig"></param>
+            <param name="variantsCaseConfig"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerCache.SaveImage(Xilium.ImageFlower.Processing.ContextInfo,System.Drawing.Image,Xilium.ImageFlower.Config.ClassConfig,Xilium.ImageFlower.Config.VariantsCaseConfig)">
+            <summary>
+            Salva la risorsa in cache
+            </summary>
+            <param name="contextInfo"></param>
+            <param name="classConfig"></param>
+            <param name="variantsCaseConfig"></param>
+            <param name="image"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerCache.SaveImage(Xilium.ImageFlower.Processing.ContextInfo,System.Drawing.Image,Xilium.ImageFlower.Config.CacheConfig,Xilium.ImageFlower.Config.ClassConfig,Xilium.ImageFlower.Config.VariantsCaseConfig)">
+            <summary>
+            Salva la risorsa in cache
+            </summary>
+            <param name="contextInfo"></param>
+            <param name="cacheConfig"></param>
+            <param name="classConfig"></param>
+            <param name="variantsCaseConfig"></param>
+            <param name="image"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerCache.SaveImage(Xilium.ImageFlower.Processing.ContextInfo,System.Drawing.Image,Xilium.ImageFlower.Config.CacheConfig,System.Int32,System.String)">
+            <summary>
+            Salva la risorsa in cache
+            </summary>
+            <param name="contextInfo"></param>
+            <param name="image"></param>
+            <param name="cacheConfig"></param>
+            <param name="quality"></param>
+            <param name="imageFormat"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.ImageFlower.ImageFlowerManager">
+            <summary>
+            La classe si occupa di gestire tutti gli aspetti della generazione dell'immagine.
+            <para>Si occupa di leggere la configurazione del Picture da generare, quindi legge la configurazione di Cache, verifica se il valore è valido, e in caso di esito negativo procede con la generazione.</para>
+            <para>Restituirà l'immagine richiesta.</para>
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerManager.#ctor">
+            <summary>
+            Istanzia la classe di gestione di ImageFlower.
+            <para>Verranno usati i settaggi di default.</para>
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerManager.#ctor(System.String)">
+            <summary>
+            Istanzia la classe di gestione di ImageFlower, indicando il percorso di destinazione per i Bitmap parziali in fase di elaborazione.
+            <para>Verranno usati i settaggi di default.</para>
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerManager.#ctor(Xilium.ImageFlower.ImageFlowerSettings)">
+            <summary>
+            Istanzia la classe di gestione di ImageFlower
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerManager.#ctor(Xilium.ImageFlower.ImageFlowerSettings,System.String)">
+            <summary>
+            Istanzia la classe di gestione di ImageFlower, indicando il percorso di destinazione per i Bitmap parziali in fase di elaborazione.
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.ImageFlowerManager.Settings">
+            <summary>
+            Restituisce i setting della libreria.
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.ImageFlowerManager.CacheEnabled">
+            <summary>
+            Stato di abilitazione della Cache.
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.ImageFlowerManager.PreventReadingCache">
+            <summary>
+            Quando impostato su True, il test di lettura del valore in cache risulterà comunque negativo.
+            <para>Utile per forzare la riscrittura del valore in cache, quando si è certi che il valore attuale non è più valido.</para>
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.ImageFlowerManager.PartialBmpPath">
+            <summary>
+            Restituisce il percorso di destinazione per i Bitmap parziali in fase di elaborazione.
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerManager.Execute(System.String,Xilium.ImageFlower.Processing.Support.ParameterValueDelegate)">
+            <summary>
+            Esecue l'elaborazione richiesta
+            </summary>
+            <param name="flowerClassName">Nome della definizione dell'immagine da generare</param>
+            <param name="parameterValueDelegate">Delegate per leggere il valore dei parametri</param>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerManager.ExecuteToFile(System.String,Xilium.ImageFlower.Processing.Support.ParameterValueDelegate,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="flowerClassName"></param>
+            <param name="parameterValueDelegate"></param>
+            <param name="imageFullName">Percorso e nome file di salvataggio dell'immagine.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerManager.ExecuteToStream(System.String,Xilium.ImageFlower.Processing.Support.ParameterValueDelegate,System.IO.Stream)">
+            <summary>
+            
+            </summary>
+            <param name="flowerClassName"></param>
+            <param name="parameterValueDelegate"></param>
+            <param name="imageStream">Stream di output dell'immagine.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerManager.ExecuteToHttpContext(System.String,Xilium.ImageFlower.Processing.Support.ParameterValueDelegate,System.Web.HttpContext)">
+            <summary>
+            Esegue l'intera gestione di una chiamata a server Web tramite servizio Handler.
+            </summary>
+            <param name="flowerClassName">Nome della definizione dell'immagine da generare</param>
+            <param name="parameterValueDelegate">Delegate per la conversione dei parametri in valori</param>
+            <param name="httpContext"></param>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerManager.ExecuteToHttpContext(System.String,Xilium.ImageFlower.Processing.Support.ParameterValueDelegate,System.Web.HttpContextBase)">
+            <summary>
+            Esegue l'intera gestione di una chiamata a server Web tramite servizio Handler.
+            </summary>
+            <param name="flowerClassName">Nome della definizione dell'immagine da generare</param>
+            <param name="parameterValueDelegate">Delegate per la conversione dei parametri in valori</param>
+            <param name="httpContext"></param>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerManager.ExecuteToHttpResponse(System.String,Xilium.ImageFlower.Processing.Support.ParameterValueDelegate,System.Web.HttpResponse)">
+            <summary>
+            Esegue l'intera gestione di una chiamata a server Web tramite servizio Handler.
+            </summary>
+            <param name="flowerClassName">Nome della definizione dell'immagine da generare</param>
+            <param name="parameterValueDelegate">Delegate per la conversione dei parametri in valori</param>
+            <param name="httpResponse"></param>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerManager.ExecuteToHttpResponse(System.String,Xilium.ImageFlower.Processing.Support.ParameterValueDelegate,System.Web.HttpResponseBase)">
+            <summary>
+            Esegue l'intera gestione di una chiamata a server Web tramite servizio Handler.
+            </summary>
+            <param name="flowerClassName">Nome della definizione dell'immagine da generare</param>
+            <param name="parameterValueDelegate">Delegate per la conversione dei parametri in valori</param>
+            <param name="httpResponse"></param>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerManager.ExecuteAnalysisReport(System.String,Xilium.ImageFlower.Processing.Support.ParameterValueDelegate)">
+            <summary>
+            Crea un report con l'analisi dei parametri renderizzati
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerManager.internalExecute(System.String,System.Boolean,System.Boolean,Xilium.ImageFlower.Processing.Support.ParameterValueDelegate,Xilium.ImageFlower.Processing.ProcessInfo@,Xilium.ImageFlower.Config.ClassConfig@,System.String@,System.Drawing.Image@)">
+            <summary>
+            Esecue l'elaborazione richiesta
+            </summary>
+            <param name="flowerClassName">Nome della definizione dell'immagine da generare</param>
+            <param name="cacheEnabled">Indica se abilitare la cache</param>
+            <param name="preventReadingCache">Quando impostato su True, il test di lettura del valore in cache risulterà comunque negativo</param>
+            <param name="parameterValueDelegate">Delegate per leggere il valore dei parametri</param>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerManager.CreateAnalysisReport(Xilium.ImageFlower.Processing.ProcessInfo,System.String)">
+            <summary>
+            Crea un report con l'analisi dei parametri renderizzati
+            </summary>
+            <param name="processInfo"></param>
+            <param name="description"></param>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerManager.internalCreateAnalysisReport(Xilium.ImageFlower.Processing.ProcessInfo,System.String)">
+            <summary>
+            Crea un report con l'analisi dei parametri renderizzati
+            </summary>
+            <param name="processInfo"></param>
+            <param name="description"></param>
+        </member>
+        <member name="T:Xilium.ImageFlower.ImageFlowerProcessor">
+            <summary>
+            Esegue l'elaborazione vera e propria dell'immagine.
+            Non si occupa nè di gestire cache, nè di leggere parametri dalla configurazione.
+            Vuole in input l'immagine da elaborare e le direttive di elaborazione.
+            Genera e restituisce l'immagine risultante.
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerProcessor.#ctor">
+            <summary>
+            Istanzia una nuova classe Processor.
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerProcessor.#ctor(System.String)">
+            <summary>
+            Istanzia una nuova classe Processor, indicando il percorso di destinazione per i Bitmap parziali in fase di elaborazione.
+            <para>Utile per eseguire il debug degli stili.</para>
+            </summary>
+            <param name="partialBmpPath">Cartella di output dei bitmap parziali</param>
+        </member>
+        <member name="P:Xilium.ImageFlower.ImageFlowerProcessor.PartialBmpPath">
+            <summary>
+            Restituisce il percorso di destinazione per i Bitmap parziali in fase di elaborazione.
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerProcessor.Process(Xilium.ImageFlower.Processing.ProcessInfo)">
+            <summary>
+            Elaborazione effettiva dell'immagine
+            </summary>
+            <param name="processInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerProcessor.SaveBitmap(System.Drawing.Image,Xilium.ImageFlower.Config.ClassConfig,System.String,System.Boolean)">
+            <summary>
+            Salva il bitmap indicato su file, con le impostazioni di configurazione indicate sull'oggetto ClassConfig
+            </summary>
+            <param name="image"></param>
+            <param name="classConfig"></param>
+            <param name="fileFullname"></param>
+            <param name="addExtension"></param>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerProcessor.SaveBitmap(System.Drawing.Image,System.Int32,System.String,System.String,System.Boolean)">
+            <summary>
+            Salva il bitmap indicato su file, con le impostazioni di configurazione indicate sull'oggetto ClassConfig
+            </summary>
+            <param name="image"></param>
+            <param name="quality"></param>
+            <param name="imageFormatName">Formato immagine, es: "Jpeg", "Png", "Gif"</param>
+            <param name="fileFullname"></param>
+            <param name="addExtension"></param>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerProcessor.SaveBitmap(System.Drawing.Image,System.Int32,System.Drawing.Imaging.ImageFormat,System.String,System.Boolean)">
+            <summary>
+            Salva il bitmap indicato su file, con le impostazioni di configurazione indicate sull'oggetto ClassConfig
+            </summary>
+            <param name="image"></param>
+            <param name="quality"></param>
+            <param name="imageFormat"></param>
+            <param name="fileFullname"></param>
+            <param name="addExtension"></param>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerProcessor.SaveBitmap(System.Drawing.Image,Xilium.ImageFlower.Config.ClassConfig,System.IO.Stream)">
+            <summary>
+            Salva il bitmap indicato sullo Stream, con le impostazioni di compressione indicate sull'oggetto ClassConfig
+            </summary>
+            <param name="image"></param>
+            <param name="classConfig"></param>
+            <param name="stream"></param>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerProcessor.SaveBitmap(System.Drawing.Image,System.Int32,System.String,System.IO.Stream)">
+            <summary>
+            Salva il bitmap indicato sullo Stream, con le impostazioni di compressione indicate sull'oggetto ClassConfig
+            </summary>
+            <param name="image"></param>
+            <param name="imageFormatName">Formato immagine, es: "Jpeg", "Png", "Gif"</param>
+            <param name="outputStream"></param>
+            <param name="quality"></param>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerProcessor.SaveBitmap(System.Drawing.Image,System.Int32,System.Drawing.Imaging.ImageFormat,System.IO.Stream)">
+            <summary>
+            Salva il bitmap indicato sullo Stream, con le impostazioni di compressione indicate sull'oggetto ClassConfig
+            </summary>
+            <param name="image"></param>
+            <param name="imageFormat"></param>
+            <param name="outputStream"></param>
+            <param name="quality"></param>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerProcessor.drawPTag(Xilium.ImageFlower.Processing.ProcessInfo,Xilium.ImageFlower.Processing.PictureElementInfo,System.Drawing.Graphics,System.Drawing.Rectangle)">
+            <summary>
+            Scrive il testo del Paragrafo sull'immagine corrente.
+            L'interpretazione del testo è minimale: cerca i DIV e BR per determinare un interruzione di linea, ma nulla più.
+            </summary>
+            <param name="processInfo"></param>
+            <param name="elementInfo"></param>
+            <param name="grpElement"></param>
+            <param name="elementArea"></param>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerProcessor.drawPTag_getText(Xilium.ImageFlower.Processing.ProcessInfo,Xilium.ImageFlower.Processing.PictureElementInfo)">
+            <summary>
+            Restituisce il testo di un nodo.
+            <para>Questo può trovarsi come testo inserito all'interno del nodo, oppure (prioritario) sottoforma di valore dell'attributo css "content".</para>
+            </summary>
+            <param name="processInfo"></param>
+            <param name="elementInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.ImageFlowerProcessor.rotatePoint(System.Drawing.PointF,System.Drawing.PointF,System.Double)">
+            <summary>
+            Rotates one point around another
+            </summary>
+            <param name="pointToRotate">The point to rotate.</param>
+            <param name="centerPoint">The centre point of rotation.</param>
+            <param name="angleInDegrees">The rotation angle in degrees.</param>
+            <returns>Rotated point</returns>
+            <see cref="!:http://stackoverflow.com/questions/13695317/rotate-a-point-around-another-point"/>
+        </member>
+        <member name="T:Xilium.ImageFlower.Processing.ContextInfo">
+            <summary>
+            Contesto di esecuzione dell'elaborazione
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Processing.ContextInfo.#ctor(Xilium.ImageFlower.ImageFlowerSettings,System.String,Xilium.ImageFlower.Processing.Support.ParameterValueDelegate)">
+            <summary>
+            Istanzia un nuovo oggetto ContextInfo
+            </summary>
+            <param name="settings"></param>
+            <param name="className"></param>
+            <param name="parameterValueDelegate"></param>
+        </member>
+        <member name="P:Xilium.ImageFlower.Processing.ContextInfo.Settings">
+            <summary>
+            Oggetto Settings corrente
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Processing.ContextInfo.ClassName">
+            <summary>
+            Nome del Class in esecuzione
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Processing.ContextInfo.ParameterValueDelegate">
+            <summary>
+            Delegate per ottenere il valore dei parametri
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Processing.ContextInfo.Parameters">
+            <summary>
+            Elenco dei parametri con valore conosciuto
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Processing.ContextInfo.GetParameter(System.String)">
+            <summary>
+            Ottiene e restituisce il valore del parametro richiesto
+            </summary>
+            <param name="parameterName">Nome parametro</param>
+            <returns></returns>
+        </member>
+        <member name="P:Xilium.ImageFlower.Processing.ContextInfo.ImagesInfo">
+            <summary>
+            Elenco delle risorse immagini caricate
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Processing.ContextInfo.LoadImageInfo(System.String)">
+            <summary>
+            Carica un nuovo oggetto ImageInfo nella collection [ImagesInfo]. Se la collection aveva già il file, allora questo verrà aggiornato.
+            </summary>
+            <param name="imageFileName"></param>
+        </member>
+        <member name="M:Xilium.ImageFlower.Processing.ContextInfo.GetImageInfo(System.String)">
+            <summary>
+            Restituisce un oggetto ImageInfo dalla collection [ImagesInfo]. Se non dovesse esserci, lo crea e lo restituisce.
+            </summary>
+            <param name="imageFileName">Percorso completo del file. Deve essere un percorso raggiungibile sul FileSystem.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Processing.ContextInfo.loadAndGetImageInfo(System.String,System.Boolean)">
+            <summary>
+            Carica e restituisce un ImageInfo
+            </summary>
+            <param name="imageFileName"></param>
+            <param name="forceReload">se True e se l'item è già presente in cache, allora viene aggiornato.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Processing.ContextInfo.GetImageInfoByParameter(System.String)">
+            <summary>
+            Restituisce un oggetto ImageInfo dalla collection [ImagesInfo]. Se non dovesse esserci, lo crea e lo restituisce.
+            </summary>
+            <param name="parameterName">Nome del parametro con il percorso completo del file.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Processing.ContextInfo.Reset">
+            <summary>
+            Resetta ogni dato di calcolo per riportarsi in una situazione iniziale, per un nuovo processo di generazione.
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Processing.ImageInfo">
+            <summary>
+            Descrizione di riepilogo per ImageInfo
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Processing.Support.LockBitmap">
+            <summary>
+            
+            <see cref="!:http://efundies.com/csharp-load-image/"/>
+            <seealso cref="!:http://efundies.com/adjust-the-contrast-of-an-image-in-c/"/>
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Processing.Support.LockBitmap.LockBits">
+            <summary>
+            Lock bitmap data
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Processing.Support.LockBitmap.UnlockBits">
+            <summary>
+            Unlock bitmap data
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Processing.Support.LockBitmap.GetPixel(System.Int32,System.Int32)">
+            <summary>
+            Get the color of the specified pixel
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Processing.Support.LockBitmap.SetPixel(System.Int32,System.Int32,System.Drawing.Color)">
+            <summary>
+            Set the color of the specified pixel
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="color"></param>
+        </member>
+        <member name="T:Xilium.ImageFlower.Processing.Support.ParameterValueDelegate">
+            <summary>
+            Delegate per determinare il valore di un Parameter
+            </summary>
+            <param name="contextInfo">Contesto di elaborazione</param>
+            <param name="parameterName">Nome del parametro</param>
+        </member>
+        <member name="T:Xilium.ImageFlower.Processing.Support.ProcessingHelper">
+            <summary>
+            Descrizione di riepilogo per ProcessingHelper
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Processing.Support.PropertyComputingLogItem.LogValue">
+            <summary>
+            Il valore da annotare sul log
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Processing.Support.PropertyComputingStatus">
+            <summary>
+            Indica lo stato di calcolo di una property
+            </summary>
+        </member>
+        <member name="F:Xilium.ImageFlower.Processing.Support.PropertyComputingStatus.NotComputed">
+            <summary>
+            Property non ancora calcolata
+            </summary>
+        </member>
+        <member name="F:Xilium.ImageFlower.Processing.Support.PropertyComputingStatus.Computing">
+            <summary>
+            Property in corso di calcolo
+            </summary>
+        </member>
+        <member name="F:Xilium.ImageFlower.Processing.Support.PropertyComputingStatus.Computed">
+            <summary>
+            Property calcolata
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Processing.MultiFiltersWorker.IManipulatorWorker.AllowGroup">
+            <summary>
+            Indica se è consentito unire più esecuzioni prima di eseguire Apply
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Processing.MultiFiltersWorker.MultiFiltersWorker">
+            <summary>
+            Permette di applicare più filtri eseguendo un numero ridotto di operazioni su immagini.
+            <para>Nel particolare, raggruppa le manipolazioni per metodo, quindi esegue le manipolazioni su dati locali, e per ultimo sulle immagini.</para>
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Processing.ParameterInfo">
+            <summary>
+            Descrizione di riepilogo per ParameterInfo
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Processing.ParameterInfo.Name">
+            <summary>
+            Nome del Parameter
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Processing.ParameterInfo.Value">
+            <summary>
+            Legge/scrive il valore per questo Parameter.
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Processing.PictureElementInfo">
+            <summary>
+            Descrizione di riepilogo per PictureElementInfo
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Processing.PictureElementInfo.HasClass(System.String)">
+            <summary>
+            Indica se l'oggetto appartiene alla classe indicata, o a tutte le classi se ne fossero indicate più di una.
+            </summary>
+            <param name="className">Nome della classe di cui eseguire la verifica; può contenere anche più definizioni, separate da Spazio.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Xilium.ImageFlower.Processing.PictureElementInfo.CssSelector">
+            <summary>
+            CssSelector contiene le definizioni di stile originali da Config, quindi potenzialmente con parametri.
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Processing.PictureElementInfo.ExaminedTagProperties">
+            <summary>
+            Restituisce le property di Tag esaminate
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Processing.PictureElementInfo.ExaminedCssProperties">
+            <summary>
+            Restituisce le property di CSS esaminate
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Processing.PictureElementInfo.TagProperty(System.String)">
+            <summary>
+            Restituisce un oggetto Property con eventuale Parameter già valorizzato
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Processing.PictureElementInfo.CssProperty(System.String)">
+            <summary>
+            Restituisce un oggetto Property con eventuale Parameter già valorizzato
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Processing.PictureElementInfo.reset">
+            <summary>
+            Resetta i valori calcolati delle property di tag e css.
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Processing.PictureElementPropertyInfo">
+            <summary>
+            Descrizione di riepilogo per PictureElementPropertyInfo
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Processing.PictureElementPropertyInfo.getTruePropertyValue(Xilium.ImageFlower.Processing.ProcessInfo,System.String)">
+            <summary>
+            Converte un eventuale valore con Parameter, in un valore valorizzato.
+            <para>Es.: "rgba(0, 0, 0, @opacity())" -> "rgba(0, 0, 0, 0.33)"</para>
+            Un valore può contenere più di un Parameter.
+            </summary>
+            <param name="processInfo"></param>
+            <param name="propertyValue"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Xilium.ImageFlower.Processing.PictureElementPropertyInfo.IsNotComputed">
+            <summary>
+            Indica se il valore non è stato ancora calcolato.
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Processing.PictureElementPropertyInfo.IsComputed">
+            <summary>
+            Indica se il valore è stato calcolato.
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Processing.PictureElementPropertyInfo.IsComputing">
+            <summary>
+            Indica se il valore è in corso di calcolo.
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Processing.PictureElementPropertyInfo.ComputingStatus">
+            <summary>
+            Indica lo stato di calcolo della Property
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Processing.PictureElementPropertyInfo.CompDataType">
+            <summary>
+            Tipo dato del valore calcolato
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Processing.PictureElementPropertyInfo.CompValue">
+            <summary>
+            Valore calcolato
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Processing.PictureElementPropertyInfo.CompDecValue">
+            <summary>
+            Valore calcolato in forma numerica
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Processing.PictureElementPropertyInfo.CompColValue">
+            <summary>
+            Valore calcolato in formato struttura System.Drawing.Color
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Processing.PictureElementPropertyInfo.reset">
+            <summary>
+            Esegue il reset dei valori calcolati
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Processing.ProcessInfo">
+            <summary>
+            Contiene informazioni sull'intero processo di creazione immagine.
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Processing.ProcessInfo.ContextInfo">
+            <summary>
+            Contesto di esecuzione
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Processing.ProcessInfo.Picture">
+            <summary>
+            Definizione dell'immagine da generare
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Processing.ProcessInfo.PictureCss">
+            <summary>
+            Definizione dello stile CSS da applicare all'immagine
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Processing.ProcessInfo.RootElementInfo">
+            <summary>
+            Elemento Root della definizione dell'immagine da generare
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Processing.ProcessInfo.ElementsInfo">
+            <summary>
+            Lista di elementi della definizione dell'immagine da generare
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Processing.ProcessInfo.PropertyCalculatingQueue">
+            <summary>
+            Coda di property da calcolare
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Processing.ProcessInfo.PropertyComputingLog">
+            <summary>
+            Log del calcolo delle property
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Processing.ProcessInfo.AppendPropertyComputingLog(System.Func{Xilium.ImageFlower.Processing.Support.PropertyComputingLogItem})">
+            <summary>
+            Se il Log è attivo, genera e accoda il LogItem.
+            </summary>
+            <param name="logItemDelegate"></param>
+        </member>
+        <member name="P:Xilium.ImageFlower.Processing.ProcessInfo.PropertyComputingLogEnabled">
+            <summary>
+            Indica se il log del calcolo property è abilitato.
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Processing.ProcessInfo.EnablePropertyComputingLog">
+            <summary>
+            Abilita il log del calcolo property.
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Processing.ProcessInfo.ClearPropertyComputingLog">
+            <summary>
+            Svuota il log del calcolo property.
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Processing.ProcessInfo.QueuePropertyComputing(Xilium.ImageFlower.Processing.PictureElementPropertyInfo)">
+            <summary>
+            Aggiunge la propertyInfo nella coda di proprietà in corso di calcolo.
+            E' fondamentale che la property non sia già in coda. In tal caso il metodo restituisce False.
+            </summary>
+            <param name="propertyInfo"></param>
+            <returns>Restituisce True se l'operazione va a buon fine, altrimenti False.</returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Processing.ProcessInfo.DequeuePropertyComputing(Xilium.ImageFlower.Processing.PictureElementPropertyInfo,System.String)">
+            <summary>
+            Rimuove la propertyInfo dalla coda di proprietà in corso di calcolo.
+            E' fondamentale che la property sia l'ultima in coda, altrimenti il metodo restituisce False.
+            </summary>
+            <param name="propertyInfo"></param>
+            <param name="resultValue">Valore ottenuto dal calcolo</param>
+            <returns>Restituisce True se l'operazione va a buon fine, altrimenti False.</returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Processing.ProcessInfo.createPropertyInfoKey(Xilium.ImageFlower.Processing.PictureElementPropertyInfo)">
+            <summary>
+            Calcola la chiave per la property di element
+            </summary>
+            <param name="propertyInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Processing.ProcessInfo.Reset">
+            <summary>
+            Resetta ogni dato di calcolo per riportarsi in una situazione iniziale, per un nuovo processo di generazione.
+            </summary>
+        </member>
+    </members>
+</doc>

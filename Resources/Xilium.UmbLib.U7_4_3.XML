@@ -1,0 +1,2221 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Xilium.UmbLib.U7_4_3</name>
+    </assembly>
+    <members>
+        <member name="T:Xilium.UmbLib.DataTypes.Contracts.IDataGridField">
+            <summary>
+            Defines a field of DataGridRow
+            </summary>
+        </member>
+        <member name="T:Xilium.UmbLib.DataTypes.UdtContactsForm">
+            <summary>
+            Descrizione di riepilogo per UdtContactsForm
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.#ctor(Xilium.UmbLib.DataTypes.Contracts.IDataGrid,Umbraco.Core.Models.IPublishedContent,System.String,Xilium.UmbLib.Helper.XubHelperBase)">
+            <summary>
+            Crea una nuova istanza della classe, leggendo la definizione dei campi dal valore dalla property.
+            </summary>
+            <param name="propertyValue">Valore della property con i dati della form</param>
+            <param name="ownerContent">Nodo Content di riferimento, a cui fa capo il contatto; se non definito sarà usato RootContent.</param>
+            <param name="typeCode">Codice di Tipo del contatto.</param>
+            <param name="xubHelper">Oggett XubHelper corrente</param>
+        </member>
+        <member name="P:Xilium.UmbLib.DataTypes.UdtContactsForm.PropertyValue">
+            <summary>
+            Valore della property che contiene la definizione dei campi della form contatti
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.DataTypes.UdtContactsForm.OwnerContent">
+            <summary>
+            Nodo Content di riferimento, a cui fa capo il contatto.
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.DataTypes.UdtContactsForm.TypeCode">
+            <summary>
+            Codice di Tipo del contatto.
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.DataTypes.UdtContactsForm.XubHelper">
+            <summary>
+            Oggetto XubHelper corrente
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.DataTypes.UdtContactsForm.FieldSettings">
+            <summary>
+            Lista dei setting dei campi della form
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.AddStandardPrivacyField(System.Int32,System.String,System.String)">
+            <summary>
+            Accoda i campi standard di richiesta privacy
+            </summary>
+            <param name="index">Indice della posizione in cui inserire il campo; se il valore è negativo il conteggio inizierà dalla fine (es. -1 = ultimo, -2 = penultimo)</param>
+            <param name="sharedDataTextpageCode"></param>
+            <param name="className"></param>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.LoadFieldValues(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Acquisisce i dati compilati dall'utente da Request e verifica che siano compilati correttamente, rispettando formattazione e requisito di obbligatorietà.
+            </summary>
+            <param name="requestSourceCollection">Oggetto Request.Form o Request.QueryString contenete i dati raccolti.</param>
+            <returns>Restituisce la lista dei campi con il relativo valore.</returns>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.ResetFieldValues(Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldValueList)">
+            <summary>
+            Resetta tutti i valori della form
+            </summary>
+            <param name="fieldValueList"></param>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.ToHtml(Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldValueList,System.Int32,System.Int32,System.String)">
+            <summary>
+            Restituisce il codice HTML del form.
+            </summary>
+            <param name="fieldValueList">Elenco campi con i valori raccolti da Request</param>
+            <param name="headStart"></param>
+            <param name="classHeadStart"></param>
+            <param name="className"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.ToHtml(System.Text.StringBuilder,Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldValueList,System.Int32,System.Int32,System.String)">
+            <summary>
+            Costruisce il codice HTML del form.
+            </summary>
+            <param name="sbOutput">Output HTML del form</param>
+            <param name="fieldValueList">Elenco campi con i valori raccolti da Request</param>
+            <param name="headStart"></param>
+            <param name="classHeadStart"></param>
+            <param name="className"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.GetErrorReport(Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldValueList,System.Int32)">
+            <summary>
+            Costruisce il messaggio con l'elenco degli errori.
+            Se non ci sono errori restituisce NULL.
+            </summary>
+            <param name="fieldValueList">Valori compilati della form</param>
+            <param name="maxErrors">Numero massimo di errori prima che venga interrotta la verifica (-1 = senza limitazione)</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.GetJsonErrorReport(Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldValueList,System.Int32)">
+            <summary>
+            Costruisce un array in formato JSON contenente il riferimento al campo ed il relativo messaggio di errore.
+            Se non ci sono errori restituisce il valore JSON "null".
+            </summary>
+            <param name="fieldValueList">Valori compilati della form</param>
+            <param name="maxErrors">Numero massimo di errori prima che venga interrotta la verifica (-1 = senza limitazione)</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.GetFormReport(Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldValueList,Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormSessionDetails,System.Int32,System.Int32)">
+            <summary>
+            Genera un report dei dati raccolti dal Form
+            </summary>
+            <param name="fieldValueList">Valori compilati della form</param>
+            <param name="sessionDetails">Elenco di dettagli di sessione da aggiungere al report</param>
+            <param name="headStart"></param>
+            <param name="classHeadStart"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.GetXmlFieldsValue(Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldValueList)">
+            <summary>
+            Restituisce un nodo XML "fields" contenente tutti i dati della form.
+            </summary>
+            <param name="fieldValueList">Valori compilati della form</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.SaveContact(Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldValueList)">
+            <summary>
+            Salva il contatto nel Database. Restituisce True se l'esito è positivo, False se esisteva già un record con i medesimi dati registrato un attimo fa.
+            </summary>
+            <param name="fieldValueList"></param>
+            <returns>Restituisce True se l'esito è positivo, False se esisteva già un record con i medesimi dati registrato un attimo fa.</returns>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.CaptureForm(System.Collections.Specialized.NameValueCollection,System.Int32,Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormSessionDetails,System.Int32,System.Int32,System.Web.IHtmlString@)">
+            <summary>
+            Acquisisce i dati compilati dall'utente da Request e verifica che siano stati compilati correttamente, rispettato i campi obbligatori, rispettato la formattazione dei campi.
+            Se l'esito è negativo la funzione restituisce False, e [result] è valorizzato con il messaggio di errore contenente il dettaglio del problema (senza titolo).
+            se l'esito è positivo la funzione restituisce True, e [result] è valorizzato con la tabella riepilogativa dei dati raccolti.
+            </summary>
+            <param name="requestSourceCollection">Oggetto Request.Form o Request.QueryString contenete i dati raccolti.</param>
+            <param name="maxErrors">Numero massimo di errori prima che venga interrotta la verifica</param>
+            <param name="sessionDetails">Elenco di dettagli di sessione da aggiungere al report</param>
+            <param name="classHeadStart"></param>
+            <param name="result">Verrà valorizzato con il dettaglio sull'errore da mostrare all'utente, oppure con la tabella riepilogativa dei dati raccolti.</param>
+            <param name="headStart"></param>
+            <returns>True se l'esito è positivo, False se è negativo.</returns>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.getFieldDataType(System.String)">
+            <summary>
+            Converte il valore dataType nel rispettivo valore Enum.
+            <para>l'argomento `umbFieldDataType` può essere sottoforma di numero Prevalue o sottoforma di nome Enum.</para>
+            </summary>
+            <param name="umbFieldDataType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.compileIssueDescriptionSource(Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldSetting,System.String)">
+            <summary>
+            Compila il testo di errore sostituendo i segnaposto seguenti:
+             - {0} : Label del campo
+            </summary>
+            <param name="fieldSetting"></param>
+            <param name="issueDescriptionSource"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.CheckFieldValue(Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldSetting,System.String)">
+            <summary>
+            Esegue la verifica del valore indicato per il FieldSetting e restituisce il testo del primo check fallito. Se non ci sono errori restituisce NULL.
+            </summary>
+            <param name="fieldSetting">Setting del campo da controllare.</param>
+            <param name="fieldValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.currentMemberId">
+            <summary>
+            Restituisce il valore ID dell'utente corrente.
+            Se l'utente è `anonymous` allora deve restituire il valore 0.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.currentMemberUsername">
+            <summary>
+            Restituisce l'username dell'utente corrente.
+            Se l'utente è `anonymous` allora deve restituire NULL.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.getMemberId(System.String)">
+            <summary>
+            Restituisce il valore ID dell'utente `username`.
+            <para>Se l'utente è `anonymous` (username = null) allora deve restituire il valore 0.</para>
+            <para>Se l'utente è sconosciuto allora deve restituire NULL.</para>
+            </summary>
+            <param name="username"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.getMemberUsername(System.String)">
+            <summary>
+            Restituisce l'username ufficiale dell'utente `username`.
+            Se l'utente è `anonymous` (username = null) allora deve restituisce NULL.
+            </summary>
+            <param name="username"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldSetting.FieldName">
+            <summary>
+            Restituisce il nome completo del campo assegnato al tag per l'editing, composto dal nome parziale del campo anticipato dall'eventuale fieldName del gruppo di appartenenza.
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldSetting.PartialFieldName">
+            <summary>
+            Restituisce il nome parziale del campo assegnato al tag per l'editing.
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldSetting.Description">
+            <summary>
+            Descrizione del campo, con istruzioni sul caricamento.
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldSetting.Mandatory">
+            <summary>
+            Se True il campo è obbligatorio
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldSetting.Options">
+            <summary>
+            Opzioni aggiuntive sul settaggio del campo
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldSetting.ClassName">
+            <summary>
+            Stile ClassName da aggiungere alla rappresentazione del campo
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldSetting.SessionDetail">
+            <summary>
+            Restituisce il tipo ReportSessionDetail legato al campo
+            </summary>
+        </member>
+        <member name="T:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormOptions">
+            <summary>
+            Opzioni aggiuntive di un campo della form
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormOptions.Parse(Xilium.UmbLib.DataTypes.UdtContactsForm,System.String)">
+             <summary>
+             Converte una stringa JSON in un oggetto Options.
+             </summary>
+             <example>
+            		{
+            			fieldChecks: [
+            				{ pattern: "^[a-zA-Z]", issue: "la stringa deve iniziare con una lettera." }
+            				, { pattern: ".{10}", issue: "la stringa deve essere lunga 10 caratteri." }
+            				, { pattern: "@", mustNot: true, issue: "la stringa non può contenere il carattere @." }
+            				, ...
+            			]
+            			, items: [
+            				{ key:"", value:"- non specificato -" }
+            				, { key:"red", value:"rosso" }
+            				, { key:"green", value:"verde" }
+            				, { key:"blue", value:"blu" }
+            			]
+            			, itemsSqlSelect: "SELECT userLogin, userFullname FROM umbracoUser ORDER BY userFullname"
+            			, multiselect: false
+            			, placeholder: "email@domain.com"
+            		}
+             </example>
+            <param name="udtContactsForm"></param>
+            <param name="optionsJsonFormat">Oggetto Options serializzato in JSON</param>
+             <returns>Restituisce un oggetto Options</returns>
+        </member>
+        <member name="F:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormOptions.FieldChecks">
+            <summary>
+            Elenco dei controlli da eseguire sul valore del campo
+            </summary>
+        </member>
+        <member name="F:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormOptions.Items">
+            <summary>
+            Elenco valori selezionabili (per uso con List, ComboBox, CheckBoxCollection).
+            </summary>
+        </member>
+        <member name="F:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormOptions.ItemsSqlSelect">
+            <summary>
+            Comando SQL per la lettura dei valori Items dal database.
+            </summary>
+        </member>
+        <member name="F:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormOptions.MultiSelect">
+            <summary>
+            Se True un oggetto Combo, List o OptionList permetterà di eseguire selezioni multiple.
+            </summary>
+        </member>
+        <member name="F:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormOptions.Placeholder">
+            <summary>
+            Testo di riempimento per le caselle testuali fintanto queste sono vuote.
+            </summary>
+        </member>
+        <member name="T:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldCheck">
+            <summary>
+            Definisce una regola di verifica campo
+            </summary>
+        </member>
+        <member name="F:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldCheck.Pattern">
+            <summary>
+            Pattern Regex per la convalida del campo
+            </summary>
+        </member>
+        <member name="F:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldCheck.Issue">
+            <summary>
+            Testo di descrizione dell'errore
+            </summary>
+        </member>
+        <member name="F:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldCheck.MustNot">
+            <summary>
+            Se True significa che il Pattern NON deve andare in Match col valore per validarlo.
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldValueList.#ctor(System.Collections.Generic.IEnumerable{Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldSetting},System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Crea un nuovo oggetto FormFieldValueList da un enumeratore di fieldSettings, caricando i valori da un oggetto Request.QueryString o Request.Form.
+            </summary>
+            <param name="fieldSettings">Elenco di oggetti FieldSetting</param>
+            <param name="requestSourceCollection">Oggetto Request.QueryString o Request.Form da cui leggere i valori.</param>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldValueList.#ctor(System.Collections.Generic.IEnumerable{Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldValue},System.Boolean)">
+            <summary>
+            Crea un nuovo oggetto FormFieldValueList da un enumeratore di fieldValues.
+            </summary>
+            <param name="fieldValues"></param>
+            <param name="isPostBack">Se True, si dichiara che siamo in stato di PostBack</param>
+        </member>
+        <member name="P:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldValueList.IsPostBack">
+            <summary>
+            Indica se ci troviamo in stato di PostBack
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldValueList.ResetIsPostBack">
+            <summary>
+            Resetta il valore IsPostBack (lo setta a false)
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldValueList.FindFieldValue(Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldSetting)">
+            <summary>
+            Cerca e restituisce l'item FieldValue appartenente al FieldSetting indicato. Se non viene trovato restituisce NULL.
+            </summary>
+            <param name="fieldSetting"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldValueList.FindFieldValue(System.String)">
+            <summary>
+            Cerca e restituisce l'item FieldValue appartenente al campo col nome indicato per argomento. Se non viene trovato restituisce NULL.
+            </summary>
+            <param name="fieldName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldValueList.FindHostNameSessionDetail">
+            <summary>
+            Scorciatoia al valore SessionDetail, per uso da Nustache
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldValueList.FindTypeCodeSessionDetail">
+            <summary>
+            Scorciatoia al valore SessionDetail, per uso da Nustache
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldValue">
+            <summary>
+            Definisce il valore di un campo, con esito check di controllo valore e testo errore.
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldValue.FieldSetting">
+            <summary>
+            Oggetto FieldSetting che descrive il settaggio del campo
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldValue.Value">
+            <summary>
+            Valore del campo
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldValue.IsChecked">
+            <summary>
+            Se il campo è di tipo Check, indica se la spunta è stata applicata.
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldValue.ValidateResult">
+            <summary>
+            Indica se il campo ha un valore coerente con le aspettative di FieldSetting (se è vuoto non dev'essere obbligatorio, se è definito deve essere del formato giusto).
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldValue.IsValidated">
+            <summary>
+            Indica se il campo ha un valore coerente con le aspettative di FieldSetting (se è vuoto non dev'essere obbligatorio, se è definito deve essere del formato giusto).
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldValue.IssueDescription">
+            <summary>
+            Se è stato riscontrato un errore restituisce il testo del medesimo; altrimenti restituisce NULL.
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldValue.ValueHtml(Xilium.UmbLib.Helper.XubHelperBase,System.Int32,System.Int32)">
+            <summary>
+            Restituisce il valore formattato per l'utente.
+            Utile per restituire il valore in una email.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldValue.ToString">
+            <summary>
+            Override del metodo ToString per supportare il lavoro di Nustache.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormMailTemplateModel">
+            <summary>
+            Modello per le MailTemplate
+            </summary>
+        </member>
+        <member name="T:Xilium.UmbLib.DataTypes.UdtDataGridJson">
+            <summary>
+            Oggetto DataGrid generato da una stringa in formato JSON.
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtDataGridJson.#ctor(System.String)">
+            <summary>
+            Carica il contenuto dal valore JSON
+            </summary>
+            <param name="jsonValue"></param>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtDataGridJson.#ctor(System.Collections.Generic.List{System.Collections.Generic.Dictionary{System.String,System.String}})">
+            <summary>
+            Carica il contenuto da oggetto
+            </summary>
+            <param name="gridRowCollection"></param>
+        </member>
+        <member name="T:Xilium.UmbLib.DataTypes.UdtDataGridManaged">
+            <summary>
+            Crea un oggetto UdtDataGrid caricandolo da un codice XML generico, o tramite codice libero.
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtDataGridManaged.#ctor">
+            <summary>
+            Crea una nuova istanza lasciando il contenuto vuoto.
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.DataTypes.UdtDataGridManaged.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Carica il contenuto leggendolo da un testo XML
+            </summary>
+            <param name="xmlContent">Testo XML</param>
+            <param name="rowsNodeSelector">Nome del tag che contiene le righe (se non definito viene usato "/")</param>
+            <param name="rowTagName">Nome del tag di identificazione di una riga (se non definito vengono presi i tag contenuti in ROWS)</param>
+            <param name="fieldsTagName">Nome del tag che contiene i campi di riga (se non definito viene considerato il tag di riga)</param>
+            <param name="fieldTagName">Nome del tag di identificazione di un campo (se non definito vengono presi i tag contenuti in FIELDS)</param>
+            <param name="nameNodeSelector">Selettore del nodo "name" (se non definito viene usato "@name")</param>
+            <param name="valueNodeSelector">Selettore del nodo "value" (se non definito viene usato "@value")</param>
+        </member>
+        <member name="T:Xilium.UmbLib.Extensions.PublishedContent">
+            <summary>
+            Questa classe estende proprietà definite in Umbraco 6.0.
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Extensions.PublishedContent.GetPropertyValueString(Umbraco.Core.Models.IPublishedContent,System.String)">
+            <summary>
+            Restituisce il valore della Property, interpretandola come string.
+            </summary>
+            <param name="doc">il documento da cui leggere la Property</param>
+            <param name="alias">alias della Property</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Extensions.PublishedContent.GetPropertyValueString(Umbraco.Core.Models.IPublishedContent,System.String,System.Boolean)">
+            <summary>
+            Restituisce il valore della Property, interpretandola come string.
+            <para>Se il valore non dovesse essere dichiarato, questo verrà cercato nei nodi parent.</para>
+            </summary>
+            <param name="doc">il documento da cui leggere la Property</param>
+            <param name="alias">alias della Property</param>
+            <param name="recursive">se True, verrà cercato il valore nei nodi parent</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Extensions.PublishedContent.GetPropertyValueString(Umbraco.Core.Models.IPublishedContent,System.String,System.String)">
+            <summary>
+            Restituisce il valore della Property, interpretandola come string.
+            <para>Se non fosse possibile ottenere alcun valore, o se ci fossero problemi di conversione, verrà restituito `defaultValue`.</para>
+            </summary>
+            <param name="doc">il documento da cui leggere la Property</param>
+            <param name="alias">alias della Property</param>
+            <param name="defaultValue">valore da restituire in caso di mancanza del valore o in caso di errori di conversione</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Extensions.PublishedContent.GetPropertyValueString(Umbraco.Core.Models.IPublishedContent,System.String,System.Boolean,System.String)">
+            <summary>
+            Restituisce il valore della Property, interpretandola come string.
+            <para>Se il valore non dovesse essere dichiarato, questo verrà cercato nei nodi parent.</para>
+            <para>Se non fosse possibile ottenere alcun valore, o se ci fossero problemi di conversione, verrà restituito `defaultValue`.</para>
+            </summary>
+            <param name="doc">il documento da cui leggere la Property</param>
+            <param name="alias">alias della Property</param>
+            <param name="recursive">se True, verrà cercato il valore nei nodi parent</param>
+            <param name="defaultValue">valore da restituire in caso di mancanza del valore o in caso di errori di conversione</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Extensions.PublishedContent.GetPropertyValueNull``1(Umbraco.Core.Models.IPublishedContent,System.String)">
+            <summary>
+            Restituisce il valode della Property, interpretandola come tipo T.
+            <para>Se il valore non dovesse essere dichiarato, questo verrà cercato nei nodi parent.</para>
+            <para>Se non fosse possibile ottenere alcun valore, o se ci fossero problemi di conversione, verrà restituito `defaultValue`.</para>
+            </summary>
+            <typeparam name="T">Tipo di dato da restituire. Può essere: `string`, `int`, `int?`, `datetime`, `datetime?`, `boolean`, `boolean?`, o un tipo per cui esiste il convertitore.</typeparam>
+            <param name="doc">il documento da cui leggere la Property</param>
+            <param name="alias">alias della Property</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Extensions.PublishedContent.GetPropertyValueNull``1(Umbraco.Core.Models.IPublishedContent,System.String,System.Boolean)">
+            <summary>
+            Restituisce il valode della Property, interpretandola come tipo T.
+            <para>Se il valore non dovesse essere dichiarato, questo verrà cercato nei nodi parent.</para>
+            <para>Se non fosse possibile ottenere alcun valore, o se ci fossero problemi di conversione, verrà restituito `defaultValue`.</para>
+            </summary>
+            <typeparam name="T">Tipo di dato da restituire. Può essere: `string`, `int`, `int?`, `datetime`, `datetime?`, `boolean`, `boolean?`, o un tipo per cui esiste il convertitore.</typeparam>
+            <param name="doc">il documento da cui leggere la Property</param>
+            <param name="alias">alias della Property</param>
+            <param name="recursive">se True, verrà cercato il valore nei nodi parent</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Extensions.PublishedContent.GetPropertyValueNull``1(Umbraco.Core.Models.IPublishedContent,System.String,``0)">
+            <summary>
+            Restituisce il valode della Property, interpretandola come tipo T.
+            <para>Se il valore non dovesse essere dichiarato, questo verrà cercato nei nodi parent.</para>
+            <para>Se non fosse possibile ottenere alcun valore, o se ci fossero problemi di conversione, verrà restituito `defaultValue`.</para>
+            </summary>
+            <typeparam name="T">Tipo di dato da restituire. Può essere: `string`, `int`, `int?`, `datetime`, `datetime?`, `boolean`, `boolean?`, o un tipo per cui esiste il convertitore.</typeparam>
+            <param name="doc">il documento da cui leggere la Property</param>
+            <param name="alias">alias della Property</param>
+            <param name="defaultValue">valore da restituire in caso di mancanza del valore o in caso di errori di conversione</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Extensions.PublishedContent.GetPropertyValueNull``1(Umbraco.Core.Models.IPublishedContent,System.String,System.Boolean,``0)">
+            <summary>
+            Restituisce il valode della Property, interpretandola come tipo T.
+            <para>Se il valore non dovesse essere dichiarato, questo verrà cercato nei nodi parent.</para>
+            <para>Se non fosse possibile ottenere alcun valore, o se ci fossero problemi di conversione, verrà restituito `defaultValue`.</para>
+            </summary>
+            <typeparam name="T">Tipo di dato da restituire. Può essere: `string`, `int`, `int?`, `datetime`, `datetime?`, `boolean`, `boolean?`, o un tipo per cui esiste il convertitore.</typeparam>
+            <param name="doc">il documento da cui leggere la Property</param>
+            <param name="alias">alias della Property</param>
+            <param name="recursive">se True, verrà cercato il valore nei nodi parent</param>
+            <param name="defaultValue">valore da restituire in caso di mancanza del valore o in caso di errori di conversione</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Extensions.PublishedContent.GetIntCode(Umbraco.Core.Models.IPublishedContent)">
+            <summary>
+            Restituisce il valore della property `IntCode`.
+            </summary>
+            <param name="doc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Extensions.PublishedContent.GetIntCode(Umbraco.Core.Models.IPublishedContent,System.Boolean)">
+            <summary>
+            Restituisce il valore della property `IntCode`.
+            </summary>
+            <param name="doc"></param>
+            <param name="recursive">se True, verrà cercato il valore nei nodi parent</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Extensions.PublishedContent.GetIntCode(Umbraco.Core.Models.IPublishedContent,System.Boolean,System.String)">
+            <summary>
+            Restituisce il valore della property `IntCode`.
+            </summary>
+            <param name="doc"></param>
+            <param name="recursive">se True, verrà cercato il valore nei nodi parent</param>
+            <param name="defaultValue">valore da restituire in caso di mancanza del valore o in caso di errori di conversione</param>
+            <returns></returns>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.ConfigHelper.ConnectionString">
+            <summary>
+            Restituisce la connectionString dell'applicazione web.
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.GlobalizationHelper.BestCultureName(System.String)">
+            <summary>
+            Considerando l'elenco di lingue gestite dall'installazione di Umbraco, e considerando le impostazioni del browser, restituisce il nome cultura più idoneo per l'utente.
+            Nel caso in cui non sia disponibile in Umbraco una lingua idonea per l'utente, la funzione restituirà la lingua <paramref name="defaultCulture"/>.
+            </summary>
+            <param name="defaultCulture">Lingua di default</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.SecurityHelper.CurrentUmbracoUser">
+            <summary>
+            Restituisce l'utente loggato nel BackOffice
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.UmbLib.Helper.Support.NodeLanguageModel">
+            <summary>
+            Model che permette di abbinare un nodo content ad una lingua.
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.Support.NodeLanguageModel.#ctor">
+            <summary>
+            Istanzia un nuovo Model
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.Support.NodeLanguageModel.Node">
+            <summary>
+            Riferimento al nodo
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.Support.NodeLanguageModel.CultureInfoName">
+            <summary>
+            CultureInfoName associato a `Node`
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.Support.NodeLanguageModel.CultureInfoNameParts">
+            <summary>
+            Parti di `CultureInfoName` associate a `Node`
+            </summary>
+        </member>
+        <member name="T:Xilium.UmbLib.Helper.Support.HomeContentPosition">
+            <summary>
+            Indica la posizione della pagina Home rispetto alla struttura del sito
+            </summary>
+        </member>
+        <member name="F:Xilium.UmbLib.Helper.Support.HomeContentPosition.WebRoot">
+            <summary>
+            Il nodo Home corrisponde al nodo Root del sito web
+            </summary>
+        </member>
+        <member name="F:Xilium.UmbLib.Helper.Support.HomeContentPosition.WebRootChildren">
+            <summary>
+            Il nodo Home corrisponde ad un nodo figlio della Root del sito web
+            </summary>
+        </member>
+        <member name="T:Xilium.UmbLib.Helper.WebContextHelper">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.WebContextHelper.EnsureUmbracoContext">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.UmbLib.Helper.XubHelperBase">
+            <summary>
+            Descrizione di riepilogo per Helper
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.#ctor">
+            <summary>
+            Istanzia un nuovo oggetto XubHelper non associato ad alcuna pagina.
+            <para>La cache delle istanze resterà disabilitata.</para>
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.#ctor(System.Web.Mvc.IViewDataContainer,System.Boolean)">
+            <summary>
+            Istanzia un nuovo oggetto XubHelper associato alla pagina `page`.
+            <para>Sarà possibile definire se abilitare la cache delle istanze generate col metodo `GetInstance`.</para>
+            </summary>
+            <param name="page"></param>
+            <param name="enableInstancesCache">Abilita la cache delle istanze.</param>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.CreateXubHelper``1(System.Web.Mvc.IViewDataContainer,System.Boolean)">
+            <summary>
+            Crea l'istanza XubHelper e la memorizza sulla pagina.
+            <para>Il costruttore della classe deve accettare gli argomenti `pageViewDataContainer` e `enableInstancesCache`.</para>
+            </summary>
+            <param name="pageViewDataContainer">Pagina su cui creare l'istanza dell'helper</param>
+            <param name="homeContentPosition">Posizione nodo Home</param>
+            <param name="enableInstancesCache">Abilita la cache delle istanze.</param>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.GetXubHelper``1(System.Web.Mvc.IViewDataContainer)">
+            <summary>
+            Restituisce l'istanza XubHelper memorizzata sulla pagina.
+            </summary>
+            <param name="pageViewDataContainer">Pagina da cui recuperare l'istanza dell'helper</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.HasXubHelper(System.Web.Mvc.IViewDataContainer)">
+            <summary>
+            Indica se la pagina `pageViewDataContainer` ha un oggetto XubHelper.
+            </summary>
+            <param name="pageViewDataContainer"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.XubHelperBase.ApplicationPath">
+            <summary>
+            Restituisce il percorso dell'applicazione web.
+            Es: "/", "/www_v2/"
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.XubHelperBase.CurrentCulture">
+            <summary>
+            Restituisce l'oggetto CultureInfo corrente per l'oggetto
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.XubHelperBase.CurrentUmbUser">
+            <summary>
+            Restituisce un riferimento all'utente loggato in Backoffice
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.ForceCurrentLanCode(System.String)">
+            <summary>
+            Setta la lingua che dev'essere usata.
+            </summary>
+            <param name="lanCode">Nome lingua, es: "it", "it-IT", "en"...</param>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.XubHelperBase.CurrentLanCode">
+            <summary>
+            Restituisce il suffisso di lingua corrente, per determinare il propertyAlias localizzato (es. "it", "en")
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.XubHelperBase.CurrentUmbLan">
+            <summary>
+            Restituisce l'oggetto Language di Umbraco, associato alla lingua configurata.
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.XubHelperBase.DefaultCultureInfoName">
+            <summary>
+            Indica la nome CultureInfo da usare di default.
+            Nota: serve per determinare quale Homepage aprire quando non esiste una home adatta per la lingua in uso (CurrentLanCode).
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.SetDefaultCultureInfoName(System.String)">
+            <summary>
+            Permette di settare il valore DefaultCultureInfoName
+            </summary>
+            <param name="cultureInfoName"></param>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.XubHelperBase.CultureInfoNameHomePropertyAlias">
+            <summary>
+            Indica il nome della Property del nodo Home che ospita il valore CultureInfo.Name, come dichiarazione di lingua del suddetto ramo di sito.
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.SetCultureInfoNameHomePropertyAlias(System.String)">
+            <summary>
+            Permette di settare il valore CultureInfoNameHomePropertyAlias
+            </summary>
+            <param name="propertyAlias"></param>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.XubHelperBase.RootIntCode">
+            <summary>
+            Indica il valore "intCode" del nodo Root del sito. Il nodo Root deve al livello 0 della gerarchia di contenuti.
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.SetRootIntCode(System.String)">
+            <summary>
+            Permette di settare il valore RootIntCode
+            </summary>
+            <param name="intCode"></param>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.XubHelperBase.HomeContentPosition">
+            <summary>
+            Indica la posizione del nodo Home
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.SetDefaultApplicationSettings">
+            <summary>
+            Setta i valori default di XubHelper per l'uso su di un sito standard:
+            <para>- DefaultCultureInfoName = 'en-US'</para>
+            <para>- CultureInfoNameHomePropertyAlias = 'cultureInfoName'</para>
+            <para>- RootIntCode = 'WEB_ROOT'</para>
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.GetInstance``1(Umbraco.Core.Models.IPublishedContent)">
+            <summary>
+            Crea e restituisce un istanza ContentLogicBase. La peculiarità è che usando questo metodo si garantisce che un oggetto non viene istanziato più volte.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.GetInstance``1(Umbraco.Core.Models.IPublishedContent,System.Func{Xilium.UmbLib.Logic.IContentLogic})">
+            <summary>
+            Crea e restituisce un istanza ContentLogicBase. La peculiarità è che usando questo metodo si garantisce che un oggetto non viene istanziato più volte.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="content"></param>
+            <param name="constructorDelegate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.GetInstance(Umbraco.Core.Models.IPublishedContent,System.Type)">
+            <summary>
+            Crea e restituisce un istanza ContentLogicBase. La peculiarità è che usando questo metodo si garantisce che un oggetto non viene istanziato più volte.
+            </summary>
+            <param name="content"></param>
+            <param name="contentMapType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.GetInstance(Umbraco.Core.Models.IPublishedContent,System.Type,System.Func{Xilium.UmbLib.Logic.IContentLogic})">
+            <summary>
+            Restituisce un istanza ContentLogicBase, se non è già stata istanziata allora lo crea usando il metodo passato per argomento.
+            <para>La peculiarità è che usando questo metodo si garantisce che un oggetto non viene istanziato più volte.</para>
+            </summary>
+            <param name="content"></param>
+            <param name="contentMapType"></param>
+            <param name="constructorDelegate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.UmbracoTypedContent(System.Int32)">
+            <summary>
+            Restituisce il Content riferito dall'ID indicato.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.UmbracoTypedContent(System.Guid)">
+            <summary>
+            Restituisce il Content riferito dal Key indicato.
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.UmbracoTypedMedia(System.Int32)">
+            <summary>
+            Restituisce il Media riferito dall'ID indicato.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.UmbracoTypedMedia(System.Guid)">
+            <summary>
+            Restituisce il Media riferito dal Key indicato.
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.UmbracoTypedMember(System.Int32)">
+            <summary>
+            Restituisce il Member riferito dall'ID indicato.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.UmbracoTypedMember(System.Guid)">
+            <summary>
+            Restituisce il Media riferito dal Key indicato.
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.XubHelperBase.OriginalContent">
+            <summary>
+            Restituisce la pagina corrente originale, quella gestita da Umbraco
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.XubHelperBase.CurrentContent">
+            <summary>
+            Setta/Restituisce la pagina corrente
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.XubHelperBase.RootContent">
+            <summary>
+            Restituisce la pagina di root (welcomepage).
+            Se è stato indicato un valore per RootIntCode, il metodo cercherà un nodo di root con tale valore.
+            In alternativa restituirà il primo item del path di nodi della pagina corrente.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.XubHelperBase.HomeContent">
+            <summary>
+            Restituisce la pagina home (Homepage in lingua corrente).
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.HomeContentsAndLanguages">
+            <summary>
+            Restituisce l'elenco delle Home secondo la configurazione corrente.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.getHomeContent">
+            <summary>
+            Determina il nodo HomeContent secondo la configurazione corrente.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.SetHomeContent(Umbraco.Core.Models.IPublishedContent)">
+            <summary>
+            Permette di settare la pagina Home corrente
+            </summary>
+            <param name="publishedContent"></param>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.FindNiceHome(System.String)">
+            <summary>
+            Basandosi sul valore <paramref name="clientCultureName"/>, e basandosi sul valore della property CultureInfoNameHomePropertyAlias delle pagine Home, restituisce
+            la pagina Home ritenuta più adatta per l'utente.
+            </summary>
+            <param name="clientCultureName">Lingua del client (se NULL verrà usato CurrentUICulture.Name)</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.FindNiceHome(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Basandosi sul valore <paramref name="clientCultureNames"/>, e basandosi sul valore della property CultureInfoNameHomePropertyAlias delle pagine Home, restituisce
+            la pagina Home ritenuta più adatta per l'utente.
+            </summary>
+            <param name="clientCultureNames">Elenco lingue preferite dal client, nel formato UserLanguage: "it-IT[?q=0.8]". Nota: se NULL verrà usato CurrentUICulture.Name</param>
+            <returns></returns>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.XubHelperBase.UsableAsMenuItems">
+            <summary>
+            Restituisce i nodi di primo e secondo livello contenuti nella pagina Home.
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.ViewDataStarter(System.Web.Mvc.ViewDataDictionary)">
+            <summary>
+            Inizializza e restituisce l'oggetto ViewDataDictionary passato, aggiungendovi l'istanza XubHelper corrente.
+            </summary>
+            <param name="viewDataDictionary"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.UmbLib.Logic.ContentLogicBase">
+            <summary>
+            Descrizione di riepilogo per ContentLogicBase
+            </summary>
+        </member>
+        <member name="T:Xilium.UmbLib.Lucene.Contracts.ILuceneDataNode">
+            <summary>
+            Descrizione di riepilogo per TduContentIndexer
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Lucene.Contracts.ILuceneSearcherDriver.Searcher">
+            <summary>
+            Restituisce l'oggetto Examine LuceneSearcher
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.Contracts.ILuceneSearcherDriver.GetFieldConfig(System.String)">
+            <summary>
+            Restituisce la definizione di configurazione del campo dell'indice.
+            </summary>
+            <param name="fieldName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.Contracts.ILuceneSearcherDriver.CreateQuery">
+            <summary>
+            Crea un nuovo oggetto Search Query Builder.
+            </summary>
+            <returns>Restituisce il nuovo oggetto</returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.Contracts.ILuceneSearcherDriver.Search(Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder)">
+            <summary>
+            Compila la query di ricerca e la esegue.
+            </summary>
+            <returns>Restituisce il risultato della ricerca</returns>
+        </member>
+        <member name="T:Xilium.UmbLib.Lucene.LuceneDataManagerBase`1">
+            <summary>
+            Fornisce la base per lo sviluppo della classe che eseguirà il mapping fra il nome ed environment dell'indice e la costruzione dell'indice stesso.
+            Espone i metodi per fornire l'intero contenuto dell'indice e per rettificare l'indice su modifica dei dati (eliminazione e pubblicazione nodo su Umbraco).
+            La classe che implementerà [LuceneDataManagerBase] si servirà di una classe che implementerà [LuceneDataWorkerBase].
+            </summary>
+            <typeparam name="T">Tipo-classe che eredita da questa</typeparam>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneDataManagerBase`1.AttachUmbracoPublishEvents">
+            <summary>
+            Mi registro agli eventi di modifica dei nodi di Umbraco per captare quando un nodo viene registrato, quindi faccio scatenare un Rebuild degli indici.
+            </summary>
+        </member>
+        <member name="T:Xilium.UmbLib.Lucene.LuceneDataServiceBase">
+            <summary>
+            Fornisce la base per lo sviluppo della classe che, tramite una classe specifica da sviluppare per il singolo indice Lucene,
+            fornirà il metodo [GetAllData] dell'interfacca [ISimpleDataService].
+            La classe che implementerà [LuceneDataServiceBase] si servirà di una classe che implementerà [LuceneDataManagerBase].
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneDataServiceBase.#ctor(Xilium.UmbLib.Lucene.LuceneDataServiceBase.GetLuceneIndexSetDriverDelegate)">
+            <summary>
+            Istanzia la classe.
+            Nota sull'argomento Delegate: la soluzione usata serve a posticipare la creazione delle istanze al momento dell'effettiva necessità. Questo serve per risolvere un problema di runtime.
+            </summary>
+            <param name="getLuceneIndexSetDriverDelegate"></param>
+        </member>
+        <member name="T:Xilium.UmbLib.Lucene.LuceneDataWorkerBase`2">
+            <summary>
+            Si occupa della corretta indicizzazione dei dati.
+            Interviene in corso di creazione dell'indice e di modifica (modifica o cancellazione di un content di Umbraco).
+            
+            Sintassi di Lucene (nella versione della DLL): http://lucene.apache.org/core/2_9_4/queryparsersyntax.html
+            Tutte le librerie che sono state sviluppate per interagire con Lucene sono state scritte prendendo spunto da questi siti:
+            - pagini Wiki di Examine: https://github.com/Shandem/Examine/wiki
+            - documentazione di UmbracoExamine: http://our.umbraco.org/documentation/reference/searching/examine/
+            - codice di esempio per una sorgente arbitraria per IndexerProvider: http://thecogworks.co.uk/blog/posts/2013/february/examiness-hints-and-tips-from-the-trenches-part-8-custom-indexing/
+            </summary>
+            <typeparam name="TWorker">Tipo-classe che eredita da questa</typeparam>
+        </member>
+        <member name="P:Xilium.UmbLib.Lucene.LuceneDataWorkerBase`2.ManagedLuceneDataSources">
+            <summary>
+            Restituisce un elenco di tutti gli oggetti non Abstract che ereditano da LuceneDataSourceBase.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.UmbLib.Lucene.LuceneExtensions">
+            <summary>
+            Descrizione di riepilogo per LuceneExtensions
+            </summary>
+        </member>
+        <member name="T:Xilium.UmbLib.Lucene.LuceneIndexerDriver">
+            <summary>
+            Descrizione di riepilogo per LuceneIndexerDriver
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Lucene.LuceneIndexerDriver.LuceneIndexTypes">
+            <summary>
+            Elenco delle definizioni nell'attribti IndexTypes dell'oggetto IndexerProvider.
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Lucene.LuceneIndexerDriver.LanCode">
+            <summary>
+            Lingua gestita dall'Indexer, quindi dall'IndexSet.
+            Nota: considerando che il campo [nodeId] dev'essere univoco a livello di IndexSet, e considerando che il sistema di multilinga (a cui fa parte anche questa property)
+            serve per gestire più istanze del medesimo nodo di Umbraco ma con lingue diverse, posso arrivare alla conclusione che un IndexSet può gestire solo una lingua.
+            Se si dovesse aver bisogno di indicizzare un oggetto in più lingue, si dovranno usare più IndexSet.
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Lucene.LuceneIndexerDriver.ModelTypes">
+            <summary>
+            Elenco tipo-oggetto di Model gestiti dall'Indexer.
+            Nota: è importante che tutti i TipiNodo gestiti siano gestiti con la medesima lingua [this.LanCode].
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneIndexerDriver.AddFieldToRowData(System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.Object)">
+            <summary>
+            Memorizza un campo all'interno dell'indice seguendo le regole standard dell'oggetto IndexSet in uso.
+            </summary>
+            <param name="rowData"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneIndexerDriver.SetFieldToRowData(System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.Object)">
+            <summary>
+            Memorizza un campo all'interno dell'indice seguendo le regole standard dell'oggetto IndexSet in uso.
+            <para>In alternativa a `AddFieldToRowData`, il metodo corrente prevede che il campo sia già esistente in `rowData`, e lo riscrive.</para>
+            </summary>
+            <param name="rowData"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneIndexerDriver.AddCoordinateFieldToRowData(System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.Device.Location.GeoCoordinate)">
+            <summary>
+            Aggiunge una coordinata alla collection RowData.
+            Verranno aggiunti due valori, aventi per prefisso il valore indicato, e suffisso "__lat" e "__lon" per la latitudine e la longitudine della coordinata.
+            Esempio: "posizione__lat" e "posizione__lon"
+            </summary>
+            <param name="rowData"></param>
+            <param name="fieldNamePrefix"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneIndexerDriver.SetCoordinateFieldToRowData(System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.Device.Location.GeoCoordinate)">
+            <summary>
+            Aggiunge una coordinata alla collection RowData.
+            Verranno aggiunti due valori, aventi per prefisso il valore indicato, e suffisso "__lat" e "__lon" per la latitudine e la longitudine della coordinata.
+            Esempio: "posizione__lat" e "posizione__lon"
+            <para>In alternativa a `AddFieldToRowData`, il metodo corrente prevede che il campo sia già esistente in `rowData`, e lo riscrive.</para>
+            </summary>
+            <param name="rowData"></param>
+            <param name="fieldNamePrefix"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneIndexerDriver.AddTextFieldToRowData(System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.String,System.Func{System.String,System.Collections.Generic.Dictionary{Xilium.UmbLib.Lucene.LuceneLanguageFilterBase.NormalizedTextResultPart,System.String}})">
+            <summary>
+            Aggiunge il campo di tipo Text a RowData.
+            Trattandosi di testo letterale, verrà aggiunto il testo naturale nel campo dichiarato, ed il testo "normalizzato" nel campo "[nomeCampo]__norm"
+            </summary>
+            <param name="rowData"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <param name="normalizerDelegate">metodo per l'esecuzione della normalizzazione del testo</param>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneIndexerDriver.SetTextFieldToRowData(System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.String,System.Func{System.String,System.Collections.Generic.Dictionary{Xilium.UmbLib.Lucene.LuceneLanguageFilterBase.NormalizedTextResultPart,System.String}})">
+            <summary>
+            Aggiunge il campo di tipo Text a RowData.
+            Trattandosi di testo letterale, verrà aggiunto il testo naturale nel campo dichiarato, ed il testo "normalizzato" nel campo "[nomeCampo]__norm"
+            <para>In alternativa a `AddFieldToRowData`, il metodo corrente prevede che il campo sia già esistente in `rowData`, e lo riscrive.</para>
+            </summary>
+            <param name="rowData"></param>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <param name="normalizerDelegate">metodo per l'esecuzione della normalizzazione del testo</param>
+        </member>
+        <member name="T:Xilium.UmbLib.Lucene.LuceneIndexSetDriver">
+            <summary>
+            Descrizione di riepilogo per LuceneIndexSetDriver
+            </summary>
+        </member>
+        <member name="F:Xilium.UmbLib.Lucene.LuceneIndexSetDriver.ConfigFieldName">
+            <summary>
+            Nome del campo di configurazione
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneIndexSetDriver.GetInstance(System.String)">
+            <summary>
+            Restituisce un istanza Singleton della classe
+            </summary>
+            <param name="indexSet"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneIndexSetDriver.GetInstance(Examine.LuceneEngine.Config.IndexSet)">
+            <summary>
+            Restituisce un istanza Singleton della classe
+            </summary>
+            <param name="indexSet"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneIndexSetDriver.IsValidIndexSet(Examine.LuceneEngine.Config.IndexSet)">
+            <summary>
+            Restituisce True se l'oggetto IndexSetConfig è un oggetto valido per essere trattato con la classe LuceneIndexSetDriver.
+            </summary>
+            <param name="indexSetConfig"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneIndexSetDriver.EncodeValue(System.String,System.Object,Xilium.UmbLib.Lucene.LuceneValueConverter.ArrayToLuceneMethod)">
+            <summary>
+            Converte un valore in formato Lucene
+            </summary>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <param name="arrayToLuceneMethod"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneIndexSetDriver.NormalizeStringValue(System.String,Xilium.UmbLib.Lucene.LuceneLanguageFilterBase.NormalizeMethods)">
+            <summary>
+            Esegue la normalizzazione del testo: converte il testo passato in formati diversi.
+            </summary>
+            <param name="text"></param>
+            <param name="normalize"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Xilium.UmbLib.Lucene.LuceneIndexSetFieldDriver.IsSameType">
+            <summary>
+            Indica se Type configurato corrisponde al valore Type nell'oggeto IndexField
+            </summary>
+        </member>
+        <member name="T:Xilium.UmbLib.Lucene.LuceneIndexType">
+            <summary>
+            Rappresenta una definizione di ModelType composta da parameri opzionali: Lan e Environment.
+            Il valore ModelFormat viene usato nell'attributo "indexTypes" di IndexProvider, nel file "Config/ExamineSettings.config".
+            Sintassi: "ModelType@Environment.Lan"
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Lucene.LuceneIndexType.IndexType">
+            <summary>
+            Rappresenta il valore esatto memorizzato nell'attributo indexTypes di IndexProvider.
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Lucene.LuceneIndexType.ModelType">
+            <summary>
+            Rappresenta il tipo-oggetto di Model.
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Lucene.LuceneIndexType.Environment">
+            <summary>
+            Argomento jolly che può essere usato all'interno del metodo ILuceneDataNode.LuceneDataSet per la costruzione dell'indice.
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Lucene.LuceneIndexType.LanguageCode">
+            <summary>
+            Lingua di traduzione dei dati.
+            </summary>
+        </member>
+        <member name="F:Xilium.UmbLib.Lucene.LuceneIndexType.PartNullValue">
+            <summary>
+            Segnaposto che corrisponde al valore "null"
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneIndexType.GetIndexType(System.String,System.String,System.String)">
+            <summary>
+            Costruisce il codice IndexType, usato all'interno della configurazione del file "ExamineSettings.config".
+            </summary>
+            <param name="modelType"></param>
+            <param name="environment"></param>
+            <param name="languageCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneIndexType.GetIndexType(System.String,System.String,Xilium.UmbLib.Helper.XubHelperBase)">
+            <summary>
+            Costruisce il codice IndexType, usato all'interno della configurazione del file "ExamineSettings.config".
+            </summary>
+            <param name="modelType"></param>
+            <param name="environment"></param>
+            <param name="xubHelper"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.UmbLib.Lucene.LuceneLanguageFilterBase">
+            <summary>
+            Descrizione di riepilogo per ILuceneLanguageFilter
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Lucene.LuceneLanguageFilterBase.NoRelevantTerms">
+            <summary>
+            Elenco delle parole non rilevanti ai fini della ricerca in quanto troppo frequenti.
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneLanguageFilterBase.ToLowercase(System.String)">
+            <summary>
+            Converte il testo in minuscolo usando le regole della lingua corrente.
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneLanguageFilterBase.RemovePunctuation(System.String)">
+            <summary>
+            Rimuove la punteggiatura tipida della lingua (apostrofi ecc) sostituendoli con spazi.
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneLanguageFilterBase.RemoveDiacritics(System.String)">
+            <summary>
+            Rimuove gli accenti dal testo, sostituendo le lettere accentate in lettere semplici
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneLanguageFilterBase.RemoveNoRelevantTerms(System.String)">
+            <summary>
+            Rimuove i termini non rilevanti dal testo.
+            Attenzione: il testo passato deve essere preventivamente pulito dalla punteggiatura.
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneLanguageFilterBase.PluralToSingularDictionary(System.String)">
+            <summary>
+            Analizza il testo e restituisce un dictionary con le parole trovate in forma plurale (key) e la rispettiva forma singolare (value).
+            Alcune parole plurali potrebbero avere più forme in singolare. In questi casi le parole saranno restituite in un unico value, separate da spazio.
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneLanguageFilterBase.NormalizeText(System.String,Xilium.UmbLib.Lucene.LuceneLanguageFilterBase.NormalizeMethods)">
+            <summary>
+            Normalizza il testo indicato eseguendo diverse operazioni in base alla lingua, ad esempio:
+            - rimuove le parole non rilevanti;
+            - converte le parole plurali in singolari;
+            - sostituisce le lettere accentate in lettere ASCII;
+            - rimuove gli accenti.
+            </summary>
+            <param name="text"></param>
+            <param name="methods">Metodi da eseguire per la normalizzazione</param>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.UmbLib.Lucene.LuceneManager">
+            <summary>
+            Si occupa di mantenere un riferimento a tutti gli indici supportati dalla libreria, e di offrire comodi strumenti per rintracciare un oggetto di indice.
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Lucene.LuceneManager.IndexSetDrivers">
+            <summary>
+            Elenco degli oggetti IndexSet gestiti dall'applicazione web
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneManager.GetRightIndexSetDriver(System.String,System.String)">
+            <summary>
+            Esegue la ricerca dell'oggetto IndexSetDriver opportuno, la cui Language è NULL.
+            </summary>
+            <param name="modelType"></param>
+            <param name="environment"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneManager.GetRightSearcherDriver(System.String,System.String)">
+            <summary>
+            Esegue la ricerca dell'oggetto SearcherDriver opportuno, la cui Language è NULL.
+            </summary>
+            <param name="modelType"></param>
+            <param name="environment"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.UmbLib.Lucene.LuceneSearcherDriver">
+            <summary>
+            Fornisce un sistema pratico per eseguire le ricerche in un indice.
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneSearcherDriver.CreateQuery">
+            <summary>
+            Crea una nuova query di ricerca
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneSearcherDriver.Search(Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder)">
+            <summary>
+            Compila la query di ricerca indicata per argomento, quindi la esegue.
+            </summary>
+            <returns>Restituisce il risultato della ricerca</returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneSearcherDriver.GetFieldConfig(System.String)">
+            <summary>
+            Restituisce la definizione di configurazione del campo dell'indice.
+            </summary>
+            <param name="fieldName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneSearcherDriver.EncodeValue(System.String,System.Object,Xilium.UmbLib.Lucene.LuceneValueConverter.ArrayToLuceneMethod)">
+            <summary>
+            Converte un valore in formato Lucene
+            </summary>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <param name="arrayToLuceneMethod"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneSearcherDriver.NormalizeStringValue(System.String,Xilium.UmbLib.Lucene.LuceneLanguageFilterBase.NormalizeMethods)">
+            <summary>
+            Esegue la normalizzazione del testo: converte il testo passato in formati diversi.
+            </summary>
+            <param name="text"></param>
+            <param name="normalize"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder">
+            <summary>
+            Si occupa di creare la query di ricerca per trovare gli oggetti, usando Examine/Lucene.
+            
+            Sintassi di Lucene (nella versione della DLL): http://lucene.apache.org/core/2_9_4/queryparsersyntax.html
+            Tutte le librerie che sono state sviluppate per interagire con Lucene sono state scritte prendendo spunto da questi siti:
+            - pagini Wiki di Examine: https://github.com/Shandem/Examine/wiki
+            - documentazione di UmbracoExamine: http://our.umbraco.org/documentation/reference/searching/examine/
+            - codice di esempio per una sorgente arbitraria per IndexerProvider: http://thecogworks.co.uk/blog/posts/2013/february/examiness-hints-and-tips-from-the-trenches-part-8-custom-indexing/
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder.bracketInfo.#ctor(System.Int32,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="openIndex">Indice di inserimento della tonda-aperta</param>
+            <param name="openContent"></param>
+            <param name="closeContent"></param>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder.getFieldConfig(System.String)">
+            <summary>
+            Restituisce la definizione di configurazione del campo dell'indice.
+            </summary>
+            <param name="fieldName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder.putFuzzy(System.Text.StringBuilder,System.String,System.Single)">
+            <summary>
+            Inserisce l'opzione FUZZY alla clausola di ricerca corrente.
+            </summary>
+            <param name="sb"></param>
+            <param name="fieldName">Nome campo a cui verrà aggiunto l'opzione Fuzzy</param>
+            <param name="fuzzy">Valore di Fuzzy, da 0 a 1, dove 1 significa "somiglianza perfetta". Se è -1 verrà usato il valore indicato in FieldConfig.</param>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder.putBoost(System.Text.StringBuilder,System.String,System.Single)">
+            <summary>
+            Inserisce l'opzione BOOST alla clausola di ricerca corrente.
+            </summary>
+            <param name="sb"></param>
+            <param name="fieldName">Nome campo a cui verrà aggiunto l'opzione Boost</param>
+            <param name="boost">Valore di boost, da 0 in su, default 1. Se è -1 verrà usato il valore indicato in FieldConfig</param>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder.putBoost(System.Text.StringBuilder,System.Single,System.Single)">
+            <summary>
+            Inserisce l'opzione BOOST alla clausola di ricerca corrente.
+            </summary>
+            <param name="sb"></param>
+            <param name="boost">Valore di boost, da 0 in su, default 1. Se è -1 verrà usato il valore `fallbackBoost`.</param>
+            <param name="fallbackBoost">Valore di fallback</param>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder.putBoost(System.Text.StringBuilder,System.Single,System.Func{System.Single})">
+            <summary>
+            Inserisce l'opzione BOOST alla clausola di ricerca corrente.
+            </summary>
+            <param name="sb"></param>
+            <param name="boost">Valore di boost, da 0 in su, default 1. Se è -1 il valore verrà ottenuto da `fallbackBoostDelegate`.</param>
+            <param name="fallbackBoostDelegate">Metodo per ottenere il valore di fallback</param>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder.OpenBracket(Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder.Occur,System.Single)">
+            <summary>
+            Apre una parentesi tonda nella query di ricerca
+            </summary>
+            <param name="occur"></param>
+            <param name="boost">Valore di boost, da 0 in su, default 1.</param>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder.CloseBracket">
+            <summary>
+            Chiude una parentesi tonda nella query di ricerca
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder.Subquery(System.String,Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder.Occur,System.Single)">
+            <summary>
+            Esegue la ricerca della query indicata. Verrà inserita fra parentesi per carantire la corretta funzionalità della subquery con le altre condizioni.
+            </summary>
+            <param name="query">Query Lucene da appendere alla ricerca</param>
+            <param name="occur"></param>
+            <param name="boost">Valore di boost, da 0 in su, default 1. Se è -1 verrà usato il valore default 1.</param>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder.Field(System.String,System.String,Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder.Occur,System.Single)">
+            <summary>
+            Esegue una ricerca testuale di un valore in un campo
+            </summary>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <param name="occur"></param>
+            <param name="boost">Valore di boost, da 0 in su, default 1. Se è -1 verrà usato il valore indicato in FieldConfig</param>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder.FieldWildchars(System.String,System.String,Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder.Occur,System.Single)">
+            <summary>
+            Esegue una ricerca testuale di un valore in un campo, permettendo l'uso dei caratteri speciali '*' e '?'
+            </summary>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <param name="occur"></param>
+            <param name="boost">Valore di boost, da 0 in su, default 1. Se è -1 verrà usato il valore indicato in FieldConfig</param>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder.FieldFuzzy(System.String,System.String,System.Single,Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder.Occur,System.Single)">
+            <summary>
+            Esegue una ricerca testuale di una o più parole in un campo, utilizzando la logica fuzzy.
+            </summary>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <param name="fuzzy">Valore, da 0 a 1, che indica il grado di somiglianza della parola inserita rispetto alla parola trovata (1: somiglianza perfetta)</param>
+            <param name="occur"></param>
+            <param name="boost">Valore di boost, da 0 in su, default 1. Se è -1 verrà usato il valore indicato in FieldConfig</param>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder.FieldProximity(System.String,System.String,System.Int32,Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder.Occur,System.Single)">
+            <summary>
+            Esegue una ricerca testuale di un valore in un campo, di più parole, permettendo un limite massimo di distanza fra le parole.
+            </summary>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <param name="proximity">Valore, da 1 in su, che indica il numero di parole che si possono interporre fra le due inserite nella stringa di ricerca.</param>
+            <param name="occur"></param>
+            <param name="boost">Valore di boost, da 0 in su, default 1. Se è -1 verrà usato il valore indicato in FieldConfig</param>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder.FieldExact(System.String,System.String,Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder.Occur,System.Single)">
+            <summary>
+            Esegue una ricerca testuale di un valore in un campo, parola o frase, dove il termine o frase deve essere contenuta esattamente come indicato.
+            </summary>
+            <param name="fieldName"></param>
+            <param name="value"></param>
+            <param name="occur"></param>
+            <param name="boost">Valore di boost, da 0 in su, default 1. Se è -1 verrà usato il valore indicato in FieldConfig</param>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder.Normalized(System.String,System.String,System.String,Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder.Occur,System.Single)">
+            <summary>
+            Esegue una ricerca testuale di un valore nel campo "fieldName" e nel relativo campo normalizzato.
+            </summary>
+            <param name="fieldName">Nome del campo base, contenente il testo originale</param>
+            <param name="value">Testo da cercare, non normalizzato.</param>
+            <param name="normalizedValue">Testo normalizzato da cercare, sul campo normalizzato</param>
+            <param name="occur"></param>
+            <param name="boost">Valore di boost, da 0 in su, default 1. Se è -1 verrà usato il valore indicato in FieldConfig</param>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder.NormalizedFuzzy(System.String,System.String,System.String,System.Single,Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder.Occur,System.Single)">
+            <summary>
+            Esegue una ricerca testuale di un valore nel campo "fieldName" e nel relativo campo normalizzato, utilizzando la logica fuzzy
+            </summary>
+            <param name="fieldName">Nome del campo base, contenente il testo originale</param>
+            <param name="value">Testo da cercare, non normalizzato.</param>
+            <param name="normalizedValue">Testo normalizzato da cercare, sul campo normalizzato</param>
+            <param name="fuzzy">Valore, da 0 a 1, che indica il grado di somiglianza della parola inserita rispetto alla parola trovata (1: somiglianza perfetta)</param>
+            <param name="occur"></param>
+            <param name="boost">Valore di boost, da 0 in su, default 1. Se è -1 verrà usato il valore indicato in FieldConfig</param>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder.Range(System.String,System.String,System.Boolean,System.String,System.Boolean,Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder.Occur,System.Single)">
+            <summary>
+            Esegue un filtro di selezione di un Range.
+            </summary>
+            <param name="fieldName">Campo di ricerca</param>
+            <param name="valueFrom">Valore di partenza</param>
+            <param name="includeFrom">se True il valore di partenza è valido</param>
+            <param name="valueTo">Valore finale</param>
+            <param name="includeTo">se False il valore finale è valido</param>
+            <param name="occur"></param>
+            <param name="boost">Valore di boost, da 0 in su, default 1. Se è -1 verrà usato il valore indicato in FieldConfig</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder.Filled(System.String,Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder.Occur,System.Single)">
+            <summary>
+            Esegue un filtro sul campo che verifica se è riempito.
+            <para>Se `Occur` viene settato su `Must` si ha un filtro equivalente a `Field != null`.</para>
+            <para>Se `Occur` viene settato su `MustNot` si ha un filtro equivalente a `Field == null`.</para>
+            </summary>
+            <param name="fieldName"></param>
+            <param name="occur"></param>
+            <param name="boost">Valore di boost, da 0 in su, default 1. Se è -1 verrà usato il valore indicato in FieldConfig</param>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder.AroundCoordinate(System.String,System.Device.Location.GeoCoordinate,System.Int32,Xilium.UmbLib.Lucene.LuceneSearchQueryBuilder.Occur,System.Single)">
+            <summary>
+            Restituisce una query Lucene: filtra le entità che si trovano ad una distanza massima di metri <see cref="!:radius"/> rispetto alla coordinata <see cref="!:coordinate"/>
+            </summary>
+            <param name="coordinate">Coordinata di riferimento</param>
+            <param name="radius">Raggio, in metri, che identifica la superficie di selezione entità</param>
+            <param name="boost">Valore di boost, da 0 in su, default 1. Se è -1 verrà usato il valore indicato in FieldConfig</param>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.UmbLib.Lucene.LuceneValueConverter">
+            <summary>
+            Descrizione di riepilogo per LuceneValueConverter
+            </summary>
+        </member>
+        <member name="F:Xilium.UmbLib.Lucene.LuceneValueConverter.ArrayToLuceneMethod.ArrayAsSingle">
+            <summary>
+            Se il campo è configurato per ospitare un Array, il valore sarà comunque convertito come valore singolo (utile per la ricerca di un valore in un array).
+            </summary>
+        </member>
+        <member name="F:Xilium.UmbLib.Lucene.LuceneValueConverter.ArrayToLuceneMethod.ArrayForSave">
+            <summary>
+            Se il campo è configurato per ospitare un Array, il valore sarà convertito come array allo scopo di salvataggio dato.
+            </summary>
+        </member>
+        <member name="F:Xilium.UmbLib.Lucene.LuceneValueConverter.ArrayToLuceneMethod.ArrayForSearch">
+            <summary>
+            Se il campo è configurato per ospitare un Array, il valore sarà convertito come array allo scopo di ricerca di più valori.
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneValueConverter.ValueArrayToLucene``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.String},Xilium.UmbLib.Lucene.LuceneValueConverter.ArrayToLuceneMethod)">
+            <summary>
+            Converte un array di tipo T in un valore Lucene. Ogni item viene restituito in una riga del testo restituito.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value"></param>
+            <param name="valueToLuceneConverter"></param>
+            <param name="arrayToLuceneMethod"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneValueConverter.LuceneToValueArray``1(System.String,System.Func{System.String,``0},Xilium.UmbLib.Lucene.LuceneValueConverter.ArrayToLuceneMethod)">
+            <summary>
+            Converte un valore Lucene in un array di tipo T. Ogni item è memorizzato in una riga del testo Lucene.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value"></param>
+            <param name="luceneToValueConverter"></param>
+            <param name="arrayToLuceneMethod"></param>
+            <returns></returns>
+        </member>
+        <member name="F:Xilium.UmbLib.Lucene.LuceneValueConverter.ValueArrayForWriteSep">
+            <summary>
+            Carattere usato per separare gli item di un arrray allo scopo di scrittura
+            </summary>
+        </member>
+        <member name="F:Xilium.UmbLib.Lucene.LuceneValueConverter.ValueArrayForSearchSep">
+            <summary>
+            Carattere usato per separare gli item di un arrray allo scopo di ricerca di più valori
+            </summary>
+        </member>
+        <member name="F:Xilium.UmbLib.Lucene.LuceneValueConverter.NumericPositiveSign">
+            <summary>
+            Nel formato Lucene, è il carattere prefisso per i numeri positivi.
+            </summary>
+        </member>
+        <member name="F:Xilium.UmbLib.Lucene.LuceneValueConverter.NumericNegativeSign">
+            <summary>
+            Nel formato Lucene, è il carattere prefisso per i numeri negativi.
+            </summary>
+        </member>
+        <member name="F:Xilium.UmbLib.Lucene.LuceneValueConverter.NumericDecimalSeparator">
+            <summary>
+            Nel formato Lucene, è il separatore delle cifre decimali.
+            </summary>
+        </member>
+        <member name="F:Xilium.UmbLib.Lucene.LuceneValueConverter.GeoCoordinateLongitudeFieldNameSuffix">
+            <summary>
+            Suffisso del nome campo Coordinata per il valore Longitudine
+            </summary>
+        </member>
+        <member name="F:Xilium.UmbLib.Lucene.LuceneValueConverter.GeoCoordinateLatitudeFieldNameSuffix">
+            <summary>
+            Suffisso del nome campo Coordinata per il valore Latitudine
+            </summary>
+        </member>
+        <member name="F:Xilium.UmbLib.Lucene.LuceneValueConverter.TextNormalizedFieldNameSuffix">
+            <summary>
+            Suffisso del nome campo contenente il testo "normalizzato".
+            Attenzione: il valore del campo sarà riempito dai testi ottenuti dai vari processi di normalizzazione: "text" che contiene il testo ripulito, e "words" formato dall'elenco di parole in forma Singolare che si presume siano state trovate nel testo in forma Plurale.
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneValueConverter.NumberToLucene(System.Double,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Converte un numero decimale in stringa, per essere memorizzata in Lucene allo scopo di poter eseguire ricerche.
+            Il risultato sarà composto da esattamente <see cref="!:digits"/> cifre totali, di cui <see cref="!:decimals"/> cifre decimali.
+            Verrà usata la cifra 0 per riempire i vuoti.
+            Se il valore supera la soglia dettata da <see cref="!:digits"/> il valore risultante sarà il valore massimo consentito a parità disegno.
+            </summary>
+            <param name="value">Il valore da convertire</param>
+            <param name="digits">Numero di cifre totali</param>
+            <param name="decimals">Numero delle sole cifre decimali</param>
+            <param name="allowNegative">Se true viene anteposto il segno (p per positivi, n per negativo) e convertito i valori negativi per assicurarci un ordinamento corretto dei valori.</param>
+            <remarks>
+            NOTA: dato il problema riscontrato su Lucene ho deciso di modificare il modo con cui vengono salvati i dati. Non più come Double, ma come stringa ben controllata.
+            Vedi issue: http://issues.umbraco.org/issue/U4-2908
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneValueConverter.DateTimeToLucene(System.DateTime,Xilium.UmbLib.Lucene.LuceneValueConverter.DatetimeParts)">
+            <summary>
+            Converte l'oggetto datetime nel formato per Lucene
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneValueConverter.DateTimeToLucene(System.DateTime)">
+            <summary>
+            Converte l'oggetto datetime nel formato per Lucene
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneValueConverter.YearToLucene(System.DateTime)">
+            <summary>
+            Converte l'oggetto datetime nel formato per Lucene, solo componente Year
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneValueConverter.YearMonthToLucene(System.DateTime)">
+            <summary>
+            Converte l'oggetto datetime nel formato per Lucene, componenti Year e Month
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneValueConverter.DateToLucene(System.DateTime)">
+            <summary>
+            Converte l'oggetto datetime nel formato per Lucene, componenti Year, Month, Day
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneValueConverter.DateHourToLucene(System.DateTime)">
+            <summary>
+            Converte l'oggetto datetime nel formato per Lucene, componenti Year, Month, Day, Hour
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneValueConverter.TextToNormalized(System.String,Xilium.UmbLib.Lucene.LuceneIndexSetDriver,Xilium.UmbLib.Lucene.LuceneLanguageFilterBase.NormalizeMethods)">
+            <summary>
+            Esegue la normalizzazione del testo: converte il testo passato in formati diversi.
+            </summary>
+            <param name="text"></param>
+            <param name="indexSetDriver"></param>
+            <param name="normalize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneValueConverter.TextToNormalized(System.String,Xilium.UmbLib.Lucene.LuceneSearcherDriver,Xilium.UmbLib.Lucene.LuceneLanguageFilterBase.NormalizeMethods)">
+            <summary>
+            Esegue la normalizzazione del testo: converte il testo passato in formati diversi.
+            </summary>
+            <param name="text"></param>
+            <param name="searcherDriver"></param>
+            <param name="normalize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneValueConverter.TextToNormalizedString(System.String,Xilium.UmbLib.Lucene.LuceneIndexSetDriver,Xilium.UmbLib.Lucene.LuceneLanguageFilterBase.NormalizeMethods)">
+            <summary>
+            Esegue la normalizzazione del testo: converte il testo passato in formati diversi.
+            </summary>
+            <param name="text"></param>
+            <param name="indexSetDriver"></param>
+            <param name="normalize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneValueConverter.TextToNormalizedString(System.String,Xilium.UmbLib.Lucene.LuceneSearcherDriver,Xilium.UmbLib.Lucene.LuceneLanguageFilterBase.NormalizeMethods)">
+            <summary>
+            Esegue la normalizzazione del testo: converte il testo passato in formati diversi.
+            </summary>
+            <param name="text"></param>
+            <param name="searcherDriver"></param>
+            <param name="normalize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneValueConverter.LuceneEscape(System.String,System.Boolean)">
+            <summary>
+            Esegue un escape della stringa passata: converte i caratteri speciali in "\[char]" per evitare che questi possano essere intesi come comandi.
+            </summary>
+            <param name="value">Il valore testuale di cui eseguire l'escape</param>
+            <param name="allowWildcards">Se true, i caratteri jolly "*" e "?" non verranno convertiti.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneValueConverter.ToLuceneAsConfig(System.Object,Xilium.UmbLib.Lucene.LuceneIndexSetDriver,System.String,Xilium.UmbLib.Lucene.LuceneValueConverter.ArrayToLuceneMethod)">
+            <summary>
+            Converte Value in formato Lucene interpretando il valore come da configurazione dell'indice.
+            </summary>
+            <param name="value">Valore da convertire</param>
+            <param name="indexSetDriver">IndexSet di destinazione</param>
+            <param name="fieldName">Campo di destinazione</param>
+            <param name="arrayToLuceneMethod">Indica il metodo di conversione di Value per un campo di tipo Array.</param>
+            <returns>Formato Lucene di Value</returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneValueConverter.luceneToNumber_getInfo(System.String,System.Boolean@,System.Boolean@,System.String@)">
+            <summary>
+            Legge informazioni dalla stringa numerica passata in formato Lucene, per eseguire poi la conversione in numero gestito.
+            </summary>
+            <param name="value">Stringa numerica in formato Lucene (o naturale)</param>
+            <param name="isPositive">Indica se il numero è negativo o positivo</param>
+            <param name="isInverted">Indica se il numero è è invertito: se il numero è in formato Lucene e sia negativo, il numero viene memorizzato eseguendo una sottrazione fra il numero più grande rappresentabile e il valore effettivo.</param>
+            <param name="digits">Parte puramente numerica dell'argomento Value.</param>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneValueConverter.LuceneToDateTime(System.String,Xilium.UmbLib.Lucene.LuceneValueConverter.DatetimeParts)">
+            <summary>
+            Converte l'oggetto datetime nel formato per Lucene
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneValueConverter.LuceneToDateTime(System.String)">
+            <summary>
+            Converte l'oggetto datetime nel formato per Lucene
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneValueConverter.LuceneToYear(System.String)">
+            <summary>
+            Converte l'oggetto datetime nel formato per Lucene, solo componente Year
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneValueConverter.LuceneToYearMonth(System.String)">
+            <summary>
+            Converte l'oggetto datetime nel formato per Lucene, componenti Year e Month
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneValueConverter.LuceneToDate(System.String)">
+            <summary>
+            Converte l'oggetto datetime nel formato per Lucene, componenti Year, Month, Day
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Lucene.LuceneValueConverter.LuceneToDateHour(System.String)">
+            <summary>
+            Converte l'oggetto datetime nel formato per Lucene, componenti Year, Month, Day, Hour
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Xilium.UmbLib.MailTemplate.IMailTemplateModel.MailTemplate">
+            <summary>
+            Template dell'email con cui ricostruiore l'email `MailMessage`.
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.MailTemplate.IMailTemplateModel.Email">
+            <summary>
+            Modello dell'email da intiettare all'interno dell'email vera.
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.MailTemplate.IMailTemplateModel.MailViewData">
+            <summary>
+            Dati aggiuntivi da passare al file Razor
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.MailTemplate.IMailTemplateModel.IncludeMessageHeader">
+            <summary>
+            Se True, la pagina Razor restituirà anche un Div con i dati di intestazione dell'email. Utile per Debug.
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.MailTemplate.IMailTemplateModel.AppendLinkCss">
+            <summary>
+            Se True, il risultato del render definisce gli stili tramite inclusione dei file CSS;
+            <para>Se False, il risultato del render definisce gli stili tramite applicazione diretta sull'attributo `style` dei tag.</para>
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.MailTemplate.IMailTemplateModel.XubHelper">
+            <summary>
+            Contesto di elaborazione
+            </summary>
+        </member>
+        <member name="T:Xilium.UmbLib.MailTemplate.MailModel">
+            <summary>
+            Modello di dati dell'email da costruire.
+            <para>Compilare questo Model, quindi passarlo a Compiler che utilizzerà i dati presenti per realizzare l'email compilata.</para>
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.MailTemplate.MailModel.CompilingRequired">
+            <summary>
+            Indica se il Model contiene segnaposto che devono essere compilati insieme all'email finale.
+            </summary>
+        </member>
+        <member name="T:Xilium.UmbLib.MailTemplate.MailRazorCompiler`1">
+            <summary>
+            Descrizione di riepilogo per MailRazorCompiler
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.MailTemplate.MailRazorCompiler`1.GetMailTemplate(System.String)">
+            <summary>
+            Cerca e restituisce il valore ID del template email associato al codice template indicato.
+            </summary>
+            <param name="mailTemplateCode">Codice template email da cercare</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.MailTemplate.MailRazorCompiler`1.GetMailTemplate(System.Int32)">
+            <summary>
+            Cerca e restituisce il valore ID del template email associato al codice template indicato.
+            </summary>
+            <param name="mailTemplateId">Valore Id del template email da cercare</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.MailTemplate.MailRazorCompiler`1.compilaHeader(System.Net.Mail.MailMessage,Umbraco.Core.Models.IPublishedContent,`0)">
+            <summary>
+            Compila i dati di Header, con l'aiuto di Mustache:
+            <para>usa l'attuale valore From, To, ecc sul mailTemplate, e lo usa come template con Mustache; il risultato sarà settato sull'oggetto `model.workedMailMessage`.</para>
+            </summary>
+            <param name="mailTemplate"></param>
+            <param name="model"></param>
+        </member>
+        <member name="M:Xilium.UmbLib.MailTemplate.MailRazorCompiler`1.compilaBody(System.Net.Mail.MailMessage,Umbraco.Core.Models.IPublishedContent,`0)">
+            <summary>
+            Compila i dati di Header, con l'aiuto di Mustache:
+            <para>usa l'attuale valore From, To, ecc sul mailTemplate, e lo usa come template con Mustache; il risultato sarà settato sull'oggetto `model.workedMailMessage`.</para>
+            </summary>
+            <param name="mailTemplate"></param>
+            <param name="model"></param>
+        </member>
+        <member name="M:Xilium.UmbLib.MailTemplate.MailRazorCompiler`1.CreateCssStylesHtmlTag">
+            <summary>
+            Crea il codice Html di inserimento dei tag LINK per gli stili CSS.
+            <para>Se la classe è inizializzata passando il contenuto CSS, allora crea un tag STYLE col relativo contenuto.</para>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.MailTemplate.MailRazorCompiler`1.GetCompleteCssStyle">
+            <summary>
+            Restituisce il codice CSS completo da applicare.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.MailTemplate.MailRazorCompiler`1.appendCssStyles(System.String)">
+            <summary>
+            Inserimento dei tag LINK per importazione dei file CSS
+            </summary>
+            <param name="mailBody"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.MailTemplate.MailRazorCompiler`1.applyCssStyles(System.String)">
+            <summary>
+            Applicazione degli stili dei file CSS
+            </summary>
+            <param name="mailBody"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.UmbLib.MailTemplate.MailTemplateConstants">
+            <summary>
+            Costanti per il funzionamento di MailTemplate
+            </summary>
+        </member>
+        <member name="F:Xilium.UmbLib.MailTemplate.MailTemplateConstants.HtmlCssPlaceholder">
+            <summary>
+            Segnaposto per posizionare stili CSS e link a file esterni.
+            </summary>
+        </member>
+        <member name="F:Xilium.UmbLib.MailTemplate.MailTemplateConstants.HtmlBodyDoctype">
+            <summary>
+            Doctype che verrà iniettato a inizio del Body
+            </summary>
+        </member>
+        <member name="F:Xilium.UmbLib.MailTemplate.MailTemplateConstants.CssNormalizerStyle">
+            <summary>
+            Stile CSS di normalizzazione oggetti.
+            </summary>
+        </member>
+        <member name="F:Xilium.UmbLib.MailTemplate.MailTemplateConstants.RazorMailTemplatesPath">
+            <summary>
+            Percorso in cui risiedono le viste dei template
+            </summary>
+        </member>
+        <member name="T:Xilium.UmbLib.MailTemplate.MailTemplateModel">
+            <summary>
+            Modello per le EmailTemplate
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.MailTemplate.MailTemplateModel.MailTemplate">
+            <summary>
+            Template dell'email con cui ricostruiore l'email `MailMessage`.
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.MailTemplate.MailTemplateModel.Email">
+            <summary>
+            Oggetto per accesso semplificato ai dati dell'email `MailMessage` da parte dei segnaposto Mustache inseriti nella definizione testuale del template.
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.MailTemplate.MailTemplateModel.MailViewData">
+            <summary>
+            Dati aggiuntivi da passare al file Razor
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.MailTemplate.MailTemplateModel.IncludeMessageHeader">
+            <summary>
+            Se True, la pagina Razor restituirà anche un Div con i dati di intestazione dell'email. Utile per Debug.
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.MailTemplate.MailTemplateModel.AppendLinkCss">
+            <summary>
+            Se True, il risultato del render definisce gli stili tramite inclusione dei file CSS;
+            <para>Se False, il risultato del render definisce gli stili tramite applicazione diretta sull'attributo `style` dei tag.</para>
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.MailTemplate.MailTemplateModel.XubHelper">
+            <summary>
+            Contesto di elaborazione
+            </summary>
+        </member>
+        <member name="T:Xilium.UmbLib.MailTemplate.MailViewData">
+            <summary>
+            Descrizione di riepilogo per MailViewData
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.MailTemplate.Support.NustacheHelper.TemplateActivator(System.String,System.Func{System.String,System.Boolean})">
+            <summary>
+            Analizza il template, e disattiva i segnaposto non selezionati da `filterIdentifierDelegate`.
+            </summary>
+            <param name="template"></param>
+            <param name="filterIdentifierDelegate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.MailTemplate.Support.NustacheHelper.RenderStringToString(System.String,System.Object)">
+            <summary>
+            Esegue il render del Template.
+            </summary>
+            <param name="template"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.MailTemplate.Support.NustacheHelper.RenderStringToString(System.String,System.Object,System.Func{System.String,System.Boolean})">
+            <summary>
+            Esegue il render dei soli elementi indicati da `filterIdentifierDelegate`.
+            </summary>
+            <param name="template"></param>
+            <param name="model"></param>
+            <param name="filterIdentifierDelegate"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.UmbLib.Mvc.PartialViewModel`2">
+            <summary>
+            Descrizione di riepilogo per PartialViewModel
+            </summary>
+        </member>
+        <member name="T:Xilium.UmbLib.Net.Mail">
+            <summary>
+            Mapping per la libreria Xilium.WebLib.Mail.
+            <para>Si occupa di definire l'indirizzo di destinazione obblogato quando l'applicazione è in modalità Debug.</para>
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Net.Mail.QueueEmail(System.String,System.String,System.String,System.String)">
+            <summary>
+            Accoda l'email indicata tramite gli argomenti; il corpo del messaggio sarà interpretato come testo semplice.
+            Nota: se il corpo del messaggio contiene il testo [[[mandlaMache:-email@ddress-]]] l'email viene forzatamente inviata a tale indirizzo.
+            </summary>
+            <param name="sender">mittente</param>
+            <param name="to">destinatario</param>
+            <param name="subject">oggetto dell'email</param>
+            <param name="textBody">corpo dell'email, nel formato `testo semplice`</param>
+        </member>
+        <member name="M:Xilium.UmbLib.Net.Mail.QueueEmail(System.String,System.String,System.String,System.String,System.Boolean,System.Func{System.String})">
+            <summary>
+            Accoda l'email indicata tramite gli argomenti; il corpo del messaggio sarà interpretato come testo semplice.
+            Nota: se il corpo del messaggio contiene il testo [[[mandlaMache:-email@ddress-]]] l'email viene forzatamente inviata a tale indirizzo.
+            </summary>
+            <param name="sender">mittente</param>
+            <param name="to">destinatario</param>
+            <param name="subject">oggetto dell'email</param>
+            <param name="textBody">corpo dell'email, nel formato `testo semplice`</param>
+            <param name="enableDebugMode">se True l'email verrà spedita solamente all'indirizzo prefissato.</param>
+            <param name="debug_addressedOnlyToDelegate">
+            	quando `enableDebugMode=true` restituisce l'indirizzo unico di destinazione;
+            	<para>se Null verrà usato l'indirizzo email dell'utente Umbraco loggato;</para>
+            	<para>se Null verrà usato l'indirizzo configurato nel parametro `addressedOnlyTo`.</para>
+            </param>
+        </member>
+        <member name="M:Xilium.UmbLib.Net.Mail.QueueEmail(System.String,System.String,System.String,System.Web.IHtmlString)">
+            <summary>
+            Accoda l'email indicata tramite gli argomenti; il corpo del messaggio sarà interpretato come codice HTML.
+            Nota: se il corpo del messaggio contiene il testo [[[mandlaMache:-email@ddress-]]] l'email viene forzatamente inviata a tale indirizzo.
+            </summary>
+            <param name="sender">mittente</param>
+            <param name="to">destinatario</param>
+            <param name="subject">oggetto dell'email</param>
+            <param name="htmlBody">corpo dell'email, nel formato `codice HTML`</param>
+        </member>
+        <member name="M:Xilium.UmbLib.Net.Mail.QueueEmail(System.String,System.String,System.String,System.Web.IHtmlString,System.Boolean,System.Func{System.String})">
+            <summary>
+            Accoda l'email indicata tramite gli argomenti; il corpo del messaggio sarà interpretato come codice HTML.
+            Nota: se il corpo del messaggio contiene il testo [[[mandlaMache:-email@ddress-]]] l'email viene forzatamente inviata a tale indirizzo.
+            </summary>
+            <param name="sender">mittente</param>
+            <param name="to">destinatario</param>
+            <param name="subject">oggetto dell'email</param>
+            <param name="htmlBody">corpo dell'email, nel formato `codice HTML`</param>
+            <param name="enableDebugMode">se True l'email verrà spedita solamente all'indirizzo prefissato.</param>
+            <param name="debug_addressedOnlyToDelegate">
+            	quando `enableDebugMode=true` restituisce l'indirizzo unico di destinazione;
+            	<para>se Null verrà usato l'indirizzo email dell'utente Umbraco loggato;</para>
+            	<para>se Null verrà usato l'indirizzo configurato nel parametro `addressedOnlyTo`.</para>
+            </param>
+        </member>
+        <member name="M:Xilium.UmbLib.Net.Mail.QueueEmail(System.Net.Mail.MailMessage)">
+            <summary>
+            Accoda l'email indicata per argomento, poi distrugge gli oggetti.
+            Nota: se il corpo del messaggio contiene il testo [[[mandlaMache:-email@ddress-]]] l'email viene forzatamente inviata a tale indirizzo.
+            </summary>
+            <param name="message">Il messaggio che dev'essere inviato</param>
+        </member>
+        <member name="M:Xilium.UmbLib.Net.Mail.QueueEmail(System.Net.Mail.MailMessage,System.Boolean,System.Func{System.String})">
+            <summary>
+            Accoda l'email indicata per argomento, poi distrugge gli oggetti.
+            Nota: se il corpo del messaggio contiene il testo [[[mandlaMache:-email@ddress-]]] l'email viene forzatamente inviata a tale indirizzo.
+            </summary>
+            <param name="message">Il messaggio che dev'essere inviato</param>
+            <param name="enableDebugMode">se True l'email verrà spedita solamente all'indirizzo prefissato.</param>
+            <param name="debug_addressedOnlyToDelegate">
+            	quando `enableDebugMode=true` restituisce l'indirizzo unico di destinazione;
+            	<para>se Null verrà usato l'indirizzo email dell'utente Umbraco loggato;</para>
+            	<para>se Null verrà usato l'indirizzo configurato nel parametro `addressedOnlyTo`.</para>
+            </param>
+        </member>
+        <member name="M:Xilium.UmbLib.Net.Mail.internalQueueEmail(System.Net.Mail.MailMessage,System.Boolean,System.Func{System.String})">
+            <summary>
+            Accoda l'email indicata per argomento, poi distrugge gli oggetti.
+            Nota: se il corpo del messaggio contiene il testo [[[mandlaMache:-email@ddress-]]] l'email viene forzatamente inviata a tale indirizzo.
+            </summary>
+            <param name="message"></param>
+            <param name="enableDebugMode">se True l'email verrà spedita solamente all'indirizzo prefissato.</param>
+            <param name="debug_addressedOnlyToDelegate">
+            	quando `enableDebugMode=true` restituisce l'indirizzo unico di destinazione;
+            	<para>se Null verrà usato l'indirizzo email dell'utente Umbraco loggato;</para>
+            	<para>se Null verrà usato l'indirizzo configurato nel parametro `addressedOnlyTo`.</para>
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Net.Mail.SendEmail(System.String,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Invia l'email indicata tramite gli argomenti; il corpo del messaggio sarà interpretato come testo semplice.
+            Nota: se il corpo del messaggio contiene il testo [[[mandlaMache:-email@ddress-]]] l'email viene forzatamente inviata a tale indirizzo.
+            </summary>
+            <param name="from">mittente</param>
+            <param name="to">destinatario</param>
+            <param name="subject">oggetto dell'email</param>
+            <param name="textBody">corpo dell'email, nel formato `testo semplice`</param>
+            <param name="dispose">Indica se, al termine, deve distruggere gli oggetti; impostare su FALSE se si devono inviare più email consecutive.</param>
+        </member>
+        <member name="M:Xilium.UmbLib.Net.Mail.SendEmail(System.String,System.String,System.String,System.String,System.Boolean,System.Boolean,System.Func{System.String})">
+            <summary>
+            Invia l'email indicata tramite gli argomenti; il corpo del messaggio sarà interpretato come testo semplice.
+            Nota: se il corpo del messaggio contiene il testo [[[mandlaMache:-email@ddress-]]] l'email viene forzatamente inviata a tale indirizzo.
+            </summary>
+            <param name="from">mittente</param>
+            <param name="to">destinatario</param>
+            <param name="subject">oggetto dell'email</param>
+            <param name="textBody">corpo dell'email, nel formato `testo semplice`</param>
+            <param name="dispose">Indica se, al termine, deve distruggere gli oggetti; impostare su FALSE se si devono inviare più email consecutive.</param>
+            <param name="enableDebugMode">se True l'email verrà spedita solamente all'indirizzo prefissato.</param>
+            <param name="debug_addressedOnlyToDelegate">
+            	quando `enableDebugMode=true` restituisce l'indirizzo unico di destinazione;
+            	<para>se Null verrà usato l'indirizzo email dell'utente Umbraco loggato;</para>
+            	<para>se Null verrà usato l'indirizzo configurato nel parametro `addressedOnlyTo`.</para>
+            </param>
+        </member>
+        <member name="M:Xilium.UmbLib.Net.Mail.SendEmail(System.String,System.String,System.String,System.Web.IHtmlString,System.Boolean)">
+            <summary>
+            Invia l'email indicata tramite gli argomenti; il corpo del messaggio sarà interpretato come codice HTML.
+            Nota: se il corpo del messaggio contiene il testo [[[mandlaMache:-email@ddress-]]] l'email viene forzatamente inviata a tale indirizzo.
+            </summary>
+            <param name="from">mittente</param>
+            <param name="to">destinatario</param>
+            <param name="subject">oggetto dell'email</param>
+            <param name="htmlBody">corpo dell'email, nel formato `codice HTML`</param>
+            <param name="dispose">Indica se, al termine, deve distruggere gli oggetti; impostare su FALSE se si devono inviare più email consecutive.</param>
+        </member>
+        <member name="M:Xilium.UmbLib.Net.Mail.SendEmail(System.String,System.String,System.String,System.Web.IHtmlString,System.Boolean,System.Boolean,System.Func{System.String})">
+            <summary>
+            Invia l'email indicata tramite gli argomenti; il corpo del messaggio sarà interpretato come codice HTML.
+            Nota: se il corpo del messaggio contiene il testo [[[mandlaMache:-email@ddress-]]] l'email viene forzatamente inviata a tale indirizzo.
+            </summary>
+            <param name="from">mittente</param>
+            <param name="to">destinatario</param>
+            <param name="subject">oggetto dell'email</param>
+            <param name="htmlBody">corpo dell'email, nel formato `codice HTML`</param>
+            <param name="dispose">Indica se, al termine, deve distruggere gli oggetti; impostare su FALSE se si devono inviare più email consecutive.</param>
+            <param name="enableDebugMode">se True l'email verrà spedita solamente all'indirizzo prefissato.</param>
+            <param name="debug_addressedOnlyToDelegate">
+            	quando `enableDebugMode=true` restituisce l'indirizzo unico di destinazione;
+            	<para>se Null verrà usato l'indirizzo email dell'utente Umbraco loggato;</para>
+            	<para>se Null verrà usato l'indirizzo configurato nel parametro `addressedOnlyTo`.</para>
+            </param>
+        </member>
+        <member name="M:Xilium.UmbLib.Net.Mail.SendEmail(System.Net.Mail.MailMessage,System.Boolean)">
+            <summary>
+            Invia l'email indicata per argomento, poi distrugge gli oggetti.
+            Nota: se il corpo del messaggio contiene il testo [[[mandlaMache:-email@ddress-]]] l'email viene forzatamente inviata a tale indirizzo.
+            </summary>
+            <param name="message">Il messaggio che dev'essere inviato</param>
+            <param name="dispose">Indica se, al termine, deve distruggere gli oggetti; impostare su FALSE se si devono inviare più email consecutive.</param>
+        </member>
+        <member name="M:Xilium.UmbLib.Net.Mail.SendEmail(System.Net.Mail.MailMessage,System.Boolean,System.Boolean,System.Func{System.String})">
+            <summary>
+            Invia l'email indicata per argomento, poi distrugge gli oggetti.
+            Nota: se il corpo del messaggio contiene il testo [[[mandlaMache:-email@ddress-]]] l'email viene forzatamente inviata a tale indirizzo.
+            </summary>
+            <param name="message">Il messaggio che dev'essere inviato</param>
+            <param name="dispose">Indica se, al termine, deve distruggere gli oggetti; impostare su FALSE se si devono inviare più email consecutive.</param>
+            <param name="enableDebugMode">se True l'email verrà spedita solamente all'indirizzo prefissato.</param>
+            <param name="debug_addressedOnlyToDelegate">
+            	quando `enableDebugMode=true` restituisce l'indirizzo unico di destinazione;
+            	<para>se Null verrà usato l'indirizzo email dell'utente Umbraco loggato;</para>
+            	<para>se Null verrà usato l'indirizzo configurato nel parametro `addressedOnlyTo`.</para>
+            </param>
+        </member>
+        <member name="M:Xilium.UmbLib.Net.Mail.SendQueuedEmails(System.Boolean)">
+            <summary>
+            Invia tutte le email in coda.
+            </summary>
+            <param name="dispose">Indica se, al termine, deve distruggere gli oggetti.</param>
+        </member>
+        <member name="F:Xilium.UmbLib.Net.Server.MainAppServer.UmbLibRootNodeName">
+            <summary>
+            Nome del nodo in ROOT contenente la configurazione di UmbLib
+            </summary>
+        </member>
+        <member name="F:Xilium.UmbLib.Net.Server.MainAppServer.UmbLibFolderDocumentTypeAlias">
+            <summary>
+            Tipo documento delle cartelle di filtro di UmbLib
+            </summary>
+        </member>
+        <member name="F:Xilium.UmbLib.Net.Server.MainAppServer.ClientApplicationPathFallback">
+            <summary>
+            Valore ApplicationPath che verrà usato per le chiamate client sprovviste di tale argomento.
+            <para>Questo accade quando il chiamante sta utilizzando una versione di Xilium.UmbLib antecedente alla 2014-10-17.</para>
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Net.Server.MainAppServer.GetUmbLibRootNode">
+            <summary>
+            Restituisce il nodo Root di configurazione di `UmbLib`.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Net.Server.MainAppServer.GetUmbLibContextNode(Xilium.UmbLib.Net.Server.MainAppServerRequestContext)">
+            <summary>
+            Restituisce il nodo principale di contesto di configurazione di `UmbLib`.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Net.Server.MainAppServer.findUmbLibContextNode(Umbraco.Core.Models.IPublishedContent,Xilium.UmbLib.Net.Server.MainAppServerRequestContext)">
+            <summary>
+            Cerca nodi applicabili al contesto, all'interno del nodo `parentNode`.
+            </summary>
+            <param name="parentNode"></param>
+            <param name="requestContext"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Net.Server.MainAppServer.GetUmbLibParentDataTypeNode(Xilium.UmbLib.Net.Server.MainAppServerRequestContext,System.String)">
+            <summary>
+            Restituisce il nodo Parent di contenuto, appartenente al nodo principale di contesto.
+            </summary>
+            <param name="serverRequestContext"></param>
+            <param name="dataTypeName">Nome del tipo di dato (es. "Config", "TextPage")</param>
+            <returns></returns>
+        </member>
+        <member name="P:Xilium.UmbLib.Net.Server.MainAppServer.IsProduction">
+            <summary>
+            Indica se la classe deve lavorare in modalità Production o Debug.
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Net.Server.MainAppServer.SetIsProduction(System.Boolean)">
+            <summary>
+            Setta la modalità di lavoro della classe.
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:Xilium.UmbLib.Net.Server.MainAppServer.CheckAccessPermission(System.Web.HttpContext,Xilium.UmbLib.Net.Server.MainAppServerRequestContext@,System.Collections.Specialized.NameValueCollection@)">
+            <summary>
+            Verifica se il codice di sicurezza corrente è valido
+            </summary>
+            <returns>Restituisce True se la verifica ha dato esito positivo</returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Net.Server.MainAppServer.checkAccessPermission(System.Web.HttpContext,System.String,System.String,System.Collections.Specialized.NameValueCollection@,Xilium.UmbLib.Net.Server.MainAppServerRequestContext@)">
+            <summary>
+            Verifica se il codice di sicurezza indicato è valido
+            </summary>
+            <param name="context">Contesto HTTP della chiamata a MainServer</param>
+            <param name="sender">Mittente della richiesta a UmbLibService</param>
+            <param name="cryptedRequestFormValue">Contenuto della richiesta, criptato</param>
+            <param name="decryptedRequestForm">Se la verifica ha esito positivo, viene settato con la collection di valori keyValuePair della richiesta.</param>
+            <param name="requestContext">Contesto della richiesta a MainServer</param>
+            <returns>Restituisce True se la verifica ha dato esito positivo</returns>
+        </member>
+        <member name="T:Xilium.UmbLib.Net.Server.MainAppServerRequestContext">
+            <summary>
+            Contesto di esecuzione della chiamata al server `MainAppServer`.
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Net.Server.MainAppServerRequestContext.CreateLocalRequestContext">
+            <summary>
+            Crea un oggetto RequestContext default per una richiesta locale.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Net.Server.MainAppServerRequestContext.SetPassword(System.String)">
+            <summary>
+            Setta la password dell'account
+            </summary>
+            <param name="value">Nuovo valore</param>
+        </member>
+        <member name="M:Xilium.UmbLib.Net.Server.MainAppServerRequestContext.CheckPassword(System.String)">
+            <summary>
+            Verifica se la password indicata coincide a `value`.
+            </summary>
+            <param name="value">Valore di confronto</param>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.UmbLib.SharedData.Server.SharedDataHelper">
+            <summary>
+            Helper per gli oggetti SharedData di `Xilium.UmbLib`
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.SharedData.Server.SharedDataHelper.GetDataNode(Umbraco.Core.Models.IPublishedContent)">
+            <summary>
+            Verifica la property "importaDa" e, se compilata, restituisce il nodo referenziato. Altrimenti restituisce `currentNode`.
+            </summary>
+            <param name="currentNode"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

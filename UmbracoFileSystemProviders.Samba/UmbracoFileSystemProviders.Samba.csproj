@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{ACB24B3E-9DC1-46EF-B049-03994E2403C2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Our.Umbraco.FileSystemProviders.Samba</RootNamespace>
+    <AssemblyName>Our.Umbraco.FileSystemProviders.Samba</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="interfaces">
+      <HintPath>..\Resources\interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Umbraco.Core">
+      <HintPath>..\Resources\Umbraco.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Constants.cs" />
+    <Compile Include="FileSystemVirtualFile.cs" />
+    <Compile Include="FileSystemVirtualPathProvider.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Helpers\ConnectionStringModel.cs" />
+    <Compile Include="Helpers\ConnectionStringParser.cs" />
+    <Compile Include="Helpers\FileSystemPathHelper.cs" />
+    <Compile Include="Helpers\ILogHelper.cs" />
+    <Compile Include="Helpers\IMimeTypeResolver.cs" />
+    <Compile Include="Helpers\MimeTypeResolver.cs" />
+    <Compile Include="Helpers\WrappedLogHelper.cs" />
+    <Compile Include="Net2\ImpersonationHelper.cs" />
+    <Compile Include="Net2\SafeTokenHandle.cs" />
+    <Compile Include="Net\NetResource.cs" />
+    <Compile Include="Net\NetworkConnection.cs" />
+    <Compile Include="Net\NetworkConnectionClient.cs" />
+    <Compile Include="Net\NetworkConnectionProvider.cs" />
+    <Compile Include="Net\ResourceDisplaytype.cs" />
+    <Compile Include="Net\ResourceScope.cs" />
+    <Compile Include="Net\ResourceType.cs" />
+    <Compile Include="SambaFileSystem.cs" />
+    <Compile Include="SambaServiceDriver.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReadSeekableStream.cs" />
+    <Compile Include="VirtualPathProviderController.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Settings.StyleCop" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

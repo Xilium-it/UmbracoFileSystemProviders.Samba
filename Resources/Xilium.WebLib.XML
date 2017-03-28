@@ -1,0 +1,1712 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Xilium.WebLib</name>
+    </assembly>
+    <members>
+        <member name="T:Xilium.WebLib.ActionRenderer">
+            <summary>
+            Renderize the result of ActionResult object.
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.ActionRenderer.RenderActionResult(System.Web.Mvc.ActionResult)">
+            <summary>
+            Run Action and returns the Html result
+            </summary>
+            <param name="actionResult">Result of action to renderize</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.ActionRenderer.RenderActionResult(System.Web.Mvc.ActionResult,System.String)">
+            <summary>
+            Run Action and returns the Html result
+            </summary>
+            <param name="actionResult">Result of action to renderize</param>
+            <param name="controllerRouteUrl">routed path of controller</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.ActionRenderer.RenderActionResult(System.Web.Mvc.ActionResult,System.String,System.String,System.String)">
+            <summary>
+            Run Action and returns the Html result
+            </summary>
+            <param name="actionResult">Result of action to renderize</param>
+            <param name="requestUrl">absolute url of requested page</param>
+            <param name="requestFilename">file name of requested page</param>
+            <param name="requestQuerystring">query string of requested page</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.ActionRenderer.RenderActionResult(System.Web.Mvc.ActionResult,System.String,System.String,System.String,System.String)">
+            <summary>
+            Run Action and returns the Html result
+            </summary>
+            <param name="actionResult">Result of action to renderize</param>
+            <param name="controllerRouteUrl">routed path of controller</param>
+            <param name="requestUrl">absolute url of requested page</param>
+            <param name="requestFilename">file name of requested page</param>
+            <param name="requestQuerystring">query string of requested page</param>
+            <returns></returns>
+        </member>
+        <member name="P:Xilium.WebLib.Configuration.ConnectionString">
+            <summary>
+            Restituisce la connectionString dell'applicazione web.
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.Controllers.MailController.Hello">
+            <summary>
+            
+            </summary>
+            <param name="u">contiene il codice identificativo dell'email</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.Controllers.MailController.HelloU(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="u">contiene il codice identificativo dell'email</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.Controllers.MailController.Shim(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="u">contiene il codice identificativo dell'email</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.Controllers.MailController.Redirect(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="u">contiene il codice identificativo dell'email</param>
+            <param name="to">URL di destinazione</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.Controllers.MailController.setMailAsRead(System.Int32)">
+            <summary>
+            Setta il messaggio come "letto"
+            </summary>
+            <param name="messageId"></param>
+        </member>
+        <member name="M:Xilium.WebLib.Controllers.MailController.setMailAsInteract(System.Int32)">
+            <summary>
+            Setta il messaggo come "utente ha interagito"
+            </summary>
+            <param name="messageId"></param>
+        </member>
+        <member name="T:Xilium.WebLib.Controllers.MailController.EmptyImageResult">
+            <summary>
+            Restituisce un immagine GIF trasparente, 1x1 pixel.
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.Globalization.BestCultureName(System.Collections.Generic.IEnumerable{System.String},System.String)">
+            <summary>
+            Considerando le impostazioni del browser chiamante, restituisce il nome cultura più idoneo per l'utente.
+            Nel caso in cui non sia disponibile sul sito web una lingua idonea per l'utente, la funzione restituira la lingua <paramref name="defaultCulture"/>.
+            </summary>
+            <param name="availableCultureList">Elenco lingue disponibili sul sito web</param>
+            <param name="defaultCulture">Lingua di default</param>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.WebLib.HtmlStyleMerger">
+            <summary>
+            Applica gli stili CSS indicati in fase di costruzione della classe al codice HTML passato al metodo CompileHtml.
+            <para>Gli stili vengono applicati uno ad uno su tutti gli elementi interessati dal codice CSS, e vengono rivisti gli oggetti con stile in-line.</para>
+            <para>Attraverso le proprietà [*Supported] e [InStyle*Supported] è possibile indicare il livello di supporto a disposizione dell'utilizzatore del codice HTML risultante.</para>
+            <para>Per cui se non si ha a disposizione lo stile Border (oppure non si ha la piena compatibilità) HtmlStyleMerger converte il codice HTML per offrire la funzionalità, iniettando un
+            nuovo oggetto TABLE all'interno dell'item che richiede lo stile Border.</para>
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.HtmlStyleMerger.#ctor(System.String)">
+            <summary>
+            Crea una nuova istanza della classe, definendo il codice di stile CSS.
+            </summary>
+            <param name="cssStyleString">Codice CSS</param>
+        </member>
+        <member name="P:Xilium.WebLib.HtmlStyleMerger.CssStyleString">
+            <summary>
+            Codice di stile CSS
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.HtmlStyleMerger.MarginSupported">
+            <summary>
+            Indica se lo stile Margin è supportato dall'utilizzatore dell'HTML. Se False, il metodo CompileHtml aggira il problema costruendo un Table attorno all'elemento da marginare.
+            <para>(default false)</para>
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.HtmlStyleMerger.BorderSupported">
+            <summary>
+            Indica se lo stile Border è supportato dall'utilizzatore dell'HTML. Se False, il metodo CompileHtml aggira il problema costruendo un Table attorno all'elemento da bordare.
+            <para>(default false)</para>
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.HtmlStyleMerger.PaddingSupported">
+            <summary>
+            Indica se lo stile Padding è supportato dall'utilizzatore dell'HTML. Se False, il metodo CompileHtml aggira il problema costruendo un Table attorno all'elemento da spaziare.
+            <para>(default false)</para>
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.HtmlStyleMerger.InStyleWidthSupported">
+            <summary>
+            Indica se la definizione "width" debba essere indicata utilizzando l'attributo "style" piuttosto che indicarla come attributo del tag.
+            <para>Se True verrà inserita dentro "style", altrimenti sarà indicato l'attributo "width" sul tag HTML.</para>
+            <para>(default false)</para>
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.HtmlStyleMerger.InStyleHeightSupported">
+            <summary>
+            Indica se la definizione "height" debba essere indicata utilizzando l'attributo "style" piuttosto che indicarla come attributo del tag.
+            <para>Se True verrà inserita dentro "style", altrimenti sarà indicato l'attributo "height" sul tag HTML.</para>
+            <para>(default false)</para>
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.HtmlStyleMerger.InStyleAlignSupported">
+            <summary>
+            Indica se la definizione "align" debba essere indicata utilizzando l'attributo "style" piuttosto che indicarla come attributo del tag.
+            <para>Se True verrà inserita dentro "style", altrimenti sarà indicato l'attributo "align" sul tag HTML.</para>
+            <para>(default false)</para>
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.HtmlStyleMerger.InStyleVAlignSupported">
+            <summary>
+            Indica se la definizione "valign" debba essere indicata utilizzando l'attributo "style" piuttosto che indicarla come attributo del tag.
+            <para>Se True verrà inserita dentro "style" come "vertical-align", altrimenti sarà indicato l'attributo "valign" sul tag HTML.</para>
+            <para>(default false)</para>
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.HtmlStyleMerger.InStyleBGColorSupported">
+            <summary>
+            Indica se la definizione "valign" debba essere indicata utilizzando l'attributo "style" piuttosto che indicarla come attributo del tag.
+            <para>Se True verrà inserita dentro "style" come "background-color", altrimenti sarà indicato l'attributo "bgcolor" sul tag HTML.</para>
+            <para>(default false)</para>
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.HtmlStyleMerger.ShimGifFilePath">
+            <summary>
+            Indica il percorso del file "shim.gif" che verrà usato per creare spessore all'interno di celle, quando margin, padding o border non sono supportati.
+            <para>Se NULL non verrà usata alcuna immagine "shim".</para>
+            <para>(default "~/css/images/shim.gif")</para>
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.HtmlStyleMerger.PrimarySizeUm">
+            <summary>
+            Unità di misura primaria per gli stili di dimensionie.
+            <para>(default "px")</para>
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.HtmlStyleMerger.PrimaryTextUm">
+            <summary>
+            Unità di misura primaria per gli stili di testo.
+            <para>(default "pt")</para>
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.HtmlStyleMerger.SettingSizeOfOriginalElementMethod">
+            <summary>
+            Indica il metodo di setting delle dimensioni (width ed height) dell'elemento originale, quando non c'è supporto per Margin, Border e/o Padding.
+            <para>(default RelativeSizeOnly)</para>
+            </summary>
+        </member>
+        <member name="T:Xilium.WebLib.HtmlStyleMerger.SettingSizeOfOriginalElementMethods">
+            <summary>
+            Elenco dei metodi di setting delle dimensioni (width ed height) sull'elemento originale, quando non c'è supporto per Margin, Border e/o Padding.
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.HtmlStyleMerger.SettingSizeOfOriginalElementMethods.NotSet">
+            <summary>
+            L'elemento originale non verrà mai settato con gli attributi di dimensione.
+            <para>Es :: stile originale = "width:100px; padding-left:20px;" --&gt; stile applicato = ""</para>
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.HtmlStyleMerger.SettingSizeOfOriginalElementMethods.AsDeclared">
+            <summary>
+            L'elemento originale verrà sempre settato con gli attributi di dimensione dichiarati.
+            <para>Es :: stile originale = "width:100px; padding-left:20px;" --&gt; stile applicato = "width:100px;"</para>
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.HtmlStyleMerger.SettingSizeOfOriginalElementMethods.RelativeSizeOnly">
+            <summary>
+            L'elemento originale verrà settato con gli attributi di dimensione solo quando il valore è un valore relativo al parent (valore percentuale).
+            <para>Es 1 :: stile originale = "width:100px; padding-left:20px;" --&gt; stile applicato = ""</para>
+            <para>Es 2 :: stile originale = "width:80%; padding-left:20px;" --&gt; stile applicato = "width:80%;" |</para>
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.HtmlStyleMerger.SettingSizeOfOriginalElementMethods.SetOutputSize__PROPOSED">
+            <summary>
+            L'elemento originale verrà settato con il valore opportuno nell'unità di misura principale, eseguendo un calcolo di rendering della pagina.
+            <para>Es :: stile originale = "width:100px; padding-left:20px;" --&gt; stile applicato = "width:120px;"</para>
+            <para>ATTENZIONE: questa funzionalità non è stata ancora sviluppata.</para>
+            </summary>
+        </member>
+        <member name="T:Xilium.WebLib.HtmlStyleMerger.StyleDefinitionConverterDelegate">
+            <summary>
+            Delegate per la conversione dei valori di stile in altre unità di misura. Può restituire NULL per non indicare variazioni.
+            </summary>
+            <param name="styleKey">Nome dello stile</param>
+            <param name="styleValue">Valore dello stile da convertire e restituire</param>
+            <returns>Nuovo valore dello stile, o NULL se non servono conversioni</returns>
+        </member>
+        <member name="M:Xilium.WebLib.HtmlStyleMerger.StyleDefinitionConverterStandardStyles(System.String,System.String,System.Func{System.Double,System.String},System.Func{System.Double,System.String})">
+            <summary>
+            Convertitore standard per stili. Considera separatamente gli stili per impaginazione rispetto agli stili di testo.
+            </summary>
+            <param name="styleKey">Nome dello stile</param>
+            <param name="styleValue">Valore dello stile da convertire e restituire</param>
+            <param name="sizeDelegate">Delegate per la conversione delle misure riquardanti l'impaginazione</param>
+            <param name="fontDelegate">Delegate per la conversione delle misure riquardanti il testo</param>
+            <returns></returns>
+        </member>
+        <member name="F:Xilium.WebLib.HtmlStyleMerger.TdContentClassname">
+            <summary>
+            Classname attribuito al tag TD dell'oggetto TABLE di simulazione margin/border/padding, in cui viene iniettato il codice HTML del Tag in elaborazione.
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.HtmlStyleMerger.RE_PATTERN_cssSelectorElement">
+            <summary>
+            Pattern di selezione singolo elemento
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.HtmlStyleMerger.RE_PATTERN_cssSelectorElementSep">
+            <summary>
+            Pattern di separazione fra selettori di elementi in un path
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.HtmlStyleMerger.RE_PATTERN_cssSelectorPath">
+            <summary>
+            Pattern di selezione percorso elemento
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.HtmlStyleMerger.RE_PATTERN_cssSelectorPathSep">
+            <summary>
+            Pattern di separazione fra percorsi elemento
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.HtmlStyleMerger.RE_PATTERN_cssSelectorPathList">
+            <summary>
+            Pattern di selezione più percorsi elemento
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.HtmlStyleMerger.CssStyleParse(System.String,System.Boolean,System.Collections.Generic.SortedDictionary{System.String,System.Int32}@,System.Collections.Generic.Dictionary{System.Int32,System.Collections.Generic.Dictionary{System.String,System.String}}@)">
+            <summary>
+            Trova le definizioni in [cssStyle] e le salva in [cssStyleSelectors] e [cssStyleDefinitions].
+            <para>I selettori supportati sono: "tag", ".class", "#id", "tag.class".</para>
+            <para>I selettori possono essere raggruppati su un unica definizione: "tag1, tag2, tag3 { ...definizione... }".</para>
+            <para>Si possono usare selettori gerarchici: "tag .class", "tag > tag".</para>
+            <para>Sono ammessi anche le pseudoclassi "first-child" e "last-child": "tag:last-child { ...definizione... }".</para>
+            <para>I commenti saranno opportunamente esclusi dall'elaborazione.</para>
+            </summary>
+            <param name="cssStyle"></param>
+            <param name="explodeAggregateDefinitions">Se True, gli attributi tipo "margin" vengono esplosi in attributi con singolo valore (es. "margin" -> "margin-top:..; margin-right:..; ...")</param>
+            <param name="cssStyleSelectors"></param>
+            <param name="cssStyleDefinitions"></param>
+        </member>
+        <member name="M:Xilium.WebLib.HtmlStyleMerger.CssStylePropertiesParse(System.String,System.Boolean)">
+            <summary>
+            Scompone una stringa di proprietà di stili (es. l'attributo "style" di un tag HTML) in elementi del dictionary risultante.
+            </summary>
+            <param name="propertiesStyleString"></param>
+            <param name="explodeAggregates">Se True, gli attributi tipo "margin" vengono esplosi in attributi con singolo valore (es. "margin" -> "margin-top:..; margin-right:..; ...")</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.HtmlStyleMerger.CssStyleCommentsCleaner(System.String)">
+            <summary>
+            Rimuove i commenti dallo stile CSS indicato
+            </summary>
+            <param name="cssStyle">Codice CSS da cui rimuovere i commenti</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.HtmlStyleMerger.cssStyleParse_selectorProcess(System.String,System.Int32)">
+            <summary>i
+            Il selettore in formato CSS viene elaborato: viene convertito in selettore XPath e, prima di restituirlo, viene apposto un prefisso, il quale
+            è un numero che indica il punteggio di priorità del selettore.
+            </summary>
+            <param name="selector">Selettore in formato CSS</param>
+            <param name="progressive">Numero progressivo del selettore</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.HtmlStyleMerger.cssStyleParse_getDefinitions(System.String,System.Boolean)">
+            <summary>
+            Esegue l'interpretazione di una stringa "style" separando ogni definizione in elementi del Dictionary risultante.
+            </summary>
+            <param name="styleString"></param>
+            <param name="explodeAggregates">Se True, gli attributi tipo "margin" vengono esplosi in attributi con singolo valore (es. "margin" -> "margin-top:..; margin-right:..; ...")</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.HtmlStyleMerger.cssStyleParse_explodeDefinitionTo4square(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String}@)">
+            <summary>
+            Esplodo la definizione "margin" e "padding" nei singoli valori.
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <param name="definitions"></param>
+        </member>
+        <member name="M:Xilium.WebLib.HtmlStyleMerger.cssStyleParse_explodeBorderDefinitionTo3attribs(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String}@)">
+            <summary>
+            Esplodo le definizioni "border" nei singoli valori "width", "style" e "color".
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <param name="definitions"></param>
+        </member>
+        <member name="M:Xilium.WebLib.HtmlStyleMerger.CompileHtml(System.String)">
+            <summary>
+            Converte il testo XML nel formato adatto per l'elaborazione con iTextSharp.
+            Verranno applicati gli stili definiti nel costruttore della classe.
+            </summary>
+            <param name="xml">Testo XML da convertire</param>
+            <returns>Restituisce il testo HTML compilato con gli stili inline.</returns>
+        </member>
+        <member name="M:Xilium.WebLib.HtmlStyleMerger.CompileHtml(System.String,Xilium.WebLib.HtmlStyleMerger.StyleDefinitionConverterDelegate)">
+            <summary>
+            Converte il testo XML nel formato adatto per l'elaborazione con iTextSharp.
+            Verranno applicati gli stili definiti nel costruttore della classe.
+            </summary>
+            <param name="xml">
+            	Testo XML da convertire.
+            	<para>Attenzione: non deve contenere ne dichiarazioni "&lt;!DOCTYPE" ne di namespace (attributo "xmlns").</para>
+            	<para>Suggerimento: per quanto riguarda le dichiarazioni di namespace, è possibile rinominarle in "data-xmlns" (o altro), per poi riportarle nel nome corretto a fine elaborazione.</para>
+            </param>
+            <param name="styleDefinitionConverter">Delegate per la conversione degli stili nel formato di output</param>
+            <returns>Restituisce il testo HTML compilato con gli stili inline.</returns>
+        </member>
+        <member name="T:Xilium.WebLib.HtmlStyleMerger.ResolveVirtualPathProcessorDelegate">
+            <summary>
+            Delegate per la conversione dei path virtuali in path assoluti
+            </summary>
+            <param name="virtualPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.HtmlStyleMerger.ResolveVirtualPath(System.String,Xilium.WebLib.HtmlStyleMerger.ResolveVirtualPathProcessorDelegate)">
+            <summary>
+            Cerca percorsi relativi (~/path) e percorsi completi (/it/path) all'interno dell'attributo src e href dei tag, oppure come valore di stile in un qualsiasi tag.
+            </summary>
+            <param name="xml"></param>
+            <param name="virtualPathProcessor"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.HtmlStyleMerger.mergeStyles(System.Collections.Generic.Dictionary{System.String,System.String}@,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Copia gli stili presenti in [newSourceStylexColl] nel dictionary [masterStylesColl].
+            </summary>
+            <param name="masterStylesColl">Stili di partenza e di destinazione del merge</param>
+            <param name="newSourceStylexColl">Nuovi stili da importare</param>
+        </member>
+        <member name="M:Xilium.WebLib.HtmlStyleMerger.styleToCssDefinition(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Restituisce gli stili compatibili per CSS.
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.HtmlStyleMerger.styleToAttribDefinition(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Restituisce gli stili compatibili come attributo, convertendoli opportunamente.
+            </summary>
+            <param name="styleDefinition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.HtmlStyleMerger.removeStyles(System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.Boolean)">
+            <summary>
+            Crea una copia della definizione passata, escludendo gli attributi di box: "margin", "padding", "border".
+            </summary>
+            <param name="styleDefinition"></param>
+            <param name="keyPattern">pattern di selezione degli stili</param>
+            <param name="removeByPattern">se True: keyPattern seleziona i nodi da rimuovere; se False: keyPattern seleziona i nodi da mantenere</param>
+            <returns></returns>
+        </member>
+        <member name="P:Xilium.WebLib.Internal.Config.Instance">
+            <summary>
+            singleton
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.Internal.Config.GetByKey(System.String,System.String)">
+            <summary>
+            Gets the InnerText of a configuration key, to just have a simple string value, but use as you like 
+            </summary>
+            <param name="key">key name or path</param>
+            <param name="ifUndefined">Indicates the value returned if key is unavailable</param>
+            <returns>value</returns>
+        </member>
+        <member name="M:Xilium.WebLib.Internal.Config.GetNodeByKey(System.String,System.Xml.XmlNode)">
+            <summary>
+            Gets the InnerText of a configuration key, to just have a simple string value, but use as you like 
+            </summary>
+            <param name="key">key name or path</param>
+            <param name="ifUndefined">Indicates the value returned if key is unavailable</param>
+            <returns>value</returns>
+        </member>
+        <member name="M:Xilium.WebLib.Internal.Config.GetMultiByKey(System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Get a multi value key
+            </summary>
+            <param name="key">name of the outermost tag</param>
+            <param name="ifUndefined">Indicates the value returned if key is unavailable</param>
+            <returns>list of strings</returns>
+        </member>
+        <member name="M:Xilium.WebLib.Internal.Config.GetBooleanByKey(System.String,System.Boolean)">
+            <summary>
+            Check whether the a given key is set to boolean True/False
+            </summary>
+            <returns>true on enabled</returns>
+        </member>
+        <member name="M:Xilium.WebLib.Internal.Config.GetNullBoolByKey(System.String,System.Nullable{System.Boolean})">
+            <summary>
+            Check whether the a given key is set to boolean True/False
+            </summary>
+            <returns>true on enabled</returns>
+        </member>
+        <member name="M:Xilium.WebLib.Internal.Config.checkReadConfig">
+            <summary>
+            Check if the XPathNavigator file has been loaded, if not read it into memory
+            </summary>
+            <returns>bool indicating sucessfull/unsucessfull load</returns>
+        </member>
+        <member name="M:Xilium.WebLib.Mvc.Controller.MailController.Shim(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="k">contiene il codice identificativo dell'email</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.Mvc.Controller.MailController.Redirect(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="k">contiene il codice identificativo dell'email</param>
+            <param name="to">URL di destinazione</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.Mvc.Controller.MailController.setMailAsRead(System.Int32)">
+            <summary>
+            Setta il messaggio come "letto"
+            </summary>
+            <param name="messageId"></param>
+        </member>
+        <member name="M:Xilium.WebLib.Mvc.Controller.MailController.setMailAsInteract(System.Int32)">
+            <summary>
+            Setta il messaggo come "utente ha interagito"
+            </summary>
+            <param name="messageId"></param>
+        </member>
+        <member name="T:Xilium.WebLib.Mvc.Controller.MailController.SimpleTextResult">
+            <summary>
+            Restituisce un immagine GIF trasparente, 1x1 pixel.
+            </summary>
+        </member>
+        <member name="T:Xilium.WebLib.Mvc.Controller.MailController.EmptyImageResult">
+            <summary>
+            Restituisce un immagine GIF trasparente, 1x1 pixel.
+            </summary>
+        </member>
+        <member name="T:Xilium.WebLib.Mvc.Support.XiLibApiConfig">
+            <summary>
+            Esegue la configurazione del routing per le librerie Xilium
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.Net.Mail.TryCountLimit">
+            <summary>
+            Limite del numero di tentativi di spedizione email.
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.Net.Mail.NextTryWait">
+            <summary>
+            Attesa, in secondi, prima di tentare di nuovo la spedizione di un email non riuscita.
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.Net.Mail.getSmtpConfig">
+            <summary>
+            Lettura configurazione
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.Net.Mail.setSmtpClient">
+            <summary>
+            Creazione oggetto [SmtpClient]
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.Net.Mail.getHackingSendToRegex">
+            <summary>
+            Creazione RegEx per verifica hackingEmail
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.Net.Mail.QueueEmail(System.String,System.String,System.String,System.String)">
+            <summary>
+            Accoda l'email indicata tramite gli argomenti; il corpo del messaggio sarà interpretato come testo semplice.
+            Nota: se il corpo del messaggio contiene il testo [[[mandlaMache:-email@ddress-]]] l'email viene forzatamente inviata a tale indirizzo.
+            </summary>
+            <param name="sender">mittente</param>
+            <param name="to">destinatario</param>
+            <param name="subject">oggetto dell'email</param>
+            <param name="textBody">corpo dell'email, nel formato `testo semplice`</param>
+        </member>
+        <member name="M:Xilium.WebLib.Net.Mail.QueueEmail(System.String,System.String,System.String,System.String,System.Boolean,System.Func{System.String})">
+            <summary>
+            Accoda l'email indicata tramite gli argomenti; il corpo del messaggio sarà interpretato come testo semplice.
+            Nota: se il corpo del messaggio contiene il testo [[[mandlaMache:-email@ddress-]]] l'email viene forzatamente inviata a tale indirizzo.
+            </summary>
+            <param name="sender">mittente</param>
+            <param name="to">destinatario</param>
+            <param name="subject">oggetto dell'email</param>
+            <param name="textBody">corpo dell'email, nel formato `testo semplice`</param>
+            <param name="enableDebugMode">se True l'email verrà spedita solamente all'indirizzo prefissato.</param>
+            <param name="debug_addressedOnlyToDelegate">
+            quando `enableDebugMode=true` restituisce l'indirizzo unico di destinazione; se Null verrà usato l'indirizzo configurato nel parametro `addressedOnlyTo`.
+            </param>
+        </member>
+        <member name="M:Xilium.WebLib.Net.Mail.QueueEmail(System.String,System.String,System.String,System.Web.IHtmlString)">
+            <summary>
+            Accoda l'email indicata tramite gli argomenti; il corpo del messaggio sarà interpretato come codice HTML.
+            Nota: se il corpo del messaggio contiene il testo [[[mandlaMache:-email@ddress-]]] l'email viene forzatamente inviata a tale indirizzo.
+            </summary>
+            <param name="sender">mittente</param>
+            <param name="to">destinatario</param>
+            <param name="subject">oggetto dell'email</param>
+            <param name="htmlBody">corpo dell'email, nel formato `codice HTML`</param>
+        </member>
+        <member name="M:Xilium.WebLib.Net.Mail.QueueEmail(System.String,System.String,System.String,System.Web.IHtmlString,System.Boolean,System.Func{System.String})">
+            <summary>
+            Accoda l'email indicata tramite gli argomenti; il corpo del messaggio sarà interpretato come codice HTML.
+            Nota: se il corpo del messaggio contiene il testo [[[mandlaMache:-email@ddress-]]] l'email viene forzatamente inviata a tale indirizzo.
+            </summary>
+            <param name="sender">mittente</param>
+            <param name="to">destinatario</param>
+            <param name="subject">oggetto dell'email</param>
+            <param name="htmlBody">corpo dell'email, nel formato `codice HTML`</param>
+            <param name="enableDebugMode">se True l'email verrà spedita solamente all'indirizzo prefissato.</param>
+            <param name="debug_addressedOnlyToDelegate">
+            quando `enableDebugMode=true` restituisce l'indirizzo unico di destinazione; se Null verrà usato l'indirizzo configurato nel parametro `addressedOnlyTo`.
+            </param>
+        </member>
+        <member name="M:Xilium.WebLib.Net.Mail.QueueEmail(System.Net.Mail.MailMessage)">
+            <summary>
+            Accoda l'email indicata per argomento, poi distrugge gli oggetti.
+            Nota: se il corpo del messaggio contiene il testo [[[mandlaMache:-email@ddress-]]] l'email viene forzatamente inviata a tale indirizzo.
+            </summary>
+            <param name="message">Il messaggio che dev'essere inviato</param>
+        </member>
+        <member name="M:Xilium.WebLib.Net.Mail.QueueEmail(System.Net.Mail.MailMessage,System.Boolean,System.Func{System.String})">
+            <summary>
+            Accoda l'email indicata per argomento, poi distrugge gli oggetti.
+            Nota: se il corpo del messaggio contiene il testo [[[mandlaMache:-email@ddress-]]] l'email viene forzatamente inviata a tale indirizzo.
+            </summary>
+            <param name="message">Il messaggio che dev'essere inviato</param>
+            <param name="enableDebugMode">se True l'email verrà spedita solamente all'indirizzo prefissato.</param>
+            <param name="debug_addressedOnlyToDelegate">
+            quando `enableDebugMode=true` restituisce l'indirizzo unico di destinazione; se Null verrà usato l'indirizzo configurato nel parametro `addressedOnlyTo`.
+            </param>
+        </member>
+        <member name="M:Xilium.WebLib.Net.Mail.internalQueueEmail(System.Net.Mail.MailMessage,System.Boolean,System.Func{System.String})">
+            <summary>
+            Accoda l'email indicata per argomento, poi distrugge gli oggetti.
+            Nota: se il corpo del messaggio contiene il testo [[[mandlaMache:-email@ddress-]]] l'email viene forzatamente inviata a tale indirizzo.
+            </summary>
+            <param name="message"></param>
+            <param name="enableDebugMode">se True l'email verrà spedita solamente all'indirizzo prefissato.</param>
+            <param name="debug_addressedOnlyToDelegate">
+            quando `enableDebugMode=true` restituisce l'indirizzo unico di destinazione; se Null verrà usato l'indirizzo configurato nel parametro `addressedOnlyTo`.
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.Net.Mail.SendEmail(System.String,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Invia l'email indicata tramite gli argomenti; il corpo del messaggio sarà interpretato come testo semplice.
+            Nota: se il corpo del messaggio contiene il testo [[[mandlaMache:-email@ddress-]]] l'email viene forzatamente inviata a tale indirizzo.
+            </summary>
+            <param name="from">mittente</param>
+            <param name="to">destinatario</param>
+            <param name="subject">oggetto dell'email</param>
+            <param name="textBody">corpo dell'email, nel formato `testo semplice`</param>
+            <param name="dispose">Indica se, al termine, deve distruggere gli oggetti; impostare su FALSE se si devono inviare più email consecutive.</param>
+        </member>
+        <member name="M:Xilium.WebLib.Net.Mail.SendEmail(System.String,System.String,System.String,System.String,System.Boolean,System.Boolean,System.Func{System.String})">
+            <summary>
+            Invia l'email indicata tramite gli argomenti; il corpo del messaggio sarà interpretato come testo semplice.
+            Nota: se il corpo del messaggio contiene il testo [[[mandlaMache:-email@ddress-]]] l'email viene forzatamente inviata a tale indirizzo.
+            </summary>
+            <param name="from">mittente</param>
+            <param name="to">destinatario</param>
+            <param name="subject">oggetto dell'email</param>
+            <param name="textBody">corpo dell'email, nel formato `testo semplice`</param>
+            <param name="dispose">Indica se, al termine, deve distruggere gli oggetti; impostare su FALSE se si devono inviare più email consecutive.</param>
+            <param name="enableDebugMode">se True l'email verrà spedita solamente all'indirizzo prefissato.</param>
+            <param name="debug_addressedOnlyToDelegate">
+            quando `enableDebugMode=true` restituisce l'indirizzo unico di destinazione; se Null verrà usato l'indirizzo configurato nel parametro `addressedOnlyTo`.
+            </param>
+        </member>
+        <member name="M:Xilium.WebLib.Net.Mail.SendEmail(System.String,System.String,System.String,System.Web.IHtmlString,System.Boolean)">
+            <summary>
+            Invia l'email indicata tramite gli argomenti; il corpo del messaggio sarà interpretato come codice HTML.
+            Nota: se il corpo del messaggio contiene il testo [[[mandlaMache:-email@ddress-]]] l'email viene forzatamente inviata a tale indirizzo.
+            </summary>
+            <param name="from">mittente</param>
+            <param name="to">destinatario</param>
+            <param name="subject">oggetto dell'email</param>
+            <param name="htmlBody">corpo dell'email, nel formato `codice HTML`</param>
+            <param name="dispose">Indica se, al termine, deve distruggere gli oggetti; impostare su FALSE se si devono inviare più email consecutive.</param>
+        </member>
+        <member name="M:Xilium.WebLib.Net.Mail.SendEmail(System.String,System.String,System.String,System.Web.IHtmlString,System.Boolean,System.Boolean,System.Func{System.String})">
+            <summary>
+            Invia l'email indicata tramite gli argomenti; il corpo del messaggio sarà interpretato come codice HTML.
+            Nota: se il corpo del messaggio contiene il testo [[[mandlaMache:-email@ddress-]]] l'email viene forzatamente inviata a tale indirizzo.
+            </summary>
+            <param name="from">mittente</param>
+            <param name="to">destinatario</param>
+            <param name="subject">oggetto dell'email</param>
+            <param name="htmlBody">corpo dell'email, nel formato `codice HTML`</param>
+            <param name="dispose">Indica se, al termine, deve distruggere gli oggetti; impostare su FALSE se si devono inviare più email consecutive.</param>
+            <param name="enableDebugMode">se True l'email verrà spedita solamente all'indirizzo prefissato.</param>
+            <param name="debug_addressedOnlyToDelegate">
+            quando `enableDebugMode=true` restituisce l'indirizzo unico di destinazione; se Null verrà usato l'indirizzo configurato nel parametro `addressedOnlyTo`.
+            </param>
+        </member>
+        <member name="M:Xilium.WebLib.Net.Mail.SendEmail(System.Net.Mail.MailMessage,System.Boolean)">
+            <summary>
+            Invia l'email indicata per argomento, poi distrugge gli oggetti.
+            Nota: se il corpo del messaggio contiene il testo [[[mandlaMache:-email@ddress-]]] l'email viene forzatamente inviata a tale indirizzo.
+            </summary>
+            <param name="message">Il messaggio che dev'essere inviato</param>
+            <param name="dispose">Indica se, al termine, deve distruggere gli oggetti; impostare su FALSE se si devono inviare più email consecutive.</param>
+        </member>
+        <member name="M:Xilium.WebLib.Net.Mail.SendEmail(System.Net.Mail.MailMessage,System.Boolean,System.Boolean,System.Func{System.String})">
+            <summary>
+            Invia l'email indicata per argomento, poi distrugge gli oggetti.
+            Nota: se il corpo del messaggio contiene il testo [[[mandlaMache:-email@ddress-]]] l'email viene forzatamente inviata a tale indirizzo.
+            </summary>
+            <param name="message">Il messaggio che dev'essere inviato</param>
+            <param name="dispose">Indica se, al termine, deve distruggere gli oggetti; impostare su FALSE se si devono inviare più email consecutive.</param>
+            <param name="enableDebugMode">se True l'email verrà spedita solamente all'indirizzo prefissato.</param>
+            <param name="debug_addressedOnlyToDelegate">
+            quando `enableDebugMode=true` restituisce l'indirizzo unico di destinazione; se Null verrà usato l'indirizzo configurato nel parametro `addressedOnlyTo`.
+            </param>
+        </member>
+        <member name="M:Xilium.WebLib.Net.Mail.SendQueuedEmails(System.Boolean)">
+            <summary>
+            Invia tutte le email in coda.
+            </summary>
+            <param name="dispose">Indica se, al termine, deve distruggere gli oggetti.</param>
+        </member>
+        <member name="M:Xilium.WebLib.Net.Mail.elaboraMessaggio(System.Net.Mail.MailMessage,System.Boolean,System.Func{System.String})">
+            <summary>
+            Elaboro il messaggio, modificando mittente, destinatario, oggetto, in funzione dei parametri di configurazione e dello stato IsProduction.
+            </summary>
+            <param name="message"></param>
+            <param name="enableDebugMode">se True l'email verrà spedita solamente all'indirizzo prefissato.</param>
+            <param name="debug_addressedOnlyToDelegate">
+            quando `enableDebugMode=true` restituisce l'indirizzo unico di destinazione; se Null verrà usato l'indirizzo configurato nel parametro `addressedOnlyTo`.
+            </param>
+        </member>
+        <member name="M:Xilium.WebLib.Net.Mail.accodaEmailSuDb(System.Net.Mail.MailMessage)">
+            <summary>
+            Accoda il messaggio nel DB, e restituisce il valore ID del nuovo record.
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.Net.MailHelper.CompileBodyToTrack(System.Int32,System.String)">
+            <summary>
+            Elabora il corpo del messaggio per integrarci elementi utili al tracciamento del comportamento dell'utente.
+            </summary>
+            <param name="messageId">Id del messaggio</param>
+            <param name="htmlBody"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.Net.MailHelper.CalcMessageCode(System.Int32,System.String)">
+            <summary>
+            Crea un codice di riconoscimento del valore ID
+            </summary>
+            <param name="messageId"></param>
+            <param name="passphrase"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.Net.MailHelper.GetIdByMessageCode(System.String,System.String)">
+            <summary>
+            Interpreta il codice di riconoscimento passato e ne verifica la correttezza. Quindi restituisce il valore ID del messaggio.
+            </summary>
+            <param name="messageCode"></param>
+            <param name="passphrase"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.Net.MailStorage.accodaEmailSuDb(System.Net.Mail.MailMessage)">
+            <summary>
+            Accoda il messaggio nel DB, e restituisce il valore ID del nuovo record.
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.Net.MailStorage.SendEmailFromDb(System.Boolean)">
+            <summary>
+            Eseguo la spedizione di ogni messaggio presente nella coda e non ancora gestiti.
+            </summary>
+            <returns>
+            Restituisce l'esito dell'invio
+            </returns>
+        </member>
+        <member name="P:Xilium.WebLib.Net.MailStorage.IsSendingEmailFromDb">
+            <summary>
+            Restituisce True se si sta inviando le email in coda nel DB.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.WebLib.Net.MailSendQueueResult">
+            <summary>
+            Tiene traccia dell'esito di invio di una coda di email.
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.Net.MailSendQueueResult.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.DateTime)">
+            <summary>
+            Costruisce un nuovo oggetto salvando i valori della classe
+            </summary>
+            <param name="totalCount"></param>
+            <param name="sentCount"></param>
+            <param name="managedCount"></param>
+            <param name="inQueueCount"></param>
+            <param name="workingTime"></param>
+        </member>
+        <member name="F:Xilium.WebLib.Net.MailSendQueueResult.TotalCount">
+            <summary>
+            Email elaborate
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.Net.MailSendQueueResult.SentCount">
+            <summary>
+            Email inviate con successo
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.Net.MailSendQueueResult.ManagedCount">
+            <summary>
+            Email con gestione terminata
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.Net.MailSendQueueResult.InQueueCount">
+            <summary>
+            Email con esito negativo di invio rimesse in coda
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.Net.MailSendQueueResult.WorkingTime">
+            <summary>
+            Datetime usato per l'elaborazione
+            </summary>
+        </member>
+        <member name="T:Xilium.WebLib.Net.MailSendResult">
+            <summary>
+            Elenco esiti di invio email
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.Net.MailSendResult.undefined">
+            <summary>
+            Risultato non disponibile, messaggio mai inviato.
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.Net.MailSendResult.Sent">
+            <summary>
+            Messaggio spedito correttamente.
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.Net.MailSendResult.ServerError">
+            <summary>
+            Errore di comunicazione col server.
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.Net.MailSendResult.InvalidAddressError">
+            <summary>
+            Errore sul formato di un indirizzo email.
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.Net.MailSendResult.UnknownAddressError">
+            <summary>
+            Errore di invio, destinatario sconosciuto.
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.Net.MailSendResult.UnexpectedError">
+            <summary>
+            Errore imprevisto.
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.Net.MainAppProvider.LoginAccount">
+            <summary>
+            Restituisce l'account per il login al server MainApp
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.Net.MainAppProvider.LoginPassword">
+            <summary>
+            Restituisce la password per il login al server MainApp
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.Net.MainAppProvider.MainAppHostName">
+            <summary>
+            Restituisce l'indirizzo del server MainApp
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.Net.MainAppProvider.IAmMainApp">
+            <summary>
+            Restituisce True se l'applicazione web corrente è l'applicazione di destinazione delle chiamate [SendRequest].
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.Net.MainAppProvider.SetTestMode(System.Boolean,System.String,System.Nullable{System.Boolean})">
+            <summary>
+            Permette di indicare lo stato di debug o di produzione della libreria.
+            </summary>
+            <param name="testModeEnabled">Se True significa che si sta lavorando con il server online ufficiale, altrimenti si è in debug.</param>
+            <param name="testingMainAppHostname">Quando `testModeEnabled = false`, indirizzo web del server Main per il debug, es. "www.xilium.devfly.xilium.it", "localhost:19199/www_v2"</param>
+            <param name="testingIAmMainApp">Quando `testModeEnabled = false`, indica se l'applicazione corrente è la MainApp.</param>
+        </member>
+        <member name="P:Xilium.WebLib.Net.MainAppProvider.TestModeEnabled">
+            <summary>
+            Indica se `TestMode` è attivo. In tal caso saranno usati i valori `MainAppHostname` e `IAmMainApp` passati con la chiamata a `SetTestMode`.
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.Net.MainAppProvider.SendRequest(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Invia una richiesta al server MainApp
+            </summary>
+            <param name="path">Percorso della richiesta, es: "base/Xilium-UmbLib-Service/Config.aspx"</param>
+            <param name="arguments">Dictionary con gli argomenti che verranno passati con metodo POST</param>
+            <returns>Restituisce la risposta del server MainApp</returns>
+        </member>
+        <member name="M:Xilium.WebLib.Net.MainAppProvider.SendRequest(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.TimeSpan)">
+            <summary>
+            Invia una richiesta al server MainApp, indicando il tempo di timeout della richiesta.
+            </summary>
+            <param name="path">Percorso della richiesta, es: "base/Xilium-UmbLib-Service/Config.aspx"</param>
+            <param name="arguments">Dictionary con gli argomenti che verranno passati con metodo POST</param>
+            <param name="requestTimeout">Tempo di timeout di attesa della risposta.</param>
+            <returns>Restituisce la risposta del server MainApp</returns>
+        </member>
+        <member name="M:Xilium.WebLib.Net.MainAppProvider.internalSendRequest(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.TimeSpan)">
+            <summary>
+            Invia una richiesta al server MainApp, indicando il tempo di timeout della richiesta.
+            </summary>
+            <param name="path">Percorso della richiesta, es: "base/Xilium-UmbLib-Service/Config.aspx"</param>
+            <param name="arguments">Dictionary con gli argomenti che verranno passati con metodo POST</param>
+            <param name="requestTimeout">Tempo di timeout di attesa della risposta.</param>
+            <returns>Restituisce la risposta del server MainApp</returns>
+        </member>
+        <member name="F:Xilium.WebLib.Net.MainAppProvider.sendRequestExceptionStack_counter">
+            <summary>
+            Esegue il conteggio del numero di presenze dell'eccezione in "SendRequest" all'interno dello stack.
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.Net.MainAppProvider.sendRequestExceptionStack_timeout">
+            <summary>
+            Indica il tempo di reset del contatore
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.Net.MainAppProvider.readMainAppResult(System.IO.Stream,Xilium.Lib.Security.RijndaelEnhanced,System.String@,System.String@)">
+            <summary>
+            Interpretazione della risposta dal server
+            </summary>
+            <param name="serverResponse"></param>
+            <param name="crypter"></param>
+            <param name="strCryptedResult">Viene valorizzato con il contenuto di risposta ancora criptato</param>
+            <param name="strClearResult">Viene valorizzato con il contenuto di risposta decriptato</param>
+            <returns></returns>
+        </member>
+        <member name="P:Xilium.WebLib.Net.MainAppResult.IsDone">
+            <summary>
+            Indica che la lettura dei dati dal server centrale si è conclusa con successo.
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.Net.MainAppResult.IsCacheOffError">
+            <summary>
+            Indica che durante la lettura dei dati dal server centrale si è verificato un errore che
+            invalida la cache attuale del dato.
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.Net.MainAppResult.IsTechnicalError">
+            <summary>
+            Indica che durante la lettura dei dati dal server centrale si è verificato un errore dovuto
+            ad un problema tecnico.
+            </summary>
+        </member>
+        <member name="T:Xilium.WebLib.SearchForm`1">
+            <summary>
+            Descrizione di riepilogo per SearchForm
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.SearchForm`1.Key">
+            <summary>
+            Restituisce il valore identificativo della searchForm
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.SearchForm`1.FieldName(`0)">
+            <summary>
+            Restituisce il nome del campo nel QueryString
+            </summary>
+            <param name="field"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.SearchForm`1.AllSearchFields">
+            <summary>
+            Restituisce l'elenco di tutti i campi gestiti
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.SearchForm`1.FilterSearchFields">
+            <summary>
+            Restituisce l'elenco dei campi di filtro
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.SearchForm`1.ServiceSearchFields">
+            <summary>
+            Restituisce l'elenco dei campi di servizio
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.SearchForm`1.FieldValue(`0)">
+            <summary>
+            Legge il valore di un campo e restituisce così com'è
+            </summary>
+            <param name="field"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.SearchForm`1.SetFieldValue(`0,System.String)">
+            <summary>
+            Setta il valore di un campo
+            </summary>
+            <param name="field"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Xilium.WebLib.SearchForm`1.SetFieldValue(`0,System.Nullable{System.Int32})">
+            <summary>
+            Setta il valore di un campo
+            </summary>
+            <param name="field"></param>
+            <param name="intValue"></param>
+        </member>
+        <member name="M:Xilium.WebLib.SearchForm`1.SetFieldValue(`0,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Setta il valore di un campo
+            </summary>
+            <param name="field"></param>
+            <param name="listValue"></param>
+        </member>
+        <member name="M:Xilium.WebLib.SearchForm`1.TextValue(`0)">
+            <summary>
+            Legge il valore di un campo interpretandolo come testo
+            </summary>
+            <param name="field"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.SearchForm`1.ListValue(`0)">
+            <summary>
+            Legge il valore di un campo interpretandolo come array di stringhe
+            </summary>
+            <param name="field"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.SearchForm`1.IntValue(`0)">
+            <summary>
+            Legge il valore di un campo interpretandolo come numero intero
+            </summary>
+            <param name="field"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.SearchForm`1.IsEmpty">
+            <summary>
+            Restituisce True se non ci sono parametri configurati
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.SearchForm`1.UrlArgs(System.Boolean)">
+            <summary>
+            Restituisce gli argomenti di filtro rilevati, in formato QueryString
+            </summary>
+            <param name="filterSearchFieldsOnly">se True verranno applicati solo i campi necessari per il filtro.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.SearchForm`1.AppendToUrl(System.String,System.Boolean)">
+            <summary>
+            Appende all'url passato, la stringa con gli argomenti di filtro rilevati.
+            </summary>
+            <param name="urlPage"></param>
+            <param name="filterSearchFieldsOnly">se True verranno applicati solo i campi necessari per il filtro.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.SearchForm`1.ValuesToLabel">
+            <summary>
+            Basandosi solo sulle opzioni scelte, costruisce e restituisce una stringa che può essere usata come titolo della pagina dei risultati del filtro.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.WebLib.SearchFormFieldDataAttribute">
+            <summary>
+            Consente di definire il nome del parametro nel QueryString
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.SearchFormFieldDataAttribute.#ctor(System.String,System.Boolean)">
+            <summary>
+            Crea una nuova istanza dell'attributo indicando il nome del parametro nel QueryString
+            </summary>
+            <param name="name">Nome parametro in QueryString</param>
+            <param name="isFilterField">Indica se il campo imposta un filtro</param>
+        </member>
+        <member name="P:Xilium.WebLib.SearchFormFieldDataAttribute.Name">
+            <summary>
+            Nome parametro in QueryString
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.SearchFormFieldDataAttribute.IsFilterField">
+            <summary>
+            Indica se il campo imposta un filtro
+            </summary>
+        </member>
+        <member name="T:Xilium.WebLib.Server">
+            <summary>
+            Espone metodi per interrogare il server web, l'applicazione corrente, e la versione di applicazione.
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.Server.CacheOffQueryStringKey">
+            <summary>
+            Chiave del parametro QuerySTring per la disattivazione temporanea della cache.
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.Server.CurrentRequest">
+            <summary>
+            Restituisce l'oggetto HttpRequest della pagina web corrente
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.Server.CacheOff">
+            <summary>
+            Verifica se la cache deve essere ritenuta momentaneamente spenta.
+            <para>Analizza il QueryString alla ricerca di `__xlCache=off`, spegnendo la cache per 5sec.</para>
+            <para>Il valore parametro può seguire un numero intero (`__xlCache=off5000`), impostando così lo spegnimento della cache per N.# msec (deve essere divisibile per 1000).</para>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.Server.readCacheOffArgument">
+            <summary>
+            Legge il numero di msec di cacheOff impostato nel parametro QueryString `__xlCache`
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Xilium.WebLib.Server.FullyQualifiedApplicationPath">
+            <summary>
+            Restituisce il fullpath dell'applicazione web.
+            Esempi: "http://www.xilium.it/", "http://localhost:36789/www_v1"
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.Server.ApplicationPath">
+            <summary>
+            Restituisce il path dell'applicazione web.
+            Esempi: "", "/www_v1"
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.Server.GetFullPath(System.String)">
+            <summary>
+            Calcola il fullpath URL del percorso relativo indicato per l'applicazione web corrente.
+            </summary>
+            <param name="path">Il percorso da elaborare (es: "~/css/images/icon.ico")</param>
+            <returns>Restituisce il fullpath</returns>
+        </member>
+        <member name="M:Xilium.WebLib.Server.GetApplicationPath(System.String)">
+            <summary>
+            Calcola l'ApplicationPath URL del percorso relativo indicato per l'applicazione web corrente.
+            Es: GetApplicationPath("~/css/images/favicon.ico") // può restituire "/www_v1/css/images/favicon.ico" o "/css/images/favicon.ico"
+            </summary>
+            <param name="path">Il percorso da elaborare (es: "~/css/images/icon.ico")</param>
+            <returns>Restituisce l'ApplicationPath</returns>
+        </member>
+        <member name="M:Xilium.WebLib.Server.GetPath(System.String,System.String)">
+            <summary>
+            Calcola il path assoluto basandosi sul path di base indicato.
+            </summary>
+            <param name="path">
+            	Path da calcolare; può iniziare/contenere:
+            	<para> - "~" per indicare un percorso basato sull'applicazione;</para>
+            	<para> - "../" per indicare un percorso a partire dalla cartella padre;</para>
+            	<para> - "./" per indicare un percorso a partire dalla cartella precedente;</para>
+            	<para> - "/" per indicare un percorso dalla cartella root;</para>
+            	<para> - "http://" per indicare un percorso già assoluto.</para>
+            </param>
+            <param name="basePath">Path di base su cui considerare il percorso Applicazione</param>
+            <returns>Restituisce il percorso assoluto di Path</returns>
+        </member>
+        <member name="P:Xilium.WebLib.Server.CurrentResponse">
+            <summary>
+            Restituisce l'oggetto HttpResponse della pagina web corrente
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.Server.IsProduction">
+            <summary>
+            Verifica se l'applicazione web corrente è di produzione.
+            </summary>
+            <returns>Restituisce True se l'applicazione web corrente è di produzione</returns>
+        </member>
+        <member name="M:Xilium.WebLib.Server.IsProduction(System.String)">
+            <summary>
+            Verifica se l'applicazione web che risponde all'host indicato è di produzione.
+            </summary>
+            <param name="host">Nome host (es. "www.xilium.it", "localhost")</param>
+            <returns>Restituisce True se l'applicazione web indicata con host è di produzione.</returns>
+        </member>
+        <member name="T:Xilium.WebLib.Server.HostEnviron">
+            <summary>
+            Ambienti del host
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.Server.HostEnviron.undefined">
+            <summary>
+            Valore non definito
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.Server.HostEnviron.Production">
+            <summary>
+            Versione sito :: Host di produzione, online.
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.Server.HostEnviron.Beta">
+            <summary>
+            Versione sito :: Host in versione beta, online.
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.Server.HostEnviron.Versioning">
+            <summary>
+            Versione sito :: Host con dichiarazione di versione, online.
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.Server.HostEnviron.Development">
+            <summary>
+            Versione sito :: Host di sviluppo, in rete locale.
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.Server.HostEnviron.LocalServer">
+            <summary>
+            Posizione server :: Host su server locale, in rete locale.
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.Server.HostEnviron.RemoteServer">
+            <summary>
+            Posizione server :: Host su server remoto.
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.Server.HostEnviron.MainRole">
+            <summary>
+            Ruolo server :: Server centrale.
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.Server.HostEnviron.SecondaryRole">
+            <summary>
+            Ruolo server :: Server secondario.
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.Server.HostEnviron.StationRole">
+            <summary>
+            Ruolo server :: Su PC di lavoro.
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.Server.HostEnvironVersions">
+            <summary>
+            Elenco di tutti i valori che definiscono la versione dell'applicazione
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.Server.HostEnvironLocations">
+            <summary>
+            Elenco di tutti i valori che definiscono la locazione del server
+            </summary>
+        </member>
+        <member name="F:Xilium.WebLib.Server.HostEnvironRoles">
+            <summary>
+            Elenco di tutti i valori che definiscono il ruolo del server nell'applicazione
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.Server.GetHostEnviron">
+            <summary>
+            Indica l'ambiente di host dell'applicazione web corrente.
+            </summary>
+            <returns>Restituisce l'ambiente di host.</returns>
+        </member>
+        <member name="M:Xilium.WebLib.Server.GetHostEnviron(System.String)">
+            <summary>
+            Indica la versione di host per l'applicazione web che risponde all'host indicato.
+            </summary>
+            <param name="host">Nome host (es. "www.xilium.it", "localhost")</param>
+            <returns>Restituisce l'ambiente di host.</returns>
+        </member>
+        <member name="F:Xilium.WebLib.Server.DeveloperHostNameSuffix">
+            <summary>
+            Viene usato in CleanHostName, per indicare la parte non utile di un HostName quando ci troviamo su un URL non ufficiale.
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.Server.GetHostName">
+            <summary>
+            Restituisce il nome del server web (della applicazione web).
+            Es. "www.xilium.it", "localhost"
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.Server.CleanHostName">
+            <summary>
+            	Restituisce il nome del server web (della applicazione web) pulito da eventuali parti in eccesso, come il prefisso "www.".
+            	<para>Es. "www.xilium.it" -> "xilium.it"</para>
+            	<para>Se il sito non si trova in versione Production, allora viene rimossa la parte identificativa dell'ambiente di lavoro, e sostituita da "#".</para>
+            	<para>Esempi:</para>
+            	<para>	"www.terrediurbino.dev.xilium.it"			-> "terrediurbino.#"</para>
+            	<para>	"www.terrediurbino.devfly.xilium.it"		-> "terrediurbino.#"</para>
+            	<para>	"www.terrediurbino.v1.anx.xilium.it"		-> "terrediurbino.#"</para>
+            	<para>	"terrediurbino.v1.anx.xilium.it"			-> "terrediurbino.#"</para>
+            	<para>	"www.terrediurbino.com.v1.anx.xilium.it"	-> "terrediurbino.com"</para>
+            	<para>	"terrediurbino.com.v1.anx.xilium.it"		-> "terrediurbino.com"</para>
+            	<para>	"biz.terrediurbino.com.v1.anx.xilium.it"	-> "biz.terrediurbino.com"</para>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.Server.CleanHostName(System.String)">
+            <summary>
+            	Restituisce il nome del server web (della applicazione web) pulito da eventuali parti in eccesso, come il prefisso "www.".
+            	<para>Es. "www.xilium.it" -> "xilium.it"</para>
+            	<para>Se il sito non si trova in versione Production, allora viene rimossa la parte identificativa dell'ambiente di lavoro, e sostituita da "#".</para>
+            	<para>Esempi:</para>
+            	<para>	"www.terrediurbino.dev.xilium.it"			-> "terrediurbino.#"</para>
+            	<para>	"www.terrediurbino.devfly.xilium.it"		-> "terrediurbino.#"</para>
+            	<para>	"www.terrediurbino.v1.anx.xilium.it"		-> "terrediurbino.#"</para>
+            	<para>	"terrediurbino.v1.anx.xilium.it"			-> "terrediurbino.#"</para>
+            	<para>	"www.terrediurbino.com.v1.anx.xilium.it"	-> "terrediurbino.com"</para>
+            	<para>	"terrediurbino.com.v1.anx.xilium.it"		-> "terrediurbino.com"</para>
+            	<para>	"biz.terrediurbino.com.v1.anx.xilium.it"	-> "biz.terrediurbino.com"</para>
+            </summary>
+            <param name="hostName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.Server.ForceCurrentHostName(System.String)">
+            <summary>
+            Impone il metodo GetHostName di restituire un valore forzato, piuttosto di quello determinato autonomamente.
+            </summary>
+            <param name="hostName">Il valore che deve restituire GetHostName, o NULL per tornare allo stato normale.</param>
+        </member>
+        <member name="M:Xilium.WebLib.Server.ForceCurrentHostEnviron(System.Nullable{Xilium.WebLib.Server.HostEnviron})">
+            <summary>
+            Impone il metodo GetHostEnviron di restituire un valore forzato, piuttosto di quello determinato autonomamente.
+            </summary>
+            <param name="hostEnviron">Il valore che deve restituire GetHostEnviron, o NULL per tornare allo stato normale.</param>
+        </member>
+        <member name="P:Xilium.WebLib.SharedData.Config.Code">
+            <summary>
+            Restituisce il codice della configurazione
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.SharedData.Config.HostEnviron">
+            <summary>
+            Restituisce l'ambiente di lavoro dell'applicazione.
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.SharedData.Config.IsReserved">
+            <summary>
+            Restituisce TRUE se la configurazione è "riservata", il chè significa che può essere consultata solo
+            all'interno della libreria [Xilium.UmbLib].
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.SharedData.Config.Data">
+            <summary>
+            Se [IsReserved] è FALSE restituisce la configurazione; altrimenti restituisce NULL.
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.SharedData.Config.DataInternal">
+            <summary>
+            Restituisce la configurazione, anche se [IsReserved] è TRUE.
+            </summary>
+        </member>
+        <member name="T:Xilium.WebLib.SharedData.Contracts.ISharedDataCache">
+            <summary>
+            Interfaccia da applicare alla classe da usare per la memorizzazione della cache degli oggetti SharedData.
+            <para>Nota: la classe dovebbe ereditare da `System.Runtime.Caching.Cache`.</para>
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.SharedData.Contracts.ISharedDataCache.Get(System.String,System.String)">
+            <summary>
+            Restituisce un oggetto dalla cache. Vedre il metodo analogo: http://msdn.microsoft.com/it-it/library/system.runtime.caching.memorycache.get(v=vs.110).aspx
+            </summary>
+            <param name="key"></param>
+            <param name="regionName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.SharedData.Contracts.ISharedDataCache.Set(System.String,System.Object,System.DateTimeOffset,System.String)">
+            <summary>
+            Aggiunge o aggiorna un item nella cache. Vedere il metodo analogo: http://msdn.microsoft.com/it-it/library/dd780572(v=vs.110).aspx
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <param name="absoluteExpiration"></param>
+            <param name="regionName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.SharedData.Contracts.ISharedDataCache.Remove(System.String,System.String)">
+            <summary>
+            Rimuove un item dalla cache. Vedere il metodo analogo: http://msdn.microsoft.com/it-it/library/system.runtime.caching.memorycache.remove(v=vs.110).aspx
+            </summary>
+            <param name="key"></param>
+            <param name="regionName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.WebLib.SharedData.Support.DefaultSharedDataCache">
+            <summary>
+            Implementazione di default della cache per SharedData.
+            <para>Verrà usata questa classe se non diversamente indicato nel software chiamante.</para>
+            </summary>
+        </member>
+        <member name="T:Xilium.WebLib.SharedData.Support.SharedDataBase">
+            <summary>
+            Definisce la classe base per gli oggetti SharedData
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.SharedData.Support.SharedDataBase.buildSharedDataCacheKey``1(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Crea la chiave di riconoscimento di un oggetto SharedData in cache.
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.SharedData.Support.SharedDataBase.buildSharedDataCacheKey(Xilium.WebLib.SharedData.Support.SharedDataBase)">
+            <summary>
+            Crea la chiave di riconoscimento di un oggetto SharedData in cache.
+            </summary>
+            <param name="instance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.SharedData.Support.SharedDataBase.buildSharedDataCacheKey(System.String,System.String)">
+            <summary>
+            Crea la chiave di riconoscimento di un oggetto SharedData in cache.
+            </summary>
+            <param name="sharedDataClassFullName">Fullname della classe ShareData</param>
+            <param name="instanceUniqueCode">Codice univoco dell'istanza secondo i valori contenuti</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.SharedData.Support.SharedDataBase.FindData``1(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Cerca l'oggetto SharedData in cache. Se non lo trova restituisce Null.
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.SharedData.Support.SharedDataBase.GetInstance``1(System.Collections.Generic.Dictionary{System.String,System.String},System.Boolean,System.Func{``0})">
+            <summary>
+            Cerca l'oggetto SharedData in cache. Se non lo trova lo genera, lo riempie e lo restituisce.
+            </summary>
+            <param name="args"></param>
+            <param name="cacheEnabled"></param>
+            <param name="constructorDelegate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.SharedData.Support.SharedDataBase.cacheManager">
+            <summary>
+            Restituisce l'istanza di gestione della cache per i valori SharedData
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.SharedData.Support.SharedDataBase.Update">
+            <summary>
+            Eseguo il caricamento dei dati
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.SharedData.Support.SharedDataBase.LogUpdateResult(Xilium.WebLib.SharedData.UpdateResult)">
+            <summary>
+            Verifico l'esito del caricamento e memorizzo sul Log.
+            </summary>
+            <param name="result"></param>
+        </member>
+        <member name="M:Xilium.WebLib.SharedData.Support.SharedDataBase.UpdateFromLocal">
+            <summary>
+            Esegue il caricamento dell'oggetto attingendo dal CMS locale.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.SharedData.Support.SharedDataBase.UpdateFromServer">
+            <summary>
+            Esegue il caricamento dell'oggetto richiedendoli al server MainApp.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.SharedData.Support.SharedDataBase.LoadFromXml(System.String)">
+            <summary>
+            Esegue il caricamento dell'oggetto usando il contenuto XML passato.
+            </summary>
+            <param name="xmlData"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Xilium.WebLib.SharedData.Support.SharedDataBase.DataTypeCode">
+            <summary>
+            Codice identificativo del dato.
+            <para>Attenzione: non si distingue per oggetti, ma per dato contenuto, che corrisponde al tipo dato richiesto al server.</para>
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.SharedData.Support.SharedDataBase.Args">
+            <summary>
+            Restituisce la dictionary di tutti gli argomenti
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.SharedData.Support.SharedDataBase.HasValue">
+            <summary>
+            Restituisce True se l'oggetto contiene la configurazione richiesta
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.SharedData.Support.SharedDataBase.LastUpdateResult">
+            <summary>
+            Restituisce l'esito dell'ultimo aggiornamento
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.SharedData.Support.SharedDataBase.LastDoneUpdateResult">
+            <summary>
+            Restituisce l'esito dell'ultimo aggiornamento concluso con successo, e ritenuto ancora valido (vedi UpdateResult.IsCacheOffError)
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.SharedData.Support.SharedDataBase.UniqueCode">
+            <summary>
+            Restituisce il codice univoco del dato, ottenuto con la concatenazione degli argomenti di Load
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.SharedData.Support.SharedDataBase.ExpiresAfter">
+            <summary>
+            Indica dopo quanto tempo scadrà il dato dall'ultimo caricamento
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.SharedData.Support.SharedDataBase.ExpiresAt">
+            <summary>
+            Indica la data di scadenza del dato
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.SharedData.Support.SharedDataBase.SetExpires(System.TimeSpan)">
+            <summary>
+            Setta la scadenza del dato
+            </summary>
+            <param name="after"></param>
+        </member>
+        <member name="P:Xilium.WebLib.SharedData.Support.SharedDataBase.IsExpired">
+            <summary>
+            Restituisce True se il dato è scaduto
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Xilium.WebLib.SharedData.Support.SharedDataBase.UpdateLogSetting_MaxLength">
+            <summary>
+            Indica il numero massimo di item che può mantenere il log degli update.
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.SharedData.Support.SharedDataBase.UpdateLogSetting_EmptyBeforeDone">
+            <summary>
+            Indica se il log degli update dev'essere svuotato prima di inserire un item IsDone.
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.SharedData.Support.SharedDataBase.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Implementazione dell'interfaccia `System.Runtime.Serialization.ISerializable`.
+            </summary>
+            <param name="info"></param>
+            <param name="context"></param>
+        </member>
+        <member name="P:Xilium.WebLib.SharedData.Dictionary.CollectionName">
+            <summary>
+            Restituisce il nome della Collection richiesta
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.SharedData.Dictionary.Language">
+            <summary>
+            Restituisce la lingua richiesta
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.SharedData.Dictionary.Labels">
+            <summary>
+            Restituisce la dictionary di valori della collection
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.SharedData.TextPage.PageName">
+            <summary>
+            Restituisce il nome della pagina richiesta
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.SharedData.TextPage.Language">
+            <summary>
+            Restituisce la lingua richiesta
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.SharedData.TextPage.PageCode">
+            <summary>
+            Restituisce il codice della pagina trovata (pageName)
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.SharedData.TextPage.Title">
+            <summary>
+            Restituisce la proprietà Title della pagina trovata; può essere NULL
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.SharedData.TextPage.Subtitle">
+            <summary>
+            Restituisce la proprietà Subtitle della pagina trovata; può essere NULL
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.SharedData.TextPage.Text">
+            <summary>
+            Restituisce la proprietà Text della pagina trovata; può essere NULL
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.SharedData.UpdateResult.IsDone">
+            <summary>
+            Indica che la lettura dei dati dal server centrale si è conclusa con successo.
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.SharedData.UpdateResult.IsCacheOffError">
+            <summary>
+            Indica che durante la lettura dei dati dal server centrale si è verificato un errore che
+            invalida la cache attuale del dato.
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.SharedData.UpdateResult.IsTechnicalError">
+            <summary>
+            Indica che durante la lettura dei dati dal server centrale si è verificato un errore dovuto
+            ad un problema tecnico.
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.UserAgent.UserGlobalization.UserClientNow">
+            <summary>
+            Restituisce la data e ora attuale dell'utente corrente.
+            <para>L'orario coincide al momento di apertura dell'ultima pagina.</para>
+            <para>Il metodo funziona solo con l'uso della libreria "Xilium.lib.js"</para>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.UserAgent.UserGlobalization.UserTimeOffset">
+            <summary>
+            Restituisce il fuso orario dell'utente corrente.
+            <para>Il metodo funziona solo con l'uso della libreria "Xilium.lib.js"</para>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.UserAgent.UserGlobalization.DateTimeNow">
+            <summary>
+            Se disponibile, restituisce l'orario attuale secondo il fuso orario dell'utente.
+            A differenza di `UserClientNow`, questo metodo è più preciso perchè non soffre del ritardo di interazione dell'utente.
+            <para>Il calcolo viene fatto usando il metodo `UserTimeOffset`.</para>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.UserAgent.UserGlobalization.DateTimeOffsetNow">
+            <summary>
+            Se disponibile, restituisce l'orario attuale secondo il fuso orario dell'utente.
+            A differenza di `UserClientNow`, questo metodo è più preciso perchè non soffre del ritardo di interazione dell'utente.
+            <para>Il calcolo viene fatto usando il metodo `UserTimeOffset`.</para>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.UserAgent.UserGlobalization.internalUserDateTimeReader">
+            <summary>
+            Esegue la lettura del Cookie con le informazioni sulla data attuale e fuso orario.
+            <para>Restituisce due valori, dove il primo è composto dalla data-ora (formato ISO), il secondo il fuso orario (in millisecondi).</para>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.WebLib.ViewRenderer">
+            <summary>
+                Class that renders MVC views to a string using the
+                standard MVC View Engine to render the view.
+                <see cref="!:http://www.codemag.com/Article/1312081" />
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.ViewRenderer.#ctor(System.Web.Mvc.ControllerContext)">
+            <summary>
+                Initializes the ViewRenderer with a Context.
+            </summary>
+            <param name="controllerContext">
+                If you are running within the context of an ASP.NET MVC request pass in
+                any controller's context.
+                If no context is available, ViewRenderer attempts to create one
+                based on the embedded ErrorController class.
+            </param>
+        </member>
+        <member name="P:Xilium.WebLib.ViewRenderer.Context">
+            <summary>
+                Required Controller Context
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.ViewRenderer.RenderViewToString(System.String,System.Object,System.Web.Mvc.ViewDataDictionary)">
+            <summary>
+                Renders a full MVC view to a string. Will render with the full MVC
+                View engine including running _ViewStart and merging into _Layout
+            </summary>
+            <param name="viewPath">
+                The path to the view to render. Either in same controller, shared by
+                name or as fully qualified ~/ path including extension
+            </param>
+            <param name="model">The model to render the view with</param>
+            <param name="viewData"></param>
+            <returns>String of the rendered view or null on error</returns>
+        </member>
+        <member name="M:Xilium.WebLib.ViewRenderer.RenderPartialViewToString(System.String,System.Object,System.Web.Mvc.ViewDataDictionary)">
+            <summary>
+                Renders a partial MVC view to string. Use this method to render
+                a partial view that doesn't merge with _Layout and doesn't fire
+                _ViewStart.
+            </summary>
+            <param name="viewPath">
+                The path to the view to render. Either in same controller, shared by
+                name or as fully qualified ~/ path including extension
+            </param>
+            <param name="model">The model to pass to the ViewRenderer</param>
+            <param name="viewData"></param>
+            <returns>String of the rendered view or null on error</returns>
+        </member>
+        <member name="M:Xilium.WebLib.ViewRenderer.RenderView(System.String,System.Object,System.Web.Mvc.ViewDataDictionary,System.Web.Mvc.ControllerContext)">
+            <summary>
+                Renders a partial MVC view to string. Use this method to render
+                a partial view that doesn't merge with _Layout and doesn't fire
+                _ViewStart.
+            </summary>
+            <param name="viewPath">
+                The path to the view to render. Either in same controller, shared by
+                name or as fully qualified ~/ path including extension
+            </param>
+            <param name="model">The model to pass to the ViewRenderer</param>
+            <param name="viewData"></param>
+            <param name="controllerContext">Active Controller context</param>
+            <returns>String of the rendered view or null on error</returns>
+        </member>
+        <member name="M:Xilium.WebLib.ViewRenderer.RenderPartialView(System.String,System.Object,System.Web.Mvc.ViewDataDictionary,System.Web.Mvc.ControllerContext)">
+            <summary>
+                Renders a partial MVC view to string. Use this method to render
+                a partial view that doesn't merge with _Layout and doesn't fire
+                _ViewStart.
+            </summary>
+            <param name="viewPath">
+                The path to the view to render. Either in same controller, shared by
+                name or as fully qualified ~/ path including extension
+            </param>
+            <param name="model">The model to pass to the ViewRenderer</param>
+            <param name="viewData"></param>
+            <param name="controllerContext">Active controller context</param>
+            <returns>String of the rendered view or null on error</returns>
+        </member>
+        <member name="M:Xilium.WebLib.ViewRenderer.RenderViewToStringInternal(System.String,System.Object,System.Web.Mvc.ViewDataDictionary,System.Boolean)">
+            <summary>
+                Internal method that handles rendering of either partial or
+                or full views.
+            </summary>
+            <param name="viewPath">
+                The path to the view to render. Either in same controller, shared by
+                name or as fully qualified ~/ path including extension
+            </param>
+            <param name="model">Model to render the view with</param>
+            <param name="viewData"></param>
+            <param name="isPartial">Determines whether to render a full or partial view</param>
+            <returns>String of the rendered view</returns>
+        </member>
+        <member name="M:Xilium.WebLib.ViewRenderer.CreateController``1(System.Web.Routing.RouteData)">
+            <summary>
+                Creates an instance of an MVC controller from scratch
+                and initializes its controller context when no
+                existing ControllerContext is present.
+            </summary>
+            <typeparam name="T">Type of the controller to create</typeparam>
+            <returns>Controller Context for T</returns>
+            <exception cref="T:System.InvalidOperationException">thrown if HttpContext not available</exception>
+        </member>
+        <member name="T:Xilium.WebLib.EmptyController">
+            <summary>
+                Empty MVC Controller instance that can be used to create
+                a generic controller instance and context for the
+                CreateContext method.
+            </summary>
+        </member>
+        <member name="T:Xilium.WebLib.Widget.Model.Contracts.IModelReference">
+            <summary>
+            Descrizione di riepilogo per IModelReference
+            </summary>
+        </member>
+        <member name="T:Xilium.WebLib.Widget.Model.Photogallery">
+            <summary>
+            Descrizione di riepilogo per Photogallery
+            </summary>
+        </member>
+    </members>
+</doc>
