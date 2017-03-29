@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Security.Permissions;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Our.Umbraco.FileSystemProviders.Samba.Net2 {
+namespace Our.Umbraco.FileSystemProviders.Samba.Net {
 
 	/// <summary>
 	/// Source: http://stackoverflow.com/a/39540451/1387407
@@ -22,6 +23,20 @@ namespace Our.Umbraco.FileSystemProviders.Samba.Net2 {
 
         [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
         private extern static bool CloseHandle(IntPtr handle);
+
+		
+	    [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
+	    public static T Impersonate<T>(NetworkCredential credentials, Func<T> methodToExecute)
+	    {
+		    return Impersonate(credentials.Domain, credentials.UserName, credentials.Password, methodToExecute);
+	    }
+
+	    [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
+	    public static void Impersonate(NetworkCredential credentials, Action actionToExecute)
+	    {
+		    Impersonate(credentials.Domain, credentials.UserName, credentials.Password, actionToExecute);
+	    }
+
 
 	    [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
 	    public static T Impersonate<T>(string domainName, string userName, string userPassword, Func<T> methodToExecute)

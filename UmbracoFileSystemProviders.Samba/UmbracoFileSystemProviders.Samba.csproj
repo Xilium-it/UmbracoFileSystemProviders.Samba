@@ -59,15 +59,8 @@
     <Compile Include="Helpers\IMimeTypeResolver.cs" />
     <Compile Include="Helpers\MimeTypeResolver.cs" />
     <Compile Include="Helpers\WrappedLogHelper.cs" />
-    <Compile Include="Net2\ImpersonationHelper.cs" />
-    <Compile Include="Net2\SafeTokenHandle.cs" />
-    <Compile Include="Net\NetResource.cs" />
-    <Compile Include="Net\NetworkConnection.cs" />
-    <Compile Include="Net\NetworkConnectionClient.cs" />
-    <Compile Include="Net\NetworkConnectionProvider.cs" />
-    <Compile Include="Net\ResourceDisplaytype.cs" />
-    <Compile Include="Net\ResourceScope.cs" />
-    <Compile Include="Net\ResourceType.cs" />
+    <Compile Include="Net\ImpersonationHelper.cs" />
+    <Compile Include="Net\SafeTokenHandle.cs" />
     <Compile Include="SambaFileSystem.cs" />
     <Compile Include="SambaServiceDriver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
