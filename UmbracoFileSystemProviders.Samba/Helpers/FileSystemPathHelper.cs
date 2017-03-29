@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace Our.Umbraco.FileSystemProviders.Samba.Helpers {
 	/// <summary>
@@ -64,6 +65,38 @@ namespace Our.Umbraco.FileSystemProviders.Samba.Helpers {
 		public string FileNameWithExt(string path)
 		{
 			return System.IO.Path.GetFileName(path);
+		}
+		
+		/// <summary>
+		/// Combina più path in un solo percorso.
+		/// </summary>
+		/// <param name="directorySeparator"></param>
+		/// <param name="pathParts"></param>
+		/// <returns></returns>
+		public string CombinePath(char directorySeparator, params string[] pathParts)
+		{
+			if (pathParts == null || pathParts.Length == 0) return directorySeparator.ToString();
+
+			var sbPath = new StringBuilder();
+
+			foreach (var pathPart in pathParts)
+			{
+				if (string.IsNullOrEmpty(pathPart)) continue;
+				if (sbPath.Length > 0) sbPath.Append(directorySeparator);
+				sbPath.Append(pathPart.TrimStart(directorySeparator));
+			}
+
+			return sbPath.ToString();
+		}
+		
+		/// <summary>
+		/// Combina più path URL in un solo percorso.
+		/// </summary>
+		/// <param name="pathParts"></param>
+		/// <returns></returns>
+		public string CombineUrlPath(params string[] pathParts)
+		{
+			return this.CombinePath('/', pathParts);
 		}
 	}
 }
