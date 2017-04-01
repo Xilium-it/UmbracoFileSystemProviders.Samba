@@ -18,12 +18,12 @@ namespace Our.Umbraco.FileSystemProviders.Samba
         /// <summary>
         /// The stream function delegate.
         /// </summary>
-        private readonly Func<Stream> stream;
+        private readonly Func<Stream> getStream;
 
 		/// <summary>
 		/// The FileSystem where file is stored.
 		/// </summary>
-	    private readonly Func<SambaFileSystem> fileSystem;
+	    private readonly Func<SambaFileSystem> getFileSystem;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FileSystemVirtualFile"/> class.
@@ -42,8 +42,8 @@ namespace Our.Umbraco.FileSystemProviders.Samba
                 throw new ArgumentNullException(nameof(fileSystem));
             }
 
-	        this.fileSystem = () => fileSystem.Value;
-            this.stream = () => fileSystem.Value.OpenFile(fileSystemPath);
+	        this.getFileSystem = () => fileSystem.Value;
+            this.getStream = () => this.getFileSystem().OpenFile(fileSystemPath);
         }
 
         /// <summary>
@@ -69,15 +69,15 @@ namespace Our.Umbraco.FileSystemProviders.Samba
                 cache.SetCacheability(HttpCacheability.Public);
                 cache.VaryByHeaders["Accept-Encoding"] = true;
 
-                var objectStorageFileSystem = fileSystem();
-                int maxDays = objectStorageFileSystem.FileSystem.MaxDays;
+                var sambaFileSystem = getFileSystem();
+                int maxDays = sambaFileSystem.FileSystem.MaxDays;
 
                 cache.SetExpires(DateTime.Now.ToUniversalTime().AddDays(maxDays));
                 cache.SetMaxAge(new TimeSpan(maxDays, 0, 0, 0));
                 cache.SetRevalidation(HttpCacheRevalidation.AllCaches);
             }
 
-            return this.stream();
+            return this.getStream();
         }
     }
 }
