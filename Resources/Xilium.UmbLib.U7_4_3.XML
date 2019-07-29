@@ -4,6 +4,22 @@
         <name>Xilium.UmbLib.U7_4_3</name>
     </assembly>
     <members>
+        <member name="M:Xilium.UmbLib.AppDriver.XubHelper.IXubHelperDriver.CreateXubHelper(System.String,System.String)">
+            <summary>
+            Crea il XubHelper per il RootIntCode e LanCode indicato.
+            </summary>
+            <param name="rootIntCode"></param>
+            <param name="lanCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.AppDriver.XubHelper.IXubHelperDriver.CreateXubHelper(System.Int32,System.String)">
+            <summary>
+            Crea il XubHelper per il nodo e LanCode indicato.
+            </summary>
+            <param name="descendantNodeId"></param>
+            <param name="lanCode"></param>
+            <returns></returns>
+        </member>
         <member name="T:Xilium.UmbLib.DataTypes.Contracts.IDataGridField">
             <summary>
             Defines a field of DataGridRow
@@ -14,7 +30,7 @@
             Descrizione di riepilogo per UdtContactsForm
             </summary>
         </member>
-        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.#ctor(Xilium.UmbLib.DataTypes.Contracts.IDataGrid,Umbraco.Core.Models.IPublishedContent,System.String,Xilium.UmbLib.Helper.XubHelperBase)">
+        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.#ctor(Xilium.UmbLib.DataTypes.Contracts.IDataGrid,Umbraco.Core.Models.IPublishedContent,System.String,Xilium.UmbLib.Helper.IXubHelper)">
             <summary>
             Crea una nuova istanza della classe, leggendo la definizione dei campi dal valore dalla property.
             </summary>
@@ -399,7 +415,7 @@
             Se è stato riscontrato un errore restituisce il testo del medesimo; altrimenti restituisce NULL.
             </summary>
         </member>
-        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldValue.ValueHtml(Xilium.UmbLib.Helper.XubHelperBase,System.Int32,System.Int32)">
+        <member name="M:Xilium.UmbLib.DataTypes.UdtContactsForm.UdtContactsFormFieldValue.ValueHtml(Xilium.UmbLib.Helper.IXubHelper,System.Int32,System.Int32)">
             <summary>
             Restituisce il valore formattato per l'utente.
             Utile per restituire il valore in una email.
@@ -501,6 +517,142 @@
             <param name="defaultValue">valore da restituire in caso di mancanza del valore o in caso di errori di conversione</param>
             <returns></returns>
         </member>
+        <member name="M:Xilium.UmbLib.Extensions.PublishedContent.GetPropertyValueIDs(Umbraco.Core.Models.IPublishedContent,System.String)">
+            <summary>
+            Restituisce il valore della Property, interpretandola come Array di ID (int).
+            </summary>
+            <param name="doc">il documento da cui leggere la Property</param>
+            <param name="alias">alias della Property</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Extensions.PublishedContent.GetPropertyValueIDs(Umbraco.Core.Models.IPublishedContent,System.String,System.Boolean)">
+            <summary>
+            Restituisce il valore della Property, interpretandola come Array di ID (int).
+            <para>Se il valore non dovesse essere dichiarato, questo verrà cercato nei nodi parent.</para>
+            </summary>
+            <param name="doc">il documento da cui leggere la Property</param>
+            <param name="alias">alias della Property</param>
+            <param name="recursive">se True, verrà cercato il valore nei nodi parent</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Extensions.PublishedContent.GetPropertyValueIDs(Umbraco.Core.Models.IPublishedContent,System.String,System.Int32[])">
+            <summary>
+            Restituisce il valore della Property, interpretandola come Array di ID (int).
+            <para>Se non fosse possibile ottenere alcun valore, o se ci fossero problemi di conversione, verrà restituito <paramref name="defaultValue"/>.</para>
+            </summary>
+            <param name="doc">il documento da cui leggere la Property</param>
+            <param name="alias">alias della Property</param>
+            <param name="defaultValue">valore da restituire in caso di mancanza del valore o in caso di errori di conversione</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Extensions.PublishedContent.GetPropertyValueIDs(Umbraco.Core.Models.IPublishedContent,System.String,System.Boolean,System.Int32[])">
+            <summary>
+            Restituisce il valore della Property, interpretandola come Array di ID (int).
+            <para>Se il valore non dovesse essere dichiarato, questo verrà cercato nei nodi parent.</para>
+            <para>Se non fosse possibile ottenere alcun valore, o se ci fossero problemi di conversione, verrà restituito <paramref name="defaultValue"/>.</para>
+            </summary>
+            <param name="doc">il documento da cui leggere la Property</param>
+            <param name="alias">alias della Property</param>
+            <param name="recursive">se True, verrà cercato il valore nei nodi parent</param>
+            <param name="defaultValue">valore da restituire in caso di mancanza del valore o in caso di errori di conversione</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Extensions.PublishedContent.internalGetPropertyValueIDs(Umbraco.Core.Models.IPublishedContent,System.String,System.Boolean,System.Int32[])">
+            <summary>
+            Restituisce il valore della Property, interpretandola come Array di ID (int).
+            <para>Se il valore non dovesse essere dichiarato, questo verrà cercato nei nodi parent.</para>
+            <para>Se non fosse possibile ottenere alcun valore, o se ci fossero problemi di conversione, verrà restituito <paramref name="defaultValue"/>.</para>
+            </summary>
+            <param name="doc">il documento da cui leggere la Property</param>
+            <param name="alias">alias della Property</param>
+            <param name="recursive">se True, verrà cercato il valore nei nodi parent</param>
+            <param name="defaultValue">valore da restituire in caso di mancanza del valore o in caso di errori di conversione</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Extensions.PublishedContent.GetPropertyValueMergedIDs(Umbraco.Core.Models.IPublishedContent,System.String)">
+            <summary>
+            Restituisce il valore della Property, interpretandola come Array di ID (int).
+            <para>
+            A differenza di <see cref="M:Xilium.UmbLib.Extensions.PublishedContent.GetPropertyValueIDs(Umbraco.Core.Models.IPublishedContent,System.String)"/>, il metodo esegue il Merge di tutti i valori
+            trovati nel nodo corrente e in tutti i Parent.
+            </para>
+            </summary>
+            <param name="doc">il documento da cui iniziare la lettura della Property</param>
+            <param name="alias">alias della Property</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Extensions.PublishedContent.GetPropertyValueMergedIDs(Umbraco.Core.Models.IPublishedContent,System.String,System.String)">
+            <summary>
+            Restituisce il valore della Property, interpretandola come Array di ID (int).
+            <para>
+            A differenza di <see cref="M:Xilium.UmbLib.Extensions.PublishedContent.GetPropertyValueIDs(Umbraco.Core.Models.IPublishedContent,System.String)"/>, il metodo esegue il Merge di tutti i valori
+            trovati nel nodo corrente e in tutti i Parent fino al nodo con DocumentTypeAlias uguale a <paramref name="rootDocTypeAlias"/>.
+            </para>
+            </summary>
+            <param name="doc">il documento da cui iniziare la lettura della Property</param>
+            <param name="alias">alias della Property</param>
+            <param name="rootDocTypeAlias">il DocumentTypeAlias su cui interrompere la lettura del valore.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Extensions.PublishedContent.GetPropertyValueMergedIDs(Umbraco.Core.Models.IPublishedContent,System.String,System.Int32[])">
+            <summary>
+            Restituisce il valore della Property, interpretandola come Array di ID (int).
+            <para>
+            A differenza di <see cref="M:Xilium.UmbLib.Extensions.PublishedContent.GetPropertyValueIDs(Umbraco.Core.Models.IPublishedContent,System.String)"/>, il metodo esegue il Merge di tutti i valori
+            trovati nel nodo corrente e in tutti i Parent.
+            </para>
+            <para>Se non fosse possibile ottenere alcun valore, o se ci fossero problemi di conversione, verrà restituito <paramref name="defaultValue"/>.</para>
+            </summary>
+            <param name="doc">il documento da cui iniziare la lettura della Property</param>
+            <param name="alias">alias della Property</param>
+            <param name="defaultValue">valore da restituire in caso di mancanza del valore o in caso di errori di conversione</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Extensions.PublishedContent.GetPropertyValueMergedIDs(Umbraco.Core.Models.IPublishedContent,System.String,System.String,System.Int32[])">
+            <summary>
+            Restituisce il valore della Property, interpretandola come Array di ID (int).
+            <para>
+            A differenza di <see cref="M:Xilium.UmbLib.Extensions.PublishedContent.GetPropertyValueIDs(Umbraco.Core.Models.IPublishedContent,System.String)"/>, il metodo esegue il Merge di tutti i valori
+            trovati nel nodo corrente e in tutti i Parent fino al nodo con DocumentTypeAlias uguale a <paramref name="rootDocTypeAlias"/>.
+            </para>
+            <para>Se non fosse possibile ottenere alcun valore, o se ci fossero problemi di conversione, verrà restituito <paramref name="defaultValue"/>.</para>
+            </summary>
+            <param name="doc">il documento da cui iniziare la lettura della Property</param>
+            <param name="alias">alias della Property</param>
+            <param name="rootDocTypeAlias">il DocumentTypeAlias su cui interrompere la lettura del valore.</param>
+            <param name="defaultValue">valore da restituire in caso di mancanza del valore o in caso di errori di conversione</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Extensions.PublishedContent.GetPropertyValueMergedIDs(Umbraco.Core.Models.IPublishedContent,System.String,System.Func{Umbraco.Core.Models.IPublishedContent,System.Boolean},System.Int32[])">
+            <summary>
+            Restituisce il valore della Property, interpretandola come Array di ID (int).
+            <para>
+            A differenza di <see cref="M:Xilium.UmbLib.Extensions.PublishedContent.GetPropertyValueIDs(Umbraco.Core.Models.IPublishedContent,System.String)"/>, il metodo esegue il Merge di tutti i valori
+            trovati nel nodo corrente e in tutti i Parent fino al nodo per cui <paramref name="isRootDocumentDelegate"/> restituisce True.
+            </para>
+            <para>Se non fosse possibile ottenere alcun valore, o se ci fossero problemi di conversione, verrà restituito <paramref name="defaultValue"/>.</para>
+            </summary>
+            <param name="doc">il documento da cui iniziare la lettura della Property</param>
+            <param name="alias">alias della Property</param>
+            <param name="isRootDocumentDelegate">metodo per identificare il nodo su cui interrompere la lettura del valore.</param>
+            <param name="defaultValue">valore da restituire in caso di mancanza del valore o in caso di errori di conversione</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Extensions.PublishedContent.internalGetPropertyValueMergedIDs(Umbraco.Core.Models.IPublishedContent,System.String,System.Func{Umbraco.Core.Models.IPublishedContent,System.Boolean},System.Int32[])">
+            <summary>
+            Restituisce il valore della Property, interpretandola come Array di ID (int).
+            <para>
+            A differenza di <see cref="M:Xilium.UmbLib.Extensions.PublishedContent.GetPropertyValueIDs(Umbraco.Core.Models.IPublishedContent,System.String)"/>, il metodo esegue il Merge di tutti i valori
+            trovati nel nodo corrente e in tutti i Parent fino al nodo per cui <paramref name="isRootDocumentDelegate"/> restituisce True.
+            </para>
+            <para>Se non fosse possibile ottenere alcun valore, o se ci fossero problemi di conversione, verrà restituito <paramref name="defaultValue"/>.</para>
+            </summary>
+            <param name="doc">il documento da cui leggere la Property</param>
+            <param name="alias">alias della Property</param>
+            <param name="isRootDocumentDelegate">metodo per identificare il nodo su cui interrompere la lettura del valore.</param>
+            <param name="defaultValue">valore da restituire in caso di mancanza del valore o in caso di errori di conversione</param>
+            <returns></returns>
+        </member>
         <member name="M:Xilium.UmbLib.Extensions.PublishedContent.GetPropertyValueNull``1(Umbraco.Core.Models.IPublishedContent,System.String)">
             <summary>
             Restituisce il valode della Property, interpretandola come tipo T.
@@ -586,6 +738,121 @@
             <param name="defaultCulture">Lingua di default</param>
             <returns></returns>
         </member>
+        <member name="P:Xilium.UmbLib.Helper.IWebConfig.RootIntCode">
+            <summary>
+            Valore IntCode del nodo Root, a cui si riferisce il <see cref="T:Xilium.UmbLib.Helper.IWebConfig"/> corrente.
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.IWebConfig.WebsiteCode">
+            <summary>
+            Codice pubblico identificativo del WebSite (es: "GoPlanny").
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.IWebConfig.WebsiteName">
+            <summary>
+            Nome pubblico del WebSite (es: "Go Planny")
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.IWebConfig.DefaultAppUrlProtocol">
+            <summary>
+            Protocollo di default per il WebSite; può essere uno di questi valori: "http", "https".
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.IWebConfig.DefaultAppUrlDomain">
+            <summary>
+            Nome dominio dell'applicazione (es: "goplanny.com")
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.IWebConfig.DefaultAppUrlHost">
+            <summary>
+            Nome host dell'applicazione (es: "www.goplanny.com")
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.IWebConfig.DefaultAppUrlPath">
+            <summary>
+            Percorso iniziale dell'applicazione (es: "/")
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.IWebConfig.DefaultAppUrl">
+            <summary>
+            URL completo dell'applicazione (es: "https://www.planny.com/")
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.IWebConfig.FavIconUrl">
+            <summary>
+            Percorso URL in cui si trova la FavIcon
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.IWebConfig.PngIconUrl(Xilium.WebLib.Media.WebsiteIconSize)">
+            <summary>
+            Restituisce il percorso URL delle icone, secondo le dimensioni richieste
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.IWebConfig.GoogleAnalyticsId">
+            <summary>
+            Identificativo del profilo GoogleAnalytics
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.IWebConfig.FacebookAppId">
+            <summary>
+            Identificativo del profilo FacebookApp
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.IWebConfig.TwitterAuthorUsername">
+            <summary>
+            Autore Twitter per... non so bene cosa ancora.
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.IWebConfig.EmailCompilerCssFiles">
+            <summary>
+            Elenco dei file CSS da usare per l'invio di email
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.IWebConfig.EmailCompilerAppendLinkCss">
+            <summary>
+            Indica se accodare i tag LINK all'interno delle emai, anzichè inserire gli stili nei tag HTML
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.IWebConfig.EmailCompilerShowLogo">
+            <summary>
+            Indica se visualizzare il Logo nelle email
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.IWebConfig.ExtraData``1(System.String)">
+            <summary>
+            Restituisce un valore Extra, con chiave <paramref name="dataKey"/>.
+            Se il valore non esiste il metodo invoca un'eccezione.
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.IWebConfig.ExtraData``1(System.String,``0)">
+            <summary>
+            Restituisce un valore Extra, con chiave <paramref name="dataKey"/>.
+            Se il valore non esiste il metodo restituisce <paramref name="fallbackValue"/>.
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.IXubHelper.RootIntCode">
+            <summary>
+            Indica il valore "intCode" del nodo Root del sito. Il nodo Root deve al livello 0 della gerarchia di contenuti.
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.IXubHelper.SetRootIntCode(System.String)">
+            <summary>
+            Permette di settare il valore RootIntCode
+            </summary>
+            <param name="intCode"></param>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.IXubHelper.HomeContents">
+            <summary>
+            Restituisce la lista di tutte le Home, una per lingua.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.IXubHelper.HomeContentsAndLanguages">
+            <summary>
+            Restituisce l'elenco delle Home secondo la configurazione corrente.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Xilium.UmbLib.Helper.SecurityHelper.CurrentUmbracoUser">
             <summary>
             Restituisce l'utente loggato nel BackOffice
@@ -631,6 +898,80 @@
             <summary>
             Il nodo Home corrisponde ad un nodo figlio della Root del sito web
             </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.WebConfigBase.RootIntCode">
+            <summary>
+            Valore IntCode del nodo Root, a cui si riferisce il <see cref="T:Xilium.UmbLib.Helper.IWebConfig"/> corrente.
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.WebConfigBase.WebsiteCode">
+            <summary>
+            Codice pubblico identificativo del WebSite (es: "GoPlanny").
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.WebConfigBase.WebsiteName">
+            <summary>
+            Nome pubblico del WebSite (es: "Go Planny")
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.WebConfigBase.DefaultAppUrlProtocol">
+            <summary>
+            Protocollo di default per il WebSite; può essere uno di questi valori: "http", "https".
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.WebConfigBase.DefaultAppUrlDomain">
+            <summary>
+            Nome dominio dell'applicazione (es: "goplanny.com")
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.WebConfigBase.DefaultAppUrlHost">
+            <summary>
+            Nome host dell'applicazione (es: "www.goplanny.com")
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.WebConfigBase.DefaultAppUrlPath">
+            <summary>
+            Percorso iniziale dell'applicazione (es: "/")
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.WebConfigBase.DefaultAppUrl">
+            <summary>
+            URL completo dell'applicazione (es: "https://www.planny.com/")
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.WebConfigHelper.WebConfigList">
+            <summary>
+            Restituisce l'elenco di tutti i WebConfig trovati.
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.WebConfigHelper.GetWebConfig(System.String)">
+            <summary>
+            Restituisce l'oggetto WebConfig corrispondente al <paramref name="rootIntCode"/> indicato.
+            </summary>
+            <param name="rootIntCode">Codice IntCode del nodo Root.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.WebConfigHelper.TryGetWebConfig(System.String,Xilium.UmbLib.Helper.IWebConfig@)">
+            <summary>
+            Tenta di restituire l'oggetto WebConfig corrispondente al <paramref name="rootIntCode"/> indicato.
+            Ritorna True se l'operazione va a buon fine.
+            </summary>
+            <param name="rootIntCode">Codice IntCode del nodo Root.</param>
+            <param name="webConfig">webConfig trovato.</param>
+            <returns>Ritorna True se l'operazione va a buon fine.</returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.WebConfigHelper.SearchWebConfig(Umbraco.Core.Models.IPublishedContent)">
+            <summary>
+            Cerca il WebConfig adatto alla pagina del sito <paramref name="webContent"/>. Restituisce NULL se non trovato.
+            </summary>
+            <param name="webContent">Una pagina appartenente al nodo Root del sito, per cui determinare WebConfig.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.WebConfigHelper.getWebConfigList">
+            <summary>
+            Calcola la lista di WebConfig
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:Xilium.UmbLib.Helper.WebContextHelper">
             <summary>
@@ -678,6 +1019,12 @@
             <param name="pageViewDataContainer">Pagina da cui recuperare l'istanza dell'helper</param>
             <returns></returns>
         </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.AttachXubHelper(System.Web.Mvc.IViewDataContainer)">
+            <summary>
+            Lega il XubHelper corrente al <paramref name="pageViewDataContainer"/>.
+            </summary>
+            <param name="pageViewDataContainer"></param>
+        </member>
         <member name="M:Xilium.UmbLib.Helper.XubHelperBase.HasXubHelper(System.Web.Mvc.IViewDataContainer)">
             <summary>
             Indica se la pagina `pageViewDataContainer` ha un oggetto XubHelper.
@@ -702,11 +1049,53 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.SetDefaultCurrentLanCode">
+            <summary>
+            Setta la "forzatura" per la lingua corrente sulla lingua di default.
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.TryForceCurrentLanCode(System.String)">
+            <summary>
+            Tenta di settare la "forzatura" per la ligua corrente.
+            </summary>
+            <param name="lanCode"></param>
+            <returns>Restituisce True se l'operazione riesce.</returns>
+        </member>
         <member name="M:Xilium.UmbLib.Helper.XubHelperBase.ForceCurrentLanCode(System.String)">
             <summary>
             Setta la lingua che dev'essere usata.
             </summary>
             <param name="lanCode">Nome lingua, es: "it", "it-IT", "en"...</param>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.ApplyRootIntCode">
+            <summary>
+            Setta RootIntCode ottenendolo dal nodo Root di <see cref="P:Xilium.UmbLib.Helper.XubHelperBase.OriginalContent"/>.
+            Se il nodo Root trovato non dovesse corrispondere ad un WebConfig esistente, il metodo restituisce False.
+            </summary>
+            <returns>Retituisce True se l'operazione si conclude con successo.</returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.ApplyRootIntCode(Umbraco.Core.Models.IPublishedContent)">
+            <summary>
+            Setta RootIntCode ottenendolo dal nodo Root di <paramref name="webContent"/>.
+            Se il nodo Root trovato non dovesse corrispondere ad un WebConfig esistente, il metodo restituisce False.
+            </summary>
+            <param name="webContent">Una pagina appartenente al nodo Root del sito, per cui determinare WebConfig, RootIntCode.</param>
+            <returns>Retituisce True se l'operazione si conclude con successo.</returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.ApplyRootIntCodeByUrl">
+            <summary>
+            Setta RootIntCode determinandolo dal percorso Url corrente, e confrontandolo con l'elenco dei domini configurati su Umbraco.
+            Se non dovesse esserci una richiesta in atto, oppure non esiste alcun dominio configurato in Umbraco che soddisfi tale richiesta, il metoro restituisce False.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.ApplyRootIntCodeByUrl(System.String)">
+            <summary>
+            Setta RootIntCode determinandolo dal <paramref name="hostName"/> indicato.
+            Se non esiste alcun dominio configurato in Umbraco che soddisfi tale richiesta, il metoro restituisce False.
+            </summary>
+            <param name="hostName"></param>
+            <returns></returns>
         </member>
         <member name="P:Xilium.UmbLib.Helper.XubHelperBase.CurrentLanCode">
             <summary>
@@ -720,7 +1109,7 @@
         </member>
         <member name="P:Xilium.UmbLib.Helper.XubHelperBase.DefaultCultureInfoName">
             <summary>
-            Indica la nome CultureInfo da usare di default.
+            Indica il nome CultureInfo da usare di default.
             Nota: serve per determinare quale Homepage aprire quando non esiste una home adatta per la lingua in uso (CurrentLanCode).
             </summary>
         </member>
@@ -790,6 +1179,90 @@
             <param name="contentMapType"></param>
             <returns></returns>
         </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.GetNodeTitle(Umbraco.Core.Models.IPublishedContent)">
+            <summary>
+            Restituisce il Title del nodo indicato, nella lingua corrente.
+            </summary>
+            <param name="node"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.GetNodeMenuName(Umbraco.Core.Models.IPublishedContent)">
+            <summary>
+            Restituisce il nome della pagina
+            </summary>
+            <param name="node"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.GetNodeUrl(Umbraco.Core.Models.IPublishedContent)">
+            <summary>
+            Restituisce il percorso URL del nodo indicato.
+            </summary>
+            <param name="node"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.GetNodeHash(Umbraco.Core.Models.IPublishedContent)">
+            <summary>
+            Restituisce il percorso HASH del nodo indicato.
+            </summary>
+            <param name="node"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.CalcExtraNodeUrl(Umbraco.Core.Models.IPublishedContent,System.Boolean,System.Boolean,System.Text.StringBuilder@)">
+            <summary>
+            Calcola il percorso URL per una pagina con regole particolari, come una pagina "Link" o in "Database".
+            Restituisce True se l'operazione ha successo.
+            </summary>
+            <param name="node"></param>
+            <param name="putUrl"></param>
+            <param name="putHash"></param>
+            <param name="fReturn"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.CalcNodeUrl(Umbraco.Core.Models.IPublishedContent,System.Boolean,System.Boolean,System.Text.StringBuilder@)">
+            <summary>
+            Esegue il calcolo dell'URL per il <paramref name="document"/> indicato.
+            </summary>
+            <param name="document"></param>
+            <param name="putUrl"></param>
+            <param name="putHash"></param>
+            <param name="fReturn"></param>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.GetLocalizedPropertyValueString(Umbraco.Core.Models.IPublishedContent,System.String)">
+            <summary>
+            Restituisce il valore localizzato per la <paramref name="propertyName"/> del <paramref name="node"/>
+            </summary>
+            <param name="node"></param>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.GetLocalizedPropertyValueString(Umbraco.Core.Models.IPublishedContent,System.String,System.Boolean)">
+            <summary>
+            Restituisce il valore localizzato per la <paramref name="propertyName"/> del <paramref name="node"/>
+            </summary>
+            <param name="node"></param>
+            <param name="propertyName"></param>
+            <param name="recursive"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.GetLocalizedPropertyValueString(Umbraco.Core.Models.IPublishedContent,System.String,System.String)">
+            <summary>
+            Restituisce il valore localizzato per la <paramref name="propertyName"/> del <paramref name="node"/>
+            </summary>
+            <param name="node"></param>
+            <param name="propertyName"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.GetLocalizedPropertyValueString(Umbraco.Core.Models.IPublishedContent,System.String,System.Boolean,System.String)">
+            <summary>
+            Restituisce il valore localizzato per la <paramref name="propertyName"/> del <paramref name="node"/>
+            </summary>
+            <param name="node"></param>
+            <param name="propertyName"></param>
+            <param name="recursive"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
         <member name="M:Xilium.UmbLib.Helper.XubHelperBase.GetInstance(Umbraco.Core.Models.IPublishedContent,System.Type,System.Func{Xilium.UmbLib.Logic.IContentLogic})">
             <summary>
             Restituisce un istanza ContentLogicBase, se non è già stata istanziata allora lo crea usando il metodo passato per argomento.
@@ -798,6 +1271,19 @@
             <param name="content"></param>
             <param name="contentMapType"></param>
             <param name="constructorDelegate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.getInstanceTypeArchive(System.Type)">
+            <summary>
+            Crea e restituisce un oggeto Dictionary per archiviare le istanze create con <see ref="GetInstance"/>
+            </summary>
+            <param name="contentMapType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.UmbracoHelper">
+            <summary>
+            Restituisce l'Helper di Umbraco per il contesto corrente.
+            </summary>
             <returns></returns>
         </member>
         <member name="M:Xilium.UmbLib.Helper.XubHelperBase.UmbracoTypedContent(System.Int32)">
@@ -867,6 +1353,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.HomeContents">
+            <summary>
+            Restituisce la lista di tutte le Home, una per lingua.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Xilium.UmbLib.Helper.XubHelperBase.HomeContentsAndLanguages">
             <summary>
             Restituisce l'elenco delle Home secondo la configurazione corrente.
@@ -906,6 +1398,28 @@
             Restituisce i nodi di primo e secondo livello contenuti nella pagina Home.
             </summary>
         </member>
+        <member name="P:Xilium.UmbLib.Helper.XubHelperBase.ConfigRootContent">
+            <summary>
+            Restituisce il nodo ConfigRoot
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.getConfigRootFolder">
+            <summary>
+            Determina il nodo ConfigRoot
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Xilium.UmbLib.Helper.XubHelperBase.DatabaseRootContent">
+            <summary>
+            Restituisce il nodo DatabaseRoot
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.getDatabaseRootFolder">
+            <summary>
+            Determina il nodo DatabaseRoot
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Xilium.UmbLib.Helper.XubHelperBase.ViewDataStarter(System.Web.Mvc.ViewDataDictionary)">
             <summary>
             Inizializza e restituisce l'oggetto ViewDataDictionary passato, aggiungendovi l'istanza XubHelper corrente.
@@ -917,6 +1431,78 @@
             <summary>
             Descrizione di riepilogo per ContentLogicBase
             </summary>
+        </member>
+        <member name="T:Xilium.UmbLib.Logic.LogicDocumentTypesAttribute">
+            <summary>
+            Permette di dichiarare il DocumentTypeAlias che l'oggetto Logic è abilitato ad elaborare.
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Logic.LogicDocumentTypesAttribute.DocumentTypeAlias">
+            <summary>
+            Restituisce il DocumentTypeAlias che l'oggetto Logic è abilitato ad elaborare.
+            </summary>
+        </member>
+        <member name="P:Xilium.UmbLib.Logic.LogicDocumentTypesAttribute.AltDocumentTypeAliases">
+            <summary>
+            Quando definito, restituisce i DocumentTypeAlias alternativi che l'oggetto Logic è abilitato ad elaborare.
+            </summary>
+        </member>
+        <member name="T:Xilium.UmbLib.Logic.LogicHelper">
+            <summary>
+            Helper per il namespace Logic
+            </summary>
+        </member>
+        <member name="F:Xilium.UmbLib.Logic.LogicHelper.__logicTypeDocumentTypeMapCollection">
+            <summary>
+            Collection che memorizza tutti i Dictionary di mappa "DocumentTypeAlias - ContentLogicType", separati per "inheritType".
+            </summary>
+        </member>
+        <member name="M:Xilium.UmbLib.Logic.LogicHelper.GetLogicTypeByDocumentTypeAlias(System.Type,System.String)">
+            <summary>
+            Restituisce il Type della classe, che implementa <paramref name="inheritType"/>, in grado di interpretare un nodo <paramref name="documentTypeAlias"/>.
+            Se dovessero esserci più classi che implementano il medesimo <paramref name="documentTypeAlias"/>, il metodo restituisce il primo.
+            </summary>
+            <param name="inheritType"></param>
+            <param name="documentTypeAlias"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Logic.LogicHelper.GetAllLogicTypeByDocumentTypeAlias(System.Type,System.String)">
+            <summary>
+            Restituisce tutti i Type delle classi, che implementano <paramref name="inheritType"/>, in grado di interpretare un nodo <paramref name="documentTypeAlias"/>.
+            Di norma esiste solo una classe che implementa in determinato <paramref name="documentTypeAlias"/>, quindi il valore restituito probabilmente è composto da
+            un solo item. <see cref="M:Xilium.UmbLib.Logic.LogicHelper.GetLogicTypeByDocumentTypeAlias(System.Type,System.String)"/>.
+            </summary>
+            <param name="inheritType"></param>
+            <param name="documentTypeAlias"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Logic.LogicHelper.getLogicTypeDocumentTypeMap(System.Type)">
+            <summary>
+            Recupera o crea la mappa `DocumentTypeAlias - ContentLogicType`, per tutte le classi che implementano <paramref name="inheritType"/>.
+            </summary>
+            <param name="inheritType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Logic.LogicHelper.createLogicTypeDocumentTypeMap(System.Type)">
+            <summary>
+            Restituisce la mappa `DocumentTypeAlias - ContentLogicType`, per tutte le classi che implementano <paramref name="inheritType"/>.
+            </summary>
+            <param name="inheritType">Intefaccia che devono implementare le classi elaborate.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Logic.LogicHelper.getLogicTypes(System.Type)">
+            <summary>
+            Restituisce la lista dei Type che implementano l'interfaccia <paramref name="inheritType"/>.
+            </summary>
+            <param name="inheritType">Type dell'interfaccia per cui eseguire la ricerca.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Logic.LogicHelper.getLogicTypeDocumentTypeAliases(System.Type)">
+            <summary>
+            Restituisce la lista di DocumentType che il <paramref name="logicType"/> implementa.
+            </summary>
+            <param name="logicType"></param>
+            <returns></returns>
         </member>
         <member name="T:Xilium.UmbLib.Lucene.Contracts.ILuceneDataNode">
             <summary>
@@ -1175,7 +1761,7 @@
             <param name="languageCode"></param>
             <returns></returns>
         </member>
-        <member name="M:Xilium.UmbLib.Lucene.LuceneIndexType.GetIndexType(System.String,System.String,Xilium.UmbLib.Helper.XubHelperBase)">
+        <member name="M:Xilium.UmbLib.Lucene.LuceneIndexType.GetIndexType(System.String,System.String,Xilium.UmbLib.Helper.IXubHelper)">
             <summary>
             Costruisce il codice IndexType, usato all'interno della configurazione del file "ExamineSettings.config".
             </summary>
@@ -2203,6 +2789,29 @@
             Verifica se la password indicata coincide a `value`.
             </summary>
             <param name="value">Valore di confronto</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Reflection.AssetsController.Get(System.String)">
+            <summary>
+            Restituisce il file di Asset richiesto.
+            </summary>
+            <param name="path">Percorso della risorsa, nella struttura "Assets"</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Reflection.AssetsController.Update(System.String,System.String)">
+            <summary>
+            Verifica ed aggiorna il file Asset nel FileSystem.
+            </summary>
+            <param name="path">Percorso della risorsa nella struttura "Assets".</param>
+            <param name="dest">Percorso di collocazione risorsa (senza nome file)</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.UmbLib.Reflection.AssetsController.UpdateFolder(System.String,System.String)">
+            <summary>
+            Verifica ed aggiorna la cartella di Asset nel FileSystem.
+            </summary>
+            <param name="path">Percorso della risorsa nella struttura "Assets".</param>
+            <param name="dest">Percorso di collocazione risorsa (senza nome file)</param>
             <returns></returns>
         </member>
         <member name="T:Xilium.UmbLib.SharedData.Server.SharedDataHelper">

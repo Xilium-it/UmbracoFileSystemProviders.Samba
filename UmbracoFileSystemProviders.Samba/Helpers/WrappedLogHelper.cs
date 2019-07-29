@@ -8,7 +8,7 @@ using Umbraco.Core.Logging;
 
 namespace Our.Umbraco.FileSystemProviders.Samba.Helpers
 {
-	/// <summary>
+    /// <summary>
     /// Provides a <see cref="LogHelper"/> wrapper for logging messages within the application.
     /// </summary>
     public class WrappedLogHelper : ILogHelper

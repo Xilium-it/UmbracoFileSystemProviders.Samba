@@ -6,7 +6,7 @@
 namespace Our.Umbraco.FileSystemProviders.Samba
 {
     using System;
-	using System.Configuration;
+    using System.Configuration;
     using global::Umbraco.Core;
     using global::Umbraco.Core.Configuration;
 
@@ -28,7 +28,7 @@ namespace Our.Umbraco.FileSystemProviders.Samba
             {
                 var providerType = Type.GetType(providerConfig.Type);
                 if (providerType == null || providerType.IsAssignableFrom(typeof(SambaFileSystem)) == false)
-				{
+                {
                     continue;
                 }
 

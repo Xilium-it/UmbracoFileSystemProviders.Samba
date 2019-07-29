@@ -7,7 +7,7 @@
 namespace Our.Umbraco.FileSystemProviders.Samba
 {
     using System;
-	using System.Web.Hosting;
+    using System.Web.Hosting;
     using global::Umbraco.Core.IO;
 
     /// <summary>

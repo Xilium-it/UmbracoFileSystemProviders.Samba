@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Our.Umbraco.FileSystemProviders.Samba.Helpers
 {
-	/// <summary>
+    /// <summary>
     /// The default MIME type resolver.
     /// </summary>
     public class MimeTypeResolver : IMimeTypeResolver

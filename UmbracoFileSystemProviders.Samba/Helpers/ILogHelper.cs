@@ -7,7 +7,7 @@ using System;
 
 namespace Our.Umbraco.FileSystemProviders.Samba.Helpers
 {
-	/// <summary>
+    /// <summary>
     /// Provides methods for logging messages within the application.
     /// </summary>
     public interface ILogHelper

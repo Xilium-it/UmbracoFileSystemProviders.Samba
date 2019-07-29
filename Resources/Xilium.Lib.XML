@@ -4,6 +4,218 @@
         <name>Xilium.Lib</name>
     </assembly>
     <members>
+        <member name="T:Xilium.Lib.AppDriver.AssemblyInfo.IAssemblyInfoDriver">
+            <summary>
+            Rappresenta il Driver per ottenere informazioni dall'Assembly
+            </summary>
+        </member>
+        <member name="P:Xilium.Lib.AppDriver.AssemblyInfo.IAssemblyInfoDriver.CreationDateTime">
+            <summary>
+            Indica la data di creazione dell'oggetto AssemblyInfoDriver.
+            </summary>
+        </member>
+        <member name="P:Xilium.Lib.AppDriver.AssemblyInfo.AssemblyInfoDriverProvider.LastCreationDateTime">
+            <summary>
+            Permette di ottenere il valore CreationDateTime più recente.
+            </summary>
+        </member>
+        <member name="M:Xilium.Lib.AppDriver.AssemblyInfo.AssemblyInfoDriverProvider.CheckAndSetLastCreationDateTime(System.DateTime)">
+            <summary>
+            Verifica ed imposta il valore <see cref="P:Xilium.Lib.AppDriver.AssemblyInfo.AssemblyInfoDriverProvider.LastCreationDateTime"/>.
+            </summary>
+            <param name="creationDateTime"></param>
+        </member>
+        <member name="T:Xilium.Lib.AppDriver.JSON.JSONParserDriverProvider">
+            <inheritdoc/>
+        </member>
+        <member name="M:Xilium.Lib.AppDriver.JSON.JSONParserDriverProvider.Stringify(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Xilium.Lib.AppDriver.JSON.JSONParserDriverProvider.Stringify(System.Object,System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Xilium.Lib.AppDriver.JSON.JSONParserDriverProvider.Stringify(System.Object,System.Boolean,System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Xilium.Lib.AppDriver.JSON.JSONParserDriverProvider.Parse(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Xilium.Lib.AppDriver.JSON.JSONParserDriverProvider.Parse(System.String,System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Xilium.Lib.AppDriver.JSON.JSONParserDriverProvider.Parse(System.String,System.Boolean,System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Xilium.Lib.AppDriver.JSON.JSONParserDriverProvider.Parse``1(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Xilium.Lib.AppDriver.JSON.JSONParserDriverProvider.Parse``1(System.String,System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Xilium.Lib.AppDriver.JSON.JSONParserDriverProvider.Parse``1(System.String,System.Boolean,System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Xilium.Lib.AppDriver.JSON.JSONParserDriverProvider.Convert``1(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Xilium.Lib.AppDriver.JSON.JSONParserDriverProvider.Convert``1(System.Object,System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Xilium.Lib.AppDriver.JSON.JSONParserDriverProvider.ConvertProperty``1(System.Object,System.String,``0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Xilium.Lib.AppDriver.JSON.JSONParserDriverProvider.ConvertProperty``1(System.Object,System.String,System.Boolean,``0)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Xilium.Lib.AppDriver.JSON.IJSONParserDriver">
+            <summary>
+            Implementa il parser di JSON.
+            </summary>
+        </member>
+        <member name="M:Xilium.Lib.AppDriver.JSON.IJSONParserDriver.Stringify(System.Object)">
+            <summary>
+            Codifica <paramref name="value"/> in formato JSON.
+            </summary>
+            <param name="value">Valore da convertire in JSON</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.AppDriver.JSON.IJSONParserDriver.Stringify(System.Object,System.Boolean)">
+            <summary>
+            Codifica <paramref name="value"/> in formato JSON.
+            </summary>
+            <param name="value">Valore da convertire in JSON</param>
+            <param name="camelCase">Se True e se <paramref name="value"/> è un oggetto, le property saranno convertite nello stile `camelCase`.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.AppDriver.JSON.IJSONParserDriver.Stringify(System.Object,System.Boolean,System.Boolean)">
+            <summary>
+            Codifica <paramref name="value"/> in formato JSON.
+            </summary>
+            <param name="value">Valore da convertire in JSON</param>
+            <param name="camelCase">Se True e se <paramref name="value"/> è un oggetto, le property saranno convertite nello stile `camelCase`.</param>
+            <param name="readable">Se True il codice JSON generato viene indentato per essere letto con maggiore facilità.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.AppDriver.JSON.IJSONParserDriver.Parse(System.String)">
+            <summary>
+            Decodifica <paramref name="jsonSource"/> in valore nativo.
+            </summary>
+            <param name="jsonSource">Stringa JSON da convertire in valore nativo.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.AppDriver.JSON.IJSONParserDriver.Parse(System.String,System.Boolean)">
+            <summary>
+            Decodifica <paramref name="jsonSource"/> in valore nativo.
+            </summary>
+            <param name="jsonSource">Stringa JSON da convertire in valore nativo.</param>
+            <param name="camelCase">Se True e se <paramref name="jsonSource"/> contiene un oggetto, le property saranno decodificate dallo stile `camelCase`.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.AppDriver.JSON.IJSONParserDriver.Parse(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Decodifica <paramref name="jsonSource"/> in valore nativo.
+            </summary>
+            <param name="jsonSource">Stringa JSON da convertire in valore nativo.</param>
+            <param name="camelCase">Se True e se <paramref name="jsonSource"/> contiene un oggetto, le property saranno decodificate dallo stile `camelCase`.</param>
+            <param name="floatToDecimal">Se True, indica al Parser che i numeri non interi devono essere trattati come numeri Decimal anzihè come numeri Double.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.AppDriver.JSON.IJSONParserDriver.Parse``1(System.String)">
+            <summary>
+            Decodifica <paramref name="jsonSource"/> in valore nativo.
+            </summary>
+            <typeparam name="T">Tipo di oggetto restituito</typeparam>
+            <param name="jsonSource">Stringa JSON da convertire in valore nativo.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.AppDriver.JSON.IJSONParserDriver.Parse``1(System.String,System.Boolean)">
+            <summary>
+            Decodifica <paramref name="jsonSource"/> in valore nativo.
+            </summary>
+            <typeparam name="T">Tipo di oggetto restituito</typeparam>
+            <param name="jsonSource">Stringa JSON da convertire in valore nativo.</param>
+            <param name="camelCase">Se True e se <paramref name="jsonSource"/> contiene un oggetto, le property saranno decodificate dallo stile `camelCase`.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.AppDriver.JSON.IJSONParserDriver.Parse``1(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Decodifica <paramref name="jsonSource"/> in valore nativo.
+            </summary>
+            <typeparam name="T">Tipo di oggetto restituito</typeparam>
+            <param name="jsonSource">Stringa JSON da convertire in valore nativo.</param>
+            <param name="camelCase">Se True e se <paramref name="jsonSource"/> contiene un oggetto, le property saranno decodificate dallo stile `camelCase`.</param>
+            <param name="floatToDecimal">Se True, indica al Parser che i numeri non interi devono essere trattati come numeri Decimal anzihè come numeri Double.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.AppDriver.JSON.IJSONParserDriver.Convert``1(System.Object)">
+            <summary>
+            Converte un oggetto generico non completamente decodificato da JSON, in valore nativo.
+            </summary>
+            <typeparam name="T">Tipo di oggetto restituito</typeparam>
+            <param name="jsonObject">Oggett JSON da completarne la decodifica</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.AppDriver.JSON.IJSONParserDriver.Convert``1(System.Object,System.Boolean)">
+            <summary>
+            Converte un oggetto generico non completamente decodificato da JSON, in valore nativo.
+            </summary>
+            <typeparam name="T">Tipo di oggetto restituito</typeparam>
+            <param name="jsonObject">Oggett JSON da completarne la decodifica</param>
+            <param name="floatToDecimal">Se True, indica al Parser che i numeri non interi devono essere trattati come numeri Decimal anzihè come numeri Double.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.AppDriver.JSON.IJSONParserDriver.ConvertProperty``1(System.Object,System.String,``0)">
+            <summary>
+            Converte la property di un oggetto generico non completamente decodificato da JSON, in valore nativo.
+            </summary>
+            <typeparam name="T">Tipo di oggetto restituito</typeparam>
+            <param name="jsonObject">Oggett JSON da cui leggere la property</param>
+            <param name="propertyName">Nome Property per cui completare la decodifica</param>
+            <param name="fallbackValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.AppDriver.JSON.IJSONParserDriver.ConvertProperty``1(System.Object,System.String,System.Boolean,``0)">
+            <summary>
+            Converte la property di un oggetto generico non completamente decodificato da JSON, in valore nativo.
+            </summary>
+            <typeparam name="T">Tipo di oggetto restituito</typeparam>
+            <param name="jsonObject">Oggett JSON da cui leggere la property</param>
+            <param name="propertyName">Nome Property per cui completare la decodifica</param>
+            <param name="floatToDecimal">Se True, indica al Parser che i numeri non interi devono essere trattati come numeri Decimal anzihè come numeri Double.</param>
+            <param name="fallbackValue"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.Lib.AppDriver.Support.DriverProviderBase`1">
+            <summary>
+            Il Driver Provider si occupa di rintracciare l'oggetto Driver (nella App che esegue `Xilium.Lib`) che implementa `TDriver`,
+            e di eseguire controlli e comportamenti standard che il Driver deve avere. Così facendo il Driver è tenuto ad eseguire la sola operazione di
+            esecuzione comando. Mentre al DriverProvider spetta anche l'elaborazione e controllo di situazioni speciali.
+            </summary>
+            <typeparam name="TDriver"></typeparam>
+        </member>
+        <member name="M:Xilium.Lib.AppDriver.Support.DriverProviderBase`1.getAppDriver__verKillOnMultiAppcode">
+            <summary>
+            La versione verifica se esiste una sola istanza del Driver.
+            Se non ne esistono genera errore.
+            Se ne esistono più di una genera errore.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.AppDriver.Support.DriverProviderBase`1.getAppDriver__verCheckAsmInfo">
+            <summary>
+            La versione verifica se esiste una sola istanza del Driver.
+            Se non ne esistono genera errore.
+            Se ne esistono più di una ed appartengono a più APP_CODE allora sceglie l'oggetto appartenente all'assembly più giovane.
+            Ma se ne esistono più di una, appartenenti al medesimo APP_CODE oppure ad altri Assembli, allora il metodo genera errore.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.AppDriver.Support.DriverProviderBase`1.killApplicationAfter">
+            <summary>
+            Esegue la chiusura dell'applicazione dopo 1 secondo dalla chiamata.
+            </summary>
+        </member>
+        <!-- Commento XML in formato non corretto ignorato per il membro 'T:Xilium.Lib.Cache.FileCache.ExampleBinder' -->
         <member name="P:Xilium.Lib.Cache.FileCache.FileCache.DefaultRegion">
             <summary>
             Used to store the default region when accessing the cache via [] calls
@@ -24,6 +236,18 @@
         <member name="P:Xilium.Lib.Cache.FileCache.FileCache.MaxCacheSize">
             <summary>
             Used to specify the disk size, in bytes, that can be used by the File Cache
+            </summary>
+        </member>
+        <member name="P:Xilium.Lib.Cache.FileCache.FileCache.SubfoldersNameLength">
+            <summary>
+            Used to specify the name length of any subfolder.
+            Note: the cache item Key can be splitted in subfolders to provide a best performance in read/write actions. 
+            </summary>
+        </member>
+        <member name="P:Xilium.Lib.Cache.FileCache.FileCache.SubfoldersMaxCount">
+            <summary>
+            Used to specify the maximum numbers of subfolders.
+            Note: the cache item Key can be splitted in subfolders to provide a best performance in read/write actions. 
             </summary>
         </member>
         <member name="P:Xilium.Lib.Cache.FileCache.FileCache.CurrentCacheSize">
@@ -220,6 +444,15 @@
             <param name="regionName"></param>
             <returns></returns>
         </member>
+        <member name="M:Xilium.Lib.Cache.FileCache.FileCache.splitFilenameToSubfolders(System.String,System.String@,System.String@)">
+            <summary>
+            Quando possibile, separa parte del `fileName` in sottocartelle, per migliorare le prestazioni di legguta/scrittura
+            </summary>
+            <param name="fileName"></param>
+            <param name="subfolder"></param>
+            <param name="splittedFileName"></param>
+            <returns></returns>
+        </member>
         <member name="M:Xilium.Lib.Cache.FileCache.FileCache.GetEnumerator(System.String)">
             <summary>
             Returns an enumerator for the specified region (defaults to base-level cache directory).
@@ -301,6 +534,14 @@
             Permette di settare il sistema di codifica della chiave su file.
             </summary>
             <param name="keyEncoder"></param>
+        </member>
+        <member name="M:Xilium.Lib.Cache.RapidFileCache.RapidFileCache.SetSubfoldersSplitting(System.Int32,System.Int32)">
+            <summary>
+            Permette di settare i parametri di Splitting dei file di cache, in sottocartelle.
+            Ciò migliora le prestazioni di accesso al FileSystem.
+            </summary>
+            <param name="subfoldersNameLength">Lunghezza del nome delle sottocartelle</param>
+            <param name="subfoldersMaxCount">Numero massimo di sottocartelle</param>
         </member>
         <member name="M:Xilium.Lib.Cache.RapidFileCache.RapidFileCache.CheckKeyValidity(System.String)">
             <summary>
@@ -1876,6 +2117,24 @@
             <param name="ellipsis">Caratteri da aggiungere qualora si dovesse rendere necessario eseguire un taglio netto del testo</param>
             <returns></returns>
         </member>
+        <member name="M:Xilium.Lib.Extensions.Format.ReplacePattern(System.String,System.String,System.String)">
+            <summary>
+            Sostituisce il match di <paramref name="pattern"/> con il testo <paramref name="replacement"/>.
+            </summary>
+            <param name="value"></param>
+            <param name="pattern"></param>
+            <param name="replacement"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.Extensions.Format.ReplacePattern(System.String,System.String,System.Text.RegularExpressions.MatchEvaluator)">
+            <summary>
+            Permette la sostituzione dei match di <paramref name="pattern"/> con il testo restituito dal delegate <paramref name="matchEvaluator"/>.
+            </summary>
+            <param name="value"></param>
+            <param name="pattern"></param>
+            <param name="matchEvaluator"></param>
+            <returns></returns>
+        </member>
         <member name="M:Xilium.Lib.Extensions.Convert.ToNullDateTime(System.String,System.Boolean)">
             <summary>
             Converte una stringa in un oggetto DateTime
@@ -2948,6 +3207,141 @@
             </summary>
             <param name="timeZoneInfo">TimeZone per cui ottenere l'orario di adesso.</param>
             <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.Xml.XmlConfigReader.GetByKey(System.String,System.String)">
+            <summary>
+            Gets the InnerText of a configuration key, to just have a simple string value, but use as you like 
+            </summary>
+            <param name="key">key name or path</param>
+            <param name="ifUndefined">Indicates the value returned if key is unavailable</param>
+            <returns>value</returns>
+        </member>
+        <member name="M:Xilium.Lib.Xml.XmlConfigReader.GetNodeByKey(System.String,System.Xml.XmlNode)">
+            <summary>
+            Gets the InnerText of a configuration key, to just have a simple string value, but use as you like 
+            </summary>
+            <param name="key">key name or path</param>
+            <param name="ifUndefined">Indicates the value returned if key is unavailable</param>
+            <returns>value</returns>
+        </member>
+        <member name="M:Xilium.Lib.Xml.XmlConfigReader.GetConfigByKey(System.String,System.Xml.XmlNode)">
+            <summary>
+            Gets the InnerText of a configuration key, to just have a simple string value, but use as you like 
+            </summary>
+            <param name="key">key name or path</param>
+            <param name="ifUndefined">Indicates the value returned if key is unavailable</param>
+            <returns>value</returns>
+        </member>
+        <member name="M:Xilium.Lib.Xml.XmlConfigReader.GetMultiByKey(System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Get a multi value key
+            </summary>
+            <param name="key">name of the outermost tag</param>
+            <param name="ifUndefined">Indicates the value returned if key is unavailable</param>
+            <returns>list of strings</returns>
+        </member>
+        <member name="M:Xilium.Lib.Xml.XmlConfigReader.GetBooleanByKey(System.String,System.Boolean)">
+            <summary>
+            Check whether the a given key is set to boolean True/False
+            </summary>
+            <returns>true on enabled</returns>
+        </member>
+        <member name="M:Xilium.Lib.Xml.XmlConfigReader.GetNullBoolByKey(System.String,System.Nullable{System.Boolean})">
+            <summary>
+            Check whether the a given key is set to boolean True/False
+            </summary>
+            <returns>true on enabled</returns>
+        </member>
+        <member name="M:Xilium.Lib.Xml.XmlConfigReader.GetDoubleByKey(System.String,System.Nullable{System.Double})">
+            <summary>
+            Returns Double value from `key` item.
+            </summary>
+            <param name="key"></param>
+            <param name="ifUndefined"></param>
+            <returns></returns>
+        </member>
+        <!-- Commento XML in formato non corretto ignorato per il membro 'T:Xilium.Lib.Xml.Css2XpathConverter' -->
+        <member name="M:Xilium.Lib.Xml.Css2XpathConverter.AddRule(System.Text.RegularExpressions.Regex,System.Text.RegularExpressions.MatchEvaluator)">
+            <summary>
+            Adds a rule for transforming CSS to XPath.
+            </summary>
+            <param name="regex">A Regex for the parts of the CSS you want to transform.</param>
+            <param name="replacement">A MatchEvaluator for converting the matched CSS parts to XPath.</param>
+            <exception cref="T:System.ArgumentException">Thrown if regex or replacement is null.</exception>
+            <example>
+            <code>
+            // Handle :contains selectors
+            AddRule(new Regex(@":contains\(([^\)]*)\)"), new MatchEvaluator((Match m) => {
+                return "[contains(string(.),'" + m.Groups[1].Value + "')]";
+            }));
+            
+            // Note: Remember that m.Groups[1] refers to the first captured group; m.Groups[0] refers
+            // to the entire match.
+            </code>
+            </example>
+        </member>
+        <member name="M:Xilium.Lib.Xml.Css2XpathConverter.AddRule(System.Text.RegularExpressions.Regex,System.String)">
+            <summary>
+            Adds a rule for transforming CSS to XPath.
+            </summary>
+            <param name="regex">A Regex for the parts of the CSS you want to transform.</param>
+            <param name="replacement">A String for converting the matched CSS parts to XPath.</param>
+            <exception cref="T:System.ArgumentException">Thrown if regex or replacement is null.</exception>
+            <example>
+            <code>
+            // Replace commas (denotes multiple queries) with pipes (|)
+            AddRule(new Regex(@"\s*,\s*"), "|");
+            </code>
+            </example>
+        </member>
+        <member name="M:Xilium.Lib.Xml.Css2XpathConverter._AddRule(System.Text.RegularExpressions.Regex,System.Object)">
+            <summary>
+            Adds a rule for transforming CSS to XPath. For internal use only.
+            </summary>
+            <param name="regex">A Regex for the parts of the CSS you want to transform.</param>
+            <param name="replacement">A String or MatchEvaluator for converting the matched CSS parts to XPath.</param>
+            <exception cref="T:System.ArgumentException">Thrown if regex or replacement is null, or if the replacement is neither a String nor a MatchEvaluator.</exception>
+        </member>
+        <member name="M:Xilium.Lib.Xml.Css2XpathConverter.Transform(System.String)">
+            <summary>
+            Transforms the given CSS selector to an XPath selector.
+            </summary>
+            <param name="css">The CSS selector to transform into an XPath selector.</param>
+            <returns>The resultant XPath selector.</returns>
+        </member>
+        <member name="M:Xilium.Lib.Xml.Css2XpathConverter.PreloadRules">
+            <summary>
+            Forces the CSS to XPath rules to be created. Not neccesary; the rules are created the first time Transform is called.
+            </summary>
+            <remarks>
+            Perhaps you would want to use this in the initalization procedure of your application.
+            </remarks>
+        </member>
+        <member name="T:Xilium.Lib.IO.Path">
+            <summary>
+            Metodi di helper per il calcolo di Path.
+            </summary>
+        </member>
+        <member name="P:Xilium.Lib.IO.Path.ApplicationBaseDirectory">
+            <summary>
+            Restituisce il percorso dell'applicazione.
+            (alias di `System.AppDomain.CurrentDomain.BaseDirectory`).
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.IO.Path.ServerMapPath(System.String)">
+            <summary>
+            Converte il percorso relativo su Applicazione, in percorso assoluto del FileSystem.
+            <para>Es: "~/App_Data/TEMP" -> "c:\InetWeb\Domini\ACME\www_v1\App_Data\Temp"</para>
+            </summary>
+            <param name="relativePath">Percorso relativo (deve iniziare per "~\" o "~/")</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.IO.Path.BuildPath(System.String)">
+            <summary>
+            Verifica e crea il percorso indicato.
+            </summary>
+            <param name="path">Percorso che viene verificato e, se mancante, costruito.</param>
         </member>
         <member name="M:Xilium.Lib.IO.Path.PathBuilder(System.String)">
             <summary>
@@ -4572,6 +4966,149 @@
             <param name="prefix"></param>
             <returns></returns>
         </member>
+        <member name="T:Xilium.Lib.Reflection.AssetProvider">
+            <summary>
+            Offre la possibilità di accedere agli Asset di un Assembly.
+            </summary>
+        </member>
+        <member name="F:Xilium.Lib.Reflection.AssetProvider.DirectoryMarkName">
+            <summary>
+            Se un AssetKey termina con questo valore, significa che esiste una cartella con nome "AssetKey.TrimEnd(DirectoryMarkName)".
+            Per far sì che il sistema funzioni si deve creare un file Asset in ogni cartella, con tale nome.
+            </summary>
+        </member>
+        <member name="M:Xilium.Lib.Reflection.AssetProvider.#ctor(System.Reflection.Assembly,System.String)">
+            <summary>
+            Istanzia un nuovo AssetProvider
+            </summary>
+            <param name="assetsAssembly">Assembly in cui sono memorizzati gli Asset.</param>
+            <param name="namespaceRoot">Percorso Namespace di Root in cui sono memorizzati gli Asset da considerare.</param>
+        </member>
+        <member name="P:Xilium.Lib.Reflection.AssetProvider.AssetsAssembly">
+            <summary>
+            Assembly in cui sono memorizzati gli Asset.
+            </summary>
+        </member>
+        <member name="P:Xilium.Lib.Reflection.AssetProvider.NamespaceRoot">
+            <summary>
+            Percorso Namespace di Root in cui sono memorizzati gli Asset da considerare.
+            </summary>
+        </member>
+        <member name="P:Xilium.Lib.Reflection.AssetProvider.DirectorySeparatorChar">
+            <summary>
+            Permette di definire il separatore di directory che dev'essere usato per le elaborazioni.
+            </summary>
+        </member>
+        <member name="P:Xilium.Lib.Reflection.AssetProvider.Folders">
+            <summary>
+            Elenco delle cartelle definite all'interno della struttura degli Asset.
+            Attenzione: è necessario che ogni cartella contenga un file col nome <see cref="F:Xilium.Lib.Reflection.AssetProvider.DirectoryMarkName"/>.
+            </summary>
+        </member>
+        <member name="M:Xilium.Lib.Reflection.AssetProvider.SearchKey(System.String,System.Boolean)">
+            <summary>
+            Cerca un Asset che corrisponda al Path indicato, e restituisce il valore identificativo della risorsa.
+            Restituisce NULL se non trovato.
+            </summary>
+            <param name="assetFullname">Percorso della risorsa, in formato FS.</param>
+            <param name="isPartialPath">Se True il Path può essere relativo, altrimenti deve essere assoluto (per il NamespaceRoot indicato) ed iniziare con <see cref="P:Xilium.Lib.Reflection.AssetProvider.DirectorySeparatorChar"/>.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.Reflection.AssetProvider.GetFullname(System.String)">
+            <summary>
+            Restituisce il percorso completo in formato FS dell'Asset richiesto.
+            </summary>
+            <param name="assetKey">Identificativo dell'Asset.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.Reflection.AssetProvider.GetAllAssetKeys">
+            <summary>
+            Restituisce l'elenco di tutti gli Asset disponibili, sottoforma di AssetKey.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.Reflection.AssetProvider.GetAllAssetFullnames">
+            <summary>
+            Restituisce l'elenco di tutti gli Asset disponibili, sottoforma di percorsi FS.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.Reflection.AssetProvider.GetContent(System.String)">
+            <summary>
+            Restituisce lo Stream della risorsa richiesta.
+            </summary>
+            <param name="assetKey">Valore Key della risorsa. Usare <see cref="M:Xilium.Lib.Reflection.AssetProvider.SearchKey(System.String,System.Boolean)"/>.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.Reflection.AssetProvider.UpdateToFS(System.String,System.String)">
+            <summary>
+            Verifica ed aggiorna il file Asset nel FileSystem.
+            Restituisce True se l'update è stato eseguito, False se non è stato necessario.
+            </summary>
+            <param name="assetKey">Riferimento all'Asset di origine Update.</param>
+            <param name="destFullname">Percorso del file sul FileSystem.</param>
+            <returns>Restituisce True se l'update è stato eseguito, False se non è stato necessario.</returns>
+        </member>
+        <member name="M:Xilium.Lib.Reflection.AssetProvider.UpdateFolderToFS(System.String,System.String)">
+            <summary>
+            Verifica ed aggiorna l'intera cartella <paramref name="assetFolder"/> nella cartella FS <paramref name="destFolder"/>.
+            </summary>
+            <param name="assetFolder">
+            Percorso Asset di origine Update; deve iniziare per <see cref="P:Xilium.Lib.Reflection.AssetProvider.DirectorySeparatorChar"/>; usare "<see cref="P:Xilium.Lib.Reflection.AssetProvider.DirectorySeparatorChar"/>" per indicare Root.
+            </param>
+            <param name="destFolder">Percorso nel FileSystem in cui eseguire l'aggiornamento.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.Reflection.AssetProvider.calcFolders">
+            <summary>
+            Calcola l'elenco delle cartelle Asset memorizzate nell'Assembly, nel path <see cref="P:Xilium.Lib.Reflection.AssetProvider.NamespaceRoot"/>.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.Reflection.AssetProvider.getFullname(System.Collections.Generic.IEnumerable{System.String},System.String,System.Func{System.String,System.String})">
+            <summary>
+            Dato un elenco di cartelle, calcola il percorso fullname dell'Asset indicato.
+            </summary>
+            <param name="folders">Elenco di cartelle da considerare.</param>
+            <param name="localAssetKey">Identificativo dell'Asset per cui calcolare il fullname (senza <see cref="P:Xilium.Lib.Reflection.AssetProvider.NamespaceRoot"/>).</param>
+            <param name="nameConverter">Convertitore del nome cartella o file, prima di essere concatenato col percorso.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.Reflection.AssetProvider.ConvertAssetKeyToFullname(System.String)">
+            <summary>
+            Esegue una primitiva conversione del codice AssetKey nel relativo valore Fullname.
+            Si deve tener conto che .NET converte un percorso di Asset avente un segno punto seguito da una cifra con un punto, underscore e cifra.
+            Per esempio se il nome cartella è "Folder.123", il Namespace convertito da .NET sarà "Folder._123".
+            </summary>
+            <param name="assetKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.Reflection.AssetProvider.ConvertAssetKeyToFilename(System.String)">
+            <summary>
+            Similmente a <see cref="M:Xilium.Lib.Reflection.AssetProvider.ConvertAssetKeyToFullname(System.String)"/>, esegue una primitiva conversione del codice AssetKey in Filename, considerando
+            che <paramref name="localAssetKey"/> rappresenta soltanto la parte "nome file" dell'asset.
+            Vedere <see cref="M:Xilium.Lib.Reflection.AssetProvider.ConvertAssetKeyToFullname(System.String)"/> per dettagli.
+            </summary>
+            <param name="localAssetKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.Reflection.AssetProvider.ConvertAssetKeyToFoldername(System.String)">
+            <summary>
+            Similmente a <see cref="M:Xilium.Lib.Reflection.AssetProvider.ConvertAssetKeyToFullname(System.String)"/>, esegue una primitiva conversione del codice AssetKey in Filename, considerando
+            che <paramref name="localAssetKey"/> rappresenta soltanto la parte "nome cartella" dell'asset.
+            Vedere <see cref="M:Xilium.Lib.Reflection.AssetProvider.ConvertAssetKeyToFullname(System.String)"/> per dettagli.
+            </summary>
+            <param name="localAssetKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.Reflection.AssetProvider.ConvertAssetKeyFromFullname(System.String)">
+            <summary>
+            Inversamente a <see cref="M:Xilium.Lib.Reflection.AssetProvider.ConvertAssetKeyToFullname(System.String)"/>, esegue una primitiva conversione del valore Fullname dell'asset nel relativo codice AssetKey.
+            Vedere <see cref="M:Xilium.Lib.Reflection.AssetProvider.ConvertAssetKeyToFullname(System.String)"/> per dettagli.
+            </summary>
+            <param name="assetFullname"></param>
+            <returns></returns>
+        </member>
         <member name="T:Xilium.Lib.Reflection.ClassSearcher">
             <summary>
             Offre metodi per la ricerca di classi in tutti gli Assembly disponibili
@@ -4621,6 +5158,27 @@
             Indica se l'Assembly è del Namespace "System
             </summary>
             <param name="assembly"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xilium.Lib.Reflection.Library">
+            <summary>
+            Insieme di metodi generici sul namespace corrente.
+            </summary>
+        </member>
+        <member name="M:Xilium.Lib.Reflection.Library.IsNumber(System.Type)">
+            <summary>
+            Restituisce True se il tipo è un numero.
+            https://stackoverflow.com/a/1750024/1387407
+            </summary>
+            <param name="valueType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.Reflection.Library.IsNullNumber(System.Type)">
+            <summary>
+            Restituisce True se il tipo è un numero oppure è numero nullabile.
+            https://stackoverflow.com/a/1750024/1387407
+            </summary>
+            <param name="valueType"></param>
             <returns></returns>
         </member>
         <member name="T:Xilium.Lib.Security.CryptoNET">
@@ -5238,6 +5796,35 @@
             <param name="token">Token da verificare</param>
             <returns></returns>
         </member>
+        <member name="T:Xilium.Lib.Text.StreetAddress">
+            <summary>
+            Implementa metodi per la gestione di indirizzi stradali.
+            </summary>
+        </member>
+        <member name="M:Xilium.Lib.Text.StreetAddress.CompileAddress(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Formatta le informazioni passate in formato "Indirizzo stradale".
+            </summary>
+            <param name="fullname"></param>
+            <param name="organization"></param>
+            <param name="address"></param>
+            <param name="address2"></param>
+            <param name="zipCode"></param>
+            <param name="city"></param>
+            <param name="province"></param>
+            <param name="country"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.Text.Library.CharsCount(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Esegue il conteggio di <paramref name="search"/> in <paramref name="text"/>.
+            </summary>
+            <param name="text"></param>
+            <param name="search"></param>
+            <param name="startAt"></param>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
         <member name="M:Xilium.Lib.Text.Library.RemoveHtml(System.Web.IHtmlString)">
             <summary>
             Restituisce il plain text contenuto nei tag HTML passati.
@@ -5401,7 +5988,13 @@
         </member>
         <member name="F:Xilium.Lib.Text.RegularExpression.FullnamePattern">
             <summary>
-            Pattern per verificare che la casella contenga nome e cognome.
+            Pattern per validare una stringa "nome e cognome".
+            Il pattern esegue un test sull'intera stringa.
+            </summary>
+        </member>
+        <member name="F:Xilium.Lib.Text.RegularExpression.OrganizationPattern">
+            <summary>
+            Pattern per validare il nome di una Organization.
             Il pattern esegue un test sull'intera stringa.
             </summary>
         </member>
@@ -5441,6 +6034,12 @@
             Pattern per verificare un numero decimale, sono consentiti valori positivi e negativi, può iniziare per uno o più zeri, e può finire con uno o più zeri decimali, permette il separatore decimale Virgola e Punto.
             Il pattern è costruito per capire se è un numero convertibile in decimal, anche se non è formattato nel modo più corretto.
             Il pattern esegue un testo sull'intera stringa.
+            </summary>
+        </member>
+        <member name="F:Xilium.Lib.Text.RegularExpression.GuidTestPattern">
+            <summary>
+            Patter per verificare un valore Guid.
+            Il Guid dev'essere un valore base64, senza caratteri di contenimento e spezzato in gruppi dal carattere "-".
             </summary>
         </member>
         <member name="M:Xilium.Lib.Text.RegularExpression.MatchNear(System.String,System.String,System.Int32,System.Int32)">
@@ -5935,6 +6534,63 @@
             <summary>
             Settare su True per indicare che la procedura è stata annullata.
             </summary>
+        </member>
+        <member name="T:Xilium.Lib.Versioning.VersionChecker">
+            <summary>
+            Permette di eseguire confornti di versione
+            </summary>
+        </member>
+        <member name="M:Xilium.Lib.Versioning.VersionChecker.IsValidVersion(System.String,System.Version)">
+            <summary>
+            Verifica se <paramref name="version"/> rientra nelle aspettative di <paramref name="versionRequired"/>.
+            </summary>
+            <param name="versionRequired">
+              Requisito di versione, nel formato di NPM.
+              Per la sintassi vedere <see href="https://docs.npmjs.com/misc/semver">semver - NPM</see>.
+            </param>
+            <param name="version">Versione da confrontare</param>
+            <returns>Restituisce True se <paramref name="version"/> rispetta i requisiti imposti da <paramref name="versionRequired"/></returns>
+        </member>
+        <member name="M:Xilium.Lib.Versioning.VersionChecker.ParseFloor(System.String)">
+            <summary>
+            Esegue il parsing di <paramref name="version"/> in oggetto. Un eventuale valore generico (x o *) verrà considerato come 0.
+            </summary>
+            <param name="version"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.Versioning.VersionChecker.ParseCeil(System.String)">
+            <summary>
+            Esegue il parsing di <paramref name="version"/> in oggetto. Un eventuale valore generico (x o *) verrà considerato come `int.MaxValue`.
+            </summary>
+            <param name="version"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.Versioning.VersionChecker.NextHighVersion(System.Version)">
+            <summary>
+            Restituisce la prossima "big-version", successiva a <paramref name="version"/>.
+            Il risultato lo si ottiene incrementando il primo numero versione non-zero incontrato partendo da sinistra, e portando a zero i restati valori.
+            Nota: la posizione massima del numero versione che sarà incrementata è la terza.
+            Es: "1.2.3" -> "2.0.0"; "0.2.2" -> "0.3.0"
+            </summary>
+            <param name="version"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.Versioning.VersionChecker.NextLowVersion(System.Version)">
+            <summary>
+            Restituisce la prossima "small-version", successiva a <paramref name="version"/>.
+            Il risultato lo si ottiene incrementando il numero versione ion posizione 2, e portando a zero i valori minori.
+            Es: "1.2.3" -> "1.3.0"; "1.2.0" -> "1.3.0"; "1.0.0" -> "1.2.0"
+            </summary>
+            <remarks>
+            Attenzione: rispetto al sistema di valutazione "Patch" di NPM (vedere controllo per "~") questo codice differisce.
+            Il metodo qui sotto restituisce la nuova versione incrementando sempre il numero in posizione 2, mentre NPM incrementa
+            il numero in posizione 2 o, se la versione dichiarata è priva del numero 2, in posizione 1. Esempi:
+            - "1.0.0" -> NextLowVersion = "1.1.0" | NPM = "1.1.0"
+            - "1"     -> NextLowVersion = "1.1.0" | NPM = "2.0.0"
+            Vedere qui <see href="https://docs.npmjs.com/misc/semver#tilde-ranges-123-12-1">Tilde ranges - NPM</see>.
+            </remarks>
+            <param name="version"></param>
+            <returns></returns>
         </member>
     </members>
 </doc>

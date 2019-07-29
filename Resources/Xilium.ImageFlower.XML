@@ -155,33 +155,45 @@
             <param name="path">Percorso relativo (es. "~/config/nomefile.config", "/config/nomefile.config")</param>
             <returns></returns>
         </member>
-        <member name="M:Xilium.ImageFlower.Config.Support.ConfigHelper.ReadResource(System.String)">
+        <member name="M:Xilium.ImageFlower.Config.Support.ConfigHelper.ReadResource(Xilium.ImageFlower.Processing.ContextInfo,System.String)">
             <summary>
             Restituisce uno stream della risorsa richiesta.
             <para>Questa può trovarsi in un percorso locale, su percorso samba, o su un server HTTP.</para>
             </summary>
+            <param name="contextInfo">Contesto in cui viene fatta richiesta</param>
             <param name="resourceFileName"></param>
             <returns></returns>
         </member>
-        <member name="M:Xilium.ImageFlower.Config.Support.ConfigHelper.ReadLocalResource(System.String)">
-            <summary>
-            Restituisce uno stream della risorsa richiesta, collocata nel fileSystem.
-            </summary>
-            <param name="resourceFileName"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Xilium.ImageFlower.Config.Support.ConfigHelper.ReadHttpResource(System.String)">
-            <summary>
-            Restituisce uno stream della risorsa richiesta, raggiungibile tramite protocollo HTTP.
-            </summary>
-            <param name="resourceUri"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Xilium.ImageFlower.Config.Support.ConfigHelper.ReadDataResource(System.String)">
+        <member name="M:Xilium.ImageFlower.Config.Support.ConfigHelper.ReadDataResource(Xilium.ImageFlower.Processing.ContextInfo,System.String)">
             <summary>
             Restituisce uno stream della risorsa richiesta, interpretando il contenuto passato.
             </summary>
+            <param name="contextInfo"></param>
             <param name="resourceData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.Support.ConfigHelper.ReadStreamResource(Xilium.ImageFlower.Processing.ContextInfo,System.String)">
+            <summary>
+            Restituisce uno stream della risorsa richiesta, interpretando il contenuto passato.
+            </summary>
+            <param name="contextInfo"></param>
+            <param name="resourceData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.Support.ConfigHelper.ReadHttpResource(Xilium.ImageFlower.Processing.ContextInfo,System.String)">
+            <summary>
+            Restituisce uno stream della risorsa richiesta, raggiungibile tramite protocollo HTTP.
+            </summary>
+            <param name="contextInfo"></param>
+            <param name="resourceUri"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.Support.ConfigHelper.ReadLocalResource(Xilium.ImageFlower.Processing.ContextInfo,System.String)">
+            <summary>
+            Restituisce uno stream della risorsa richiesta, collocata nel fileSystem.
+            </summary>
+            <param name="contextInfo"></param>
+            <param name="resourceFileName"></param>
             <returns></returns>
         </member>
         <member name="M:Xilium.ImageFlower.Config.Support.ConfigHelper.getMimeType(System.String)">
@@ -400,6 +412,13 @@
             <summary>
             Oggetto Settings di appartenenza
             </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Config.PictureConfig.CreateContextInfo(Xilium.ImageFlower.Processing.Support.ParameterValueDelegate)">
+            <summary>
+            Crea un ContextInfo standard
+            </summary>
+            <param name="parameterValueDelegate"></param>
+            <returns></returns>
         </member>
         <member name="T:Xilium.ImageFlower.Config.PictureCssConfig">
             <summary>
@@ -1549,7 +1568,7 @@
             Istanzia un nuovo oggetto ContextInfo
             </summary>
             <param name="settings"></param>
-            <param name="className"></param>
+            <param name="flowerClassName"></param>
             <param name="parameterValueDelegate"></param>
         </member>
         <member name="P:Xilium.ImageFlower.Processing.ContextInfo.Settings">
@@ -1557,7 +1576,7 @@
             Oggetto Settings corrente
             </summary>
         </member>
-        <member name="P:Xilium.ImageFlower.Processing.ContextInfo.ClassName">
+        <member name="P:Xilium.ImageFlower.Processing.ContextInfo.FlowerClassName">
             <summary>
             Nome del Class in esecuzione
             </summary>
@@ -1584,11 +1603,15 @@
             Elenco delle risorse immagini caricate
             </summary>
         </member>
-        <member name="M:Xilium.ImageFlower.Processing.ContextInfo.LoadImageInfo(System.String)">
+        <member name="P:Xilium.ImageFlower.Processing.ContextInfo.ImagesBitmap">
             <summary>
-            Carica un nuovo oggetto ImageInfo nella collection [ImagesInfo]. Se la collection aveva già il file, allora questo verrà aggiornato.
+            Elenco delle immagini caricate
             </summary>
-            <param name="imageFileName"></param>
+        </member>
+        <member name="P:Xilium.ImageFlower.Processing.ContextInfo.ResourcesStream">
+            <summary>
+            Elenco degli stream di risorse.
+            </summary>
         </member>
         <member name="M:Xilium.ImageFlower.Processing.ContextInfo.GetImageInfo(System.String)">
             <summary>
@@ -1597,12 +1620,18 @@
             <param name="imageFileName">Percorso completo del file. Deve essere un percorso raggiungibile sul FileSystem.</param>
             <returns></returns>
         </member>
-        <member name="M:Xilium.ImageFlower.Processing.ContextInfo.loadAndGetImageInfo(System.String,System.Boolean)">
+        <member name="M:Xilium.ImageFlower.Processing.ContextInfo.GetImageBitmap(System.String)">
+            <summary>
+            Restituisce il Bitmap dell'immagine richiesta.
+            </summary>
+            <param name="imageFileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.ImageFlower.Processing.ContextInfo.loadAndGetImageInfo(System.String)">
             <summary>
             Carica e restituisce un ImageInfo
             </summary>
             <param name="imageFileName"></param>
-            <param name="forceReload">se True e se l'item è già presente in cache, allora viene aggiornato.</param>
             <returns></returns>
         </member>
         <member name="M:Xilium.ImageFlower.Processing.ContextInfo.GetImageInfoByParameter(System.String)">
@@ -1771,7 +1800,7 @@
             Descrizione di riepilogo per PictureElementPropertyInfo
             </summary>
         </member>
-        <member name="M:Xilium.ImageFlower.Processing.PictureElementPropertyInfo.getTruePropertyValue(Xilium.ImageFlower.Processing.ProcessInfo,System.String)">
+        <member name="M:Xilium.ImageFlower.Processing.PictureElementPropertyInfo.compilePropertyValue(Xilium.ImageFlower.Processing.ProcessInfo,System.String)">
             <summary>
             Converte un eventuale valore con Parameter, in un valore valorizzato.
             <para>Es.: "rgba(0, 0, 0, @opacity())" -> "rgba(0, 0, 0, 0.33)"</para>
@@ -1830,6 +1859,14 @@
             <summary>
             Contiene informazioni sull'intero processo di creazione immagine.
             </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Processing.ProcessInfo.#ctor(Xilium.ImageFlower.Config.PictureConfig,Xilium.ImageFlower.Config.PictureCssConfig,Xilium.ImageFlower.Processing.ContextInfo)">
+            <summary>
+            Istanzia un nuovo ProcessInfo
+            </summary>
+            <param name="picture">Definizione del Picture</param>
+            <param name="pictureCss">Definizione degli stili da applicare a Picture</param>
+            <param name="contextInfo">Contesto di elaborazione</param>
         </member>
         <member name="P:Xilium.ImageFlower.Processing.ProcessInfo.ContextInfo">
             <summary>
@@ -1914,6 +1951,51 @@
         <member name="M:Xilium.ImageFlower.Processing.ProcessInfo.Reset">
             <summary>
             Resetta ogni dato di calcolo per riportarsi in una situazione iniziale, per un nuovo processo di generazione.
+            </summary>
+        </member>
+        <member name="T:Xilium.ImageFlower.Processing.ResourceStream">
+            <summary>
+            Rappresenta uno Stream di risorsa, utilizzabile all'interno del processo di generazione immagine.
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Processing.ResourceStream.#ctor(System.String,System.Lazy{System.IO.Stream})">
+            <summary>
+            Istanzia una nuova classe di ResourceStream.
+            </summary>
+            <param name="key">Chiave identificativa della risorsa.</param>
+            <param name="streamLazy">Stream della risorsa.</param>
+        </member>
+        <member name="M:Xilium.ImageFlower.Processing.ResourceStream.#ctor(System.String,System.IO.Stream)">
+            <summary>
+            Istanzia una nuova classe di ResourceStream.
+            </summary>
+            <param name="key">Chiave identificativa della risorsa.</param>
+            <param name="stream">Stream della risorsa.</param>
+        </member>
+        <member name="P:Xilium.ImageFlower.Processing.ResourceStream.Key">
+            <summary>
+            Chiave identificativa della risorsa.
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Processing.ResourceStream.Stream">
+            <summary>
+            Stream della risorsa.
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Processing.ResourceStream.IsStreamLazy">
+            <summary>
+            Restituisce True se lo Stream è passato come Lazy.
+            </summary>
+        </member>
+        <member name="P:Xilium.ImageFlower.Processing.ResourceStream.IsStreamCreated">
+            <summary>
+            Restituisce True se lo Stream è stato costruito.
+            Attenzione: ciò non toglie che Stream potrebbe essere Null.
+            </summary>
+        </member>
+        <member name="M:Xilium.ImageFlower.Processing.ResourceStream.Dispose">
+            <summary>
+            Distrugge l'oggetto
             </summary>
         </member>
     </members>

@@ -10,46 +10,46 @@ using System.Threading.Tasks;
 
 namespace Our.Umbraco.FileSystemProviders.Samba.Net {
 
-	/// <summary>
-	/// Source: http://stackoverflow.com/a/39540451/1387407
-	/// </summary>
-	public class ImpersonationHelper
+    /// <summary>
+    /// Source: http://stackoverflow.com/a/39540451/1387407
+    /// </summary>
+    public class ImpersonationHelper
     {
 
         [DllImport("advapi32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
-		private static extern bool LogonUser(String lpszUsername, String lpszDomain, String lpszPassword,
+        private static extern bool LogonUser(String lpszUsername, String lpszDomain, String lpszPassword,
         int dwLogonType, int dwLogonProvider, out SafeTokenHandle phToken);
 
 
         [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
         private extern static bool CloseHandle(IntPtr handle);
 
-		
-	    [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-	    public static T Impersonate<T>(NetworkCredential credentials, Func<T> methodToExecute)
-	    {
-		    return Impersonate(credentials.Domain, credentials.UserName, credentials.Password, methodToExecute);
-	    }
+        
+        [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
+        public static T Impersonate<T>(NetworkCredential credentials, Func<T> methodToExecute)
+        {
+            return Impersonate(credentials.Domain, credentials.UserName, credentials.Password, methodToExecute);
+        }
 
-	    [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-	    public static void Impersonate(NetworkCredential credentials, Action actionToExecute)
-	    {
-		    Impersonate(credentials.Domain, credentials.UserName, credentials.Password, actionToExecute);
-	    }
+        [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
+        public static void Impersonate(NetworkCredential credentials, Action actionToExecute)
+        {
+            Impersonate(credentials.Domain, credentials.UserName, credentials.Password, actionToExecute);
+        }
 
 
-	    [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-	    public static T Impersonate<T>(string domainName, string userName, string userPassword, Func<T> methodToExecute)
-	    {
-		    T result = default(T);
+        [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
+        public static T Impersonate<T>(string domainName, string userName, string userPassword, Func<T> methodToExecute)
+        {
+            T result = default(T);
 
-		    Impersonate(domainName, userName, userPassword, () =>
-		    {
-			    result = methodToExecute();
-		    });
+            Impersonate(domainName, userName, userPassword, () =>
+            {
+                result = methodToExecute();
+            });
 
-		    return result;
-	    }
+            return result;
+        }
 
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public static void Impersonate(string domainName, string userName, string userPassword, Action actionToExecute)

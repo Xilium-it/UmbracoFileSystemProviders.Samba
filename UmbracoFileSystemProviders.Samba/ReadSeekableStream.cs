@@ -3,7 +3,7 @@
 using System;
 using System.IO;
 
-	/// <summary>
+    /// <summary>
     /// Creates a Stream wrapper.
     /// It is useful when it is important that the stream will not disposed after using.
     /// <para>
@@ -87,7 +87,7 @@ using System.IO;
             {
                 return this.SeekForward(relativeOffset);
             }
-			else
+            else
             {
                 return this.SeekBackwards(-relativeOffset);
             }

@@ -7,7 +7,7 @@ using Umbraco.Core;
 namespace Our.Umbraco.FileSystemProviders.Samba {
     using System;
     using System.Collections.Generic;
-	using System.Configuration;
+    using System.Configuration;
     using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
@@ -45,15 +45,15 @@ namespace Our.Umbraco.FileSystemProviders.Samba {
         /// </summary>
         private readonly string rootHostUrl;
 
-		/// <summary>
-		/// The root url for GetFullpath method
-		/// </summary>
-	    private string rootFullPathUrlCache;
+        /// <summary>
+        /// The root url for GetFullpath method
+        /// </summary>
+        private string rootFullPathUrlCache;
 
-		/// <summary>
-		/// Samba credential to access to rootFullPath.
-		/// </summary>
-	    private readonly NetworkCredential sambaCredential;
+        /// <summary>
+        /// Samba credential to access to rootFullPath.
+        /// </summary>
+        private readonly NetworkCredential sambaCredential;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SambaServiceDriver"/> class.
@@ -75,27 +75,27 @@ namespace Our.Umbraco.FileSystemProviders.Samba {
             }
 
             this.VirtualPathRouteDisabled = string.IsNullOrEmpty(virtualPathRoute);
-			
+            
             var connectionStringParser = new ConnectionStringParser();
             var connectionStringData = connectionStringParser.Decode(connectionString);
 
-			// Full path must use `directorySeparatorChar` and ends with separator.
-	        this.rootFullPath = fullPath.Replace(System.IO.Path.AltDirectorySeparatorChar, System.IO.Path.DirectorySeparatorChar);
-			if (this.rootFullPath.EndsWith(System.IO.Path.DirectorySeparatorChar.ToString()) == false)
+            // Full path must use `directorySeparatorChar` and ends with separator.
+            this.rootFullPath = fullPath.Replace(System.IO.Path.AltDirectorySeparatorChar, System.IO.Path.DirectorySeparatorChar);
+            if (this.rootFullPath.EndsWith(System.IO.Path.DirectorySeparatorChar.ToString()) == false)
             {
                 this.rootFullPath += System.IO.Path.DirectorySeparatorChar;
             }
 
-			// SambaPath must be use `directorySeparatorChar` and do not end with separator.
-	        this.SambaPath = connectionStringData.SambaPath
-				.Replace(System.IO.Path.AltDirectorySeparatorChar, System.IO.Path.DirectorySeparatorChar)
-				.TrimEnd(System.IO.Path.DirectorySeparatorChar);
-			this.sambaCredential = new NetworkCredential(connectionStringData.Username, connectionStringData.Password, connectionStringData.Domain);
-			
+            // SambaPath must be use `directorySeparatorChar` and do not end with separator.
+            this.SambaPath = connectionStringData.SambaPath
+                .Replace(System.IO.Path.AltDirectorySeparatorChar, System.IO.Path.DirectorySeparatorChar)
+                .TrimEnd(System.IO.Path.DirectorySeparatorChar);
+            this.sambaCredential = new NetworkCredential(connectionStringData.Username, connectionStringData.Password, connectionStringData.Domain);
+            
             this.instanceKey = CreateInstanceKey(fullPath, rootUrl, connectionString, virtualPathRoute);
             this.MaxDays = maxDays;
             this.VirtualPathRoute = this.VirtualPathRouteDisabled ? null : virtualPathRoute;
-			
+            
             this.rootHostUrl = rootUrl;
             if (string.IsNullOrEmpty(this.rootHostUrl))
             {
@@ -105,8 +105,8 @@ namespace Our.Umbraco.FileSystemProviders.Samba {
             {
                 this.rootHostUrl += "/";
             }
-			
-	        this.rootFullPathUrlCache = null;
+            
+            this.rootFullPathUrlCache = null;
 
             this.LogHelper = new WrappedLogHelper();
             this.MimeTypeResolver = new MimeTypeResolver();
@@ -142,22 +142,22 @@ namespace Our.Umbraco.FileSystemProviders.Samba {
         /// </summary>
         public bool VirtualPathRouteDisabled { get; }
 
-		/// <summary>
-		/// Gets a value indicating the root url for GetFullPath method.
-		/// </summary>
-	    protected string RootFullPathUrl
-	    {
-		    get
-		    {
-			    if (this.rootFullPathUrlCache != null) return this.rootFullPathUrlCache;
+        /// <summary>
+        /// Gets a value indicating the root url for GetFullPath method.
+        /// </summary>
+        protected string RootFullPathUrl
+        {
+            get
+            {
+                if (this.rootFullPathUrlCache != null) return this.rootFullPathUrlCache;
 
-				var currContext = System.Web.HttpContext.Current;
-			    if (currContext == null || currContext.CurrentHandler == null) return "/";
+                var currContext = System.Web.HttpContext.Current;
+                if (currContext == null || currContext.CurrentHandler == null) return "/";
 
-				this.rootFullPathUrlCache = currContext.Request.Url.GetLeftPart(UriPartial.Authority);
-			    return this.rootFullPathUrlCache;
-		    }
-	    }
+                this.rootFullPathUrlCache = currContext.Request.Url.GetLeftPart(UriPartial.Authority);
+                return this.rootFullPathUrlCache;
+            }
+        }
 
         /// <summary>
         /// Returns a singleton instance of the <see cref="SambaServiceDriver"/> class.
@@ -202,15 +202,15 @@ namespace Our.Umbraco.FileSystemProviders.Samba {
         public IEnumerable<string> GetDirectories(string path)
         {
             var fullPath = this.GetSambaFullPath(path);
-	        IEnumerable<string> fReturn = null;
+            IEnumerable<string> fReturn = null;
 
             try
             {
-	            Net.ImpersonationHelper.Impersonate(this.sambaCredential, () =>
-	            {
-		            if (Directory.Exists(fullPath))
-			            fReturn = Directory.EnumerateDirectories(fullPath).Select(GetRelativePath);
-	            });
+                Net.ImpersonationHelper.Impersonate(this.sambaCredential, () =>
+                {
+                    if (Directory.Exists(fullPath))
+                        fReturn = Directory.EnumerateDirectories(fullPath).Select(GetRelativePath);
+                });
             }
             catch (UnauthorizedAccessException ex)
             {
@@ -221,7 +221,7 @@ namespace Our.Umbraco.FileSystemProviders.Samba {
                 LogHelper.Error<PhysicalFileSystem>("Directory not found", ex);
             }
 
-	        return fReturn ?? Enumerable.Empty<string>();
+            return fReturn ?? Enumerable.Empty<string>();
         }
 
         /// <summary>
@@ -247,13 +247,13 @@ namespace Our.Umbraco.FileSystemProviders.Samba {
 
             try
             {
-	            Net.ImpersonationHelper.Impersonate(this.sambaCredential, () =>
-	            {
-					if (Directory.Exists(fullPath) == false)
-						return;
+                Net.ImpersonationHelper.Impersonate(this.sambaCredential, () =>
+                {
+                    if (Directory.Exists(fullPath) == false)
+                        return;
 
-		            Directory.Delete(fullPath, recursive);
-	            });
+                    Directory.Delete(fullPath, recursive);
+                });
             }
             catch (DirectoryNotFoundException ex)
             {
@@ -271,10 +271,10 @@ namespace Our.Umbraco.FileSystemProviders.Samba {
         public bool DirectoryExists(string path)
         {
             var fullPath = GetSambaFullPath(path);
-	        return Net.ImpersonationHelper.Impersonate(this.sambaCredential, () =>
-	        {
-		        return Directory.Exists(fullPath);
-	        });
+            return Net.ImpersonationHelper.Impersonate(this.sambaCredential, () =>
+            {
+                return Directory.Exists(fullPath);
+            });
         }
 
         /// <summary>
@@ -296,20 +296,20 @@ namespace Our.Umbraco.FileSystemProviders.Samba {
         public void AddFile(string path, Stream stream, bool overrideIfExists) {
             var fullPath = GetSambaFullPath(path);
 
-	        Net.ImpersonationHelper.Impersonate(this.sambaCredential, () =>
-	        {
-		        var exists = File.Exists(fullPath);
-		        if (exists && overrideIfExists == false)
-			        throw new InvalidOperationException(string.Format("A file at path '{0}' already exists", path));
+            Net.ImpersonationHelper.Impersonate(this.sambaCredential, () =>
+            {
+                var exists = File.Exists(fullPath);
+                if (exists && overrideIfExists == false)
+                    throw new InvalidOperationException(string.Format("A file at path '{0}' already exists", path));
 
-		        Directory.CreateDirectory(Path.GetDirectoryName(fullPath)); // ensure it exists
+                Directory.CreateDirectory(Path.GetDirectoryName(fullPath)); // ensure it exists
 
-		        if (stream.CanSeek)
-			        stream.Seek(0, 0);
+                if (stream.CanSeek)
+                    stream.Seek(0, 0);
 
-		        using (var destination = (Stream) File.Create(fullPath))
-			        stream.CopyTo(destination);
-	        });
+                using (var destination = (Stream) File.Create(fullPath))
+                    stream.CopyTo(destination);
+            });
         }
 
         /// <summary>
@@ -335,15 +335,15 @@ namespace Our.Umbraco.FileSystemProviders.Samba {
         public IEnumerable<string> GetFiles(string path, string filter)
         {
             var fullPath = GetSambaFullPath(path);
-	        IEnumerable<string> fReturn = null;
+            IEnumerable<string> fReturn = null;
 
             try
             {
-	            Net.ImpersonationHelper.Impersonate(this.sambaCredential, () =>
-	            {
-		            if (Directory.Exists(fullPath))
-			            fReturn = Directory.EnumerateFiles(fullPath, filter).Select(GetRelativePath);
-	            });
+                Net.ImpersonationHelper.Impersonate(this.sambaCredential, () =>
+                {
+                    if (Directory.Exists(fullPath))
+                        fReturn = Directory.EnumerateFiles(fullPath, filter).Select(GetRelativePath);
+                });
             }
             catch (UnauthorizedAccessException ex)
             {
@@ -354,7 +354,7 @@ namespace Our.Umbraco.FileSystemProviders.Samba {
                 LogHelper.Error<PhysicalFileSystem>("Directory not found", ex);
             }
 
-	        return fReturn ?? Enumerable.Empty<string>();
+            return fReturn ?? Enumerable.Empty<string>();
         }
 
         /// <summary>
@@ -367,10 +367,10 @@ namespace Our.Umbraco.FileSystemProviders.Samba {
         public Stream OpenFile(string path)
         {
             var fullPath = GetSambaFullPath(path);
-	        return Net.ImpersonationHelper.Impersonate(this.sambaCredential, () =>
-	        {
-		        return File.OpenRead(fullPath);
-	        });
+            return Net.ImpersonationHelper.Impersonate(this.sambaCredential, () =>
+            {
+                return File.OpenRead(fullPath);
+            });
         }
         
         /// <summary>
@@ -383,13 +383,13 @@ namespace Our.Umbraco.FileSystemProviders.Samba {
 
             try
             {
-	            Net.ImpersonationHelper.Impersonate(this.sambaCredential, () =>
-	            {
-					if (File.Exists(fullPath) == false)
-						return;
+                Net.ImpersonationHelper.Impersonate(this.sambaCredential, () =>
+                {
+                    if (File.Exists(fullPath) == false)
+                        return;
 
-					File.Delete(fullPath);
-	            });
+                    File.Delete(fullPath);
+                });
             }
             catch (FileNotFoundException ex)
             {
@@ -407,10 +407,10 @@ namespace Our.Umbraco.FileSystemProviders.Samba {
         public bool FileExists(string path)
         {
             var fullpath = GetSambaFullPath(path);
-	        return Net.ImpersonationHelper.Impersonate(this.sambaCredential, () =>
-	        {
-		        return File.Exists(fullpath);
-	        });
+            return Net.ImpersonationHelper.Impersonate(this.sambaCredential, () =>
+            {
+                return File.Exists(fullpath);
+            });
         }
 
         /// <summary>
@@ -446,22 +446,22 @@ namespace Our.Umbraco.FileSystemProviders.Samba {
         }
 
 
-	    /// <summary>
-	    /// Gets the full path.
-	    /// </summary>
-	    /// <param name="path">The full or relative path.</param>
-	    /// <returns>The full path.</returns>
-	    /// <remarks>
-	    /// <para>On the physical filesystem, the full path is the rooted (ie non-relative), safe (ie within this
-	    /// filesystem's root) path. All separators are converted to Path.DirectorySeparatorChar.</para>
-	    /// </remarks>
-	    public string GetFullPath(string path)
-	    {
-		    var pathUrl = this.GetUrl(path);
+        /// <summary>
+        /// Gets the full path.
+        /// </summary>
+        /// <param name="path">The full or relative path.</param>
+        /// <returns>The full path.</returns>
+        /// <remarks>
+        /// <para>On the physical filesystem, the full path is the rooted (ie non-relative), safe (ie within this
+        /// filesystem's root) path. All separators are converted to Path.DirectorySeparatorChar.</para>
+        /// </remarks>
+        public string GetFullPath(string path)
+        {
+            var pathUrl = this.GetUrl(path);
 
-		    return FileSystemPathHelper.Instance.CombineUrlPath(this.RootFullPathUrl, pathUrl);
-	    }
-			
+            return FileSystemPathHelper.Instance.CombineUrlPath(this.RootFullPathUrl, pathUrl);
+        }
+            
         /// <summary>
         /// Gets the full path.
         /// </summary>
@@ -473,13 +473,13 @@ namespace Our.Umbraco.FileSystemProviders.Samba {
         /// </remarks>
         private string GetSambaFullPath(string path)
         {
-			var opath = path;
+            var opath = path;
 
-			// remove eventually FullPath Url
-	        if (path.StartsWith(this.RootFullPathUrl))
-	        {
-		        path = path.Substring(this.RootFullPathUrl.Length);
-	        }
+            // remove eventually FullPath Url
+            if (path.StartsWith(this.RootFullPathUrl))
+            {
+                path = path.Substring(this.RootFullPathUrl.Length);
+            }
 
             // normalize
             path = this.EnsureDirectorySeparatorChar(path);
@@ -520,11 +520,11 @@ namespace Our.Umbraco.FileSystemProviders.Samba {
         public string GetUrl(string path) {
             if (this.VirtualPathRouteDisabled)
             {
-				// Absolute path
-	            return FileSystemPathHelper.Instance.CombineUrlPath(this.rootHostUrl, path);
+                // Absolute path
+                return FileSystemPathHelper.Instance.CombineUrlPath(this.rootHostUrl, path);
             }
 
-			// Relative path
+            // Relative path
             return "/" + FileSystemPathHelper.Instance.CombineUrlPath(this.VirtualPathRoute, path);
         }
 
@@ -537,12 +537,12 @@ namespace Our.Umbraco.FileSystemProviders.Samba {
         /// </returns>
         public DateTimeOffset GetLastModified(string path)
         {
-	        return Net.ImpersonationHelper.Impersonate(this.sambaCredential, () =>
-	        {
-		        return DirectoryExists(path)
-			        ? new DirectoryInfo(GetSambaFullPath(path)).LastWriteTimeUtc
-			        : new FileInfo(GetSambaFullPath(path)).LastWriteTimeUtc;
-	        });
+            return Net.ImpersonationHelper.Impersonate(this.sambaCredential, () =>
+            {
+                return DirectoryExists(path)
+                    ? new DirectoryInfo(GetSambaFullPath(path)).LastWriteTimeUtc
+                    : new FileInfo(GetSambaFullPath(path)).LastWriteTimeUtc;
+            });
         }
 
         /// <summary>
@@ -554,12 +554,12 @@ namespace Our.Umbraco.FileSystemProviders.Samba {
         /// </returns>
         public DateTimeOffset GetCreated(string path)
         {
-	        return Net.ImpersonationHelper.Impersonate(this.sambaCredential, () =>
-	        {
-		        return DirectoryExists(path)
-			        ? Directory.GetCreationTimeUtc(GetSambaFullPath(path))
-			        : File.GetCreationTimeUtc(GetSambaFullPath(path));
-	        });
+            return Net.ImpersonationHelper.Impersonate(this.sambaCredential, () =>
+            {
+                return DirectoryExists(path)
+                    ? Directory.GetCreationTimeUtc(GetSambaFullPath(path))
+                    : File.GetCreationTimeUtc(GetSambaFullPath(path));
+            });
         }
 
         /// <summary>
@@ -574,9 +574,9 @@ namespace Our.Umbraco.FileSystemProviders.Samba {
         {
             return $"{connectionString}/{rootUrl}@{fullPath}({virtualPathRoute})";
         }
-		
+        
 
-		#region Helper Methods
+        #region Helper Methods
 
         protected virtual void EnsureDirectory(string path)
         {

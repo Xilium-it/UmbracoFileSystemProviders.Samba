@@ -5,25 +5,25 @@
 
 namespace Our.Umbraco.FileSystemProviders.Samba
 {
-	using System;
-	using System.IO;
-	using System.Web;
-	using System.Web.Hosting;
+    using System;
+    using System.IO;
+    using System.Web;
+    using System.Web.Hosting;
 
-	/// <summary>
-	/// Represents a file object in a virtual file.
-	/// </summary>
-	internal class FileSystemVirtualFile : VirtualFile
+    /// <summary>
+    /// Represents a file object in a virtual file.
+    /// </summary>
+    internal class FileSystemVirtualFile : VirtualFile
     {
         /// <summary>
         /// The stream function delegate.
         /// </summary>
         private readonly Func<Stream> getStream;
 
-		/// <summary>
-		/// The FileSystem where file is stored.
-		/// </summary>
-	    private readonly Func<SambaFileSystem> getFileSystem;
+        /// <summary>
+        /// The FileSystem where file is stored.
+        /// </summary>
+        private readonly Func<SambaFileSystem> getFileSystem;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FileSystemVirtualFile"/> class.
@@ -42,7 +42,7 @@ namespace Our.Umbraco.FileSystemProviders.Samba
                 throw new ArgumentNullException(nameof(fileSystem));
             }
 
-	        this.getFileSystem = () => fileSystem.Value;
+            this.getFileSystem = () => fileSystem.Value;
             this.getStream = () => this.getFileSystem().OpenFile(fileSystemPath);
         }
 

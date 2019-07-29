@@ -1,6 +1,6 @@
 ﻿namespace Our.Umbraco.FileSystemProviders.Samba.Helpers
 {
-	/// <summary>
+    /// <summary>
     /// Parser to encode/decode authentication connection string.
     /// </summary>
     internal class ConnectionStringParser

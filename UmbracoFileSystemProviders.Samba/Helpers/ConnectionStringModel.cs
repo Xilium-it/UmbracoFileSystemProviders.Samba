@@ -9,12 +9,12 @@
         /// Gets or Sets the path of Samba shared folder; ex.: "\\server\folder".
         /// </summary>
         public string SambaPath { get; set; }
-		
+        
         /// <summary>
         /// Gets or Sets the Username to log in.
         /// </summary>
         public string Username { get; set; }
-		
+        
         /// <summary>
         /// Gets or Sets the Domain of Username.
         /// </summary>

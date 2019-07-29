@@ -96,7 +96,7 @@ namespace Our.Umbraco.FileSystemProviders.Samba.Helpers {
 		/// <returns></returns>
 		public string CombineUrlPath(params string[] pathParts)
 		{
-			return this.CombinePath('/', pathParts);
+			return this.CombinePath('/', pathParts).Replace('\\', '/');
 		}
 	}
 }

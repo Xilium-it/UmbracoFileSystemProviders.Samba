@@ -56,12 +56,12 @@ namespace Our.Umbraco.FileSystemProviders.Samba
             public const string VirtualPathRouteKey = "SambaFileSystem.VirtualPathRoute";
         }
 
-		/// <summary>
-		/// The config/FileSystemProviders.config configuration setting constants
-		/// </summary>
-	    public static class FileSystemConfiguration
-	    {
-		    /// <summary>
+        /// <summary>
+        /// The config/FileSystemProviders.config configuration setting constants
+        /// </summary>
+        public static class FileSystemConfiguration
+        {
+            /// <summary>
             /// The working path.
             /// </summary>
             public const string FullPathKey = "fullPath";
@@ -85,7 +85,7 @@ namespace Our.Umbraco.FileSystemProviders.Samba
             /// The configuration key for providing the Use VirtualPath Root value
             /// </summary>
             public const string VirtualPathRouteKey = "virtualPathRoute";
-	    }
+        }
 
         /// <summary>
         /// The connection string arguments.
