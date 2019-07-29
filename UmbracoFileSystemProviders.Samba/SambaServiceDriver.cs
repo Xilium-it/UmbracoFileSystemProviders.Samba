@@ -425,6 +425,9 @@ namespace Our.Umbraco.FileSystemProviders.Samba {
         /// </remarks>
         public string GetRelativePath(string fullPathOrUrl)
         {
+            return this.ResolveUrl(fullPathOrUrl, true);
+
+            /*
             // test url
             var path = fullPathOrUrl.Replace('\\', '/'); // ensure url separator char
 
@@ -443,6 +446,7 @@ namespace Our.Umbraco.FileSystemProviders.Samba {
 
             // unchanged - including separators
             return fullPathOrUrl;
+            */
         }
 
 
@@ -457,11 +461,32 @@ namespace Our.Umbraco.FileSystemProviders.Samba {
         /// </remarks>
         public string GetFullPath(string path)
         {
-            var pathUrl = this.GetUrl(path);
+            return this.ResolveUrl(path, false);
+            /*
+            var pathUrl = this.GetRelativePath(path);
 
             return FileSystemPathHelper.Instance.CombineUrlPath(this.RootFullPathUrl, pathUrl);
+            */
         }
-            
+
+        /// <summary>
+        /// Returns the url to the media item.
+        /// </summary>
+        /// <remarks>If the virtual path provider is enabled this returns a relative url.</remarks>
+        /// <param name="path">The path to return the url for.</param>
+        /// <returns>
+        /// <see cref="string"/>.
+        /// </returns>
+        public string GetUrl(string path)
+        {
+            if (this.VirtualPathRouteDisabled)
+            {
+                return this.ResolveUrl(path, false);
+            }
+
+            return this.ResolveUrl(path, true);
+        }
+
         /// <summary>
         /// Gets the full path.
         /// </summary>
@@ -510,25 +535,6 @@ namespace Our.Umbraco.FileSystemProviders.Samba {
         }
 
         /// <summary>
-        /// Returns the url to the media item.
-        /// </summary>
-        /// <remarks>If the virtual path provider is enabled this returns a relative url.</remarks>
-        /// <param name="path">The path to return the url for.</param>
-        /// <returns>
-        /// <see cref="string"/>.
-        /// </returns>
-        public string GetUrl(string path) {
-            if (this.VirtualPathRouteDisabled)
-            {
-                // Absolute path
-                return FileSystemPathHelper.Instance.CombineUrlPath(this.rootHostUrl, path);
-            }
-
-            // Relative path
-            return "/" + FileSystemPathHelper.Instance.CombineUrlPath(this.VirtualPathRoute, path);
-        }
-
-        /// <summary>
         /// Gets the last modified date/time of the file, expressed as a UTC value.
         /// </summary>
         /// <param name="path">The path to the file.</param>
@@ -574,7 +580,99 @@ namespace Our.Umbraco.FileSystemProviders.Samba {
         {
             return $"{connectionString}/{rootUrl}@{fullPath}({virtualPathRoute})";
         }
-        
+
+        /// <summary>
+        /// Returns the correct url to the media item.
+        /// </summary>
+        /// <param name="path">The path to the item to return.</param>
+        /// <param name="relative">Whether to return a relative path.</param>
+        /// <returns>
+        /// <see cref="string"/>.
+        /// </returns>
+        protected string ResolveUrl(string path, bool relative)
+        {
+            // First create the full url
+            string fixedPath = this.ParseUrlPath(path);
+
+            if (!relative)
+            {
+                //
+                // Absolute path
+                //
+
+                if (string.IsNullOrEmpty(fixedPath))
+                {
+                    // Requested path is empty. Return root path
+                    return this.rootHostUrl;
+                }
+                else if (System.Uri.IsWellFormedUriString(fixedPath, UriKind.Absolute))
+                {
+                    // Is already an absolute path, but `ParsePath` remove hostname when it is known.
+                    // Then the `path` does not contains a right url path.
+                    return null;
+                }
+                else
+                {
+                    // Join root path with requested path
+                    return $"{this.rootHostUrl}{fixedPath}";
+                }
+            }
+            else
+            {
+                //
+                // Relative path
+                //
+
+                if (this.VirtualPathRouteDisabled)
+                {
+                    //
+                    // No virtual Path: I will return a clean Path
+                    //
+                    return fixedPath;
+                }
+                else
+                {
+                    //
+                    // Virtual Path is enabled: I will return the Path with "containerName".
+                    //
+
+                    if (string.IsNullOrEmpty(fixedPath) == false)
+                    {
+                        fixedPath = "/" + fixedPath;
+                    }
+
+                    return $"/{this.VirtualPathRoute}{fixedPath}";
+                }
+            }
+        }
+
+        /// <summary>
+        /// Parse "path" to obtain the RelativePath.
+        /// </summary>
+        /// <param name="path">The path to parse</param>
+        /// <returns>Returns the path without container component.</returns>
+        protected string ParseUrlPath(string path)
+        {
+            var fixedPath = path.Replace(@"\", "/");
+
+            if (this.rootHostUrl != null && fixedPath.StartsWith(this.rootHostUrl))
+            {
+                fixedPath = fixedPath.Substring(this.rootHostUrl.Length);
+            }
+            else if (this.VirtualPathRouteDisabled == false)
+            {
+                var rootFolder = $"/{this.VirtualPathRoute}/";
+                if (fixedPath.StartsWith(rootFolder))
+                {
+                    fixedPath = fixedPath.Substring(rootFolder.Length);
+                }
+            }
+
+            fixedPath = fixedPath.TrimStart('/');
+
+            return fixedPath;
+        }
+
 
         #region Helper Methods
 
