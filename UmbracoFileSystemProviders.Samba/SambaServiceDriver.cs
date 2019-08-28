@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using System.Text.RegularExpressions;
 using Our.Umbraco.FileSystemProviders.Samba.Helpers;
 using Umbraco.Core;
 
@@ -425,7 +426,21 @@ namespace Our.Umbraco.FileSystemProviders.Samba {
         /// </remarks>
         public string GetRelativePath(string fullPathOrUrl)
         {
-            return this.ResolveUrl(fullPathOrUrl, true);
+            var sepMatch = Regex.Match(fullPathOrUrl, @"[\\/]");
+
+            var relative = this.ResolveUrl(fullPathOrUrl, true);
+            relative = this.ParseUrlPath(relative);
+
+            if (sepMatch.Value == "/")
+            {
+                // relative = relative.Replace('\\', '/');
+                // ^-- non necessario: è già un PATH in formato URL.
+            }
+            else
+            {
+                relative = relative.Replace('/', '\\');
+            }
+            return relative;
 
             /*
             // test url
