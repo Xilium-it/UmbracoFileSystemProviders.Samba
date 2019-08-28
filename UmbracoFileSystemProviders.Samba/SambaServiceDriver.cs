@@ -668,6 +668,11 @@ namespace Our.Umbraco.FileSystemProviders.Samba {
         /// <returns>Returns the path without container component.</returns>
         protected string ParseUrlPath(string path)
         {
+            if (path.StartsWith(this.rootFullPath))
+            {
+                path = path.Substring(this.rootFullPath.Length);
+            }
+
             var fixedPath = path.Replace(@"\", "/");
 
             if (this.rootHostUrl != null && fixedPath.StartsWith(this.rootHostUrl))
