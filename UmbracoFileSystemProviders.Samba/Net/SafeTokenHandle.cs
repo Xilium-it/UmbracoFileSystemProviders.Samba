@@ -30,5 +30,12 @@ namespace Our.Umbraco.FileSystemProviders.Samba.Net {
         {
             return CloseHandle(handle);
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            this.ReleaseHandle();
+
+            base.Dispose(disposing);
+        }
     }
 }
