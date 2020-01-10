@@ -585,6 +585,52 @@
             Source: http://stackoverflow.com/a/39540451/1387407
             </summary>
         </member>
+        <member name="T:Xilium.WebLib.Net.LinkHelper">
+            <summary>
+            Offre metodi per la costruzione di Link
+            </summary>
+        </member>
+        <member name="M:Xilium.WebLib.Net.LinkHelper.CalcSecureCode(System.String,System.String,System.String,Xilium.WebLib.Net.Model.LinkSecureCodeConfig)">
+            <summary>
+            Costruisce un argomento SecureCode, dove il `value` è scritto in chiaro, ed è aggiunta una componente HASH a validarne il contenuto.
+            </summary>
+            <param name="value">Valore argomento in chiaro</param>
+            <param name="secretPassphrase">Contenuto segreto per la costruzione del codice HASH</param>
+            <param name="cleanHostName">se indicato, è l'hostname da usare per la costruzione del codice HASH (es: "acme.com")</param>
+            <param name="config">Configurazione per la costruzione del SecureCode</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.Net.LinkHelper.TryGetValueInSecureCode(System.String,System.String,System.String,Xilium.WebLib.Net.Model.LinkSecureCodeConfig)">
+            <summary>
+            Legge il SecureCode ricevuto per argomento, e restituisce il Codice interno.
+            Verifica che la componente HASH sia corretta: se non è corretto restituisce NULL, altrimenti il codice memorizzato nell'argomento.
+            </summary>
+            <param name="secureCode">Valore argomento SecureCode da interpretare</param>
+            <param name="secretPassphrase">Contenuto segreto usato per la costruzione del codice HASH</param>
+            <param name="cleanHostName">se indicato, è l'hostname usato per la costruzione del codice HASH (es: "acme.com")</param>
+            <param name="config">Configurazione usata per la costruzione del SecureCode</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.Net.LinkHelper.TryGetValueInSecureCode(System.String,System.Func{System.String,System.String},System.String,Xilium.WebLib.Net.Model.LinkSecureCodeConfig)">
+            <summary>
+            Legge il SecureCode ricevuto per argomento, e restituisce il Codice interno.
+            Verifica che la componente HASH sia corretta: se non è corretto restituisce NULL, altrimenti il codice memorizzato nell'argomento.
+            </summary>
+            <param name="secureCode">Valore argomento SecureCode da interpretare</param>
+            <param name="secretPassphraseDelegate">Crea il contenuto segreto usato per la costruzione del codice HASH, partendo dal `valore` argomento scritto in chiaro.</param>
+            <param name="cleanHostName">se indicato, è l'hostname usato per la costruzione del codice HASH (es: "acme.com")</param>
+            <param name="config">Configurazione usata per la costruzione del SecureCode</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.Net.LinkHelper.CalcSecureCodeHashPart(System.String,System.String,System.String)">
+            <summary>
+            Crea il codice HASH per il SecureCode.
+            </summary>
+            <param name="value">Valore passato in chiaro in SecureCode</param>
+            <param name="secretPassphrase"></param>
+            <param name="cleanHostName"></param>
+            <returns></returns>
+        </member>
         <member name="P:Xilium.WebLib.Net.Log.LastSendLogResultException">
             <summary>
             Se l'ultima chiamata a `SendLog` ha generato un errore, restituisce l'eccezione verificatasi.
@@ -788,28 +834,30 @@
             <param name="message"></param>
             <returns></returns>
         </member>
-        <member name="M:Xilium.WebLib.Net.MailHelper.CompileBodyToTrack(System.Int32,System.String)">
+        <member name="M:Xilium.WebLib.Net.MailHelper.GetTrackReadUrl(System.Int32,System.String)">
+            <summary>
+            Restituisce il percorso URL (completo di dominio) per il tracciamento della lettura di una email.
+            </summary>
+            <param name="messageId"></param>
+            <param name="appUrl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.Net.MailHelper.GetTrackInteractUrl(System.Int32,System.String,System.String)">
+            <summary>
+            Restituisce il percorso URL (completo di dominio) per registrare l'interazione utente in una email.
+            </summary>
+            <param name="messageId">Identificativo messaggio</param>
+            <param name="toUrl">URL di reindirizzamento</param>
+            <param name="appUrl">se indicato, è il percorso URL dell'applicazione</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.WebLib.Net.MailHelper.CompileBodyToTrack(System.Int32,System.String,System.String)">
             <summary>
             Elabora il corpo del messaggio per integrarci elementi utili al tracciamento del comportamento dell'utente.
             </summary>
             <param name="messageId">Id del messaggio</param>
             <param name="htmlBody"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Xilium.WebLib.Net.MailHelper.CalcMessageCode(System.Int32,System.String)">
-            <summary>
-            Crea un codice di riconoscimento del valore ID
-            </summary>
-            <param name="messageId"></param>
-            <param name="passphrase"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Xilium.WebLib.Net.MailHelper.GetIdByMessageCode(System.String,System.String)">
-            <summary>
-            Interpreta il codice di riconoscimento passato e ne verifica la correttezza. Quindi restituisce il valore ID del messaggio.
-            </summary>
-            <param name="messageCode"></param>
-            <param name="passphrase"></param>
+            <param name="appUrl">se indicato, è il percorso URL dell'applicazione</param>
             <returns></returns>
         </member>
         <member name="M:Xilium.WebLib.Net.MailStorage.accodaEmailSuDb(System.Net.Mail.MailMessage)">
@@ -832,6 +880,31 @@
             Restituisce True se si sta inviando le email in coda nel DB.
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:Xilium.WebLib.Net.Model.LinkSecureCodeConfig">
+            <summary>
+            Rappresenta la configurazione per la costruzione di un argomento URL `SecureCode`.
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.Net.Model.LinkSecureCodeConfig.Argument">
+            <summary>
+            Argomento usato per memorizzare il SecureCode
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.Net.Model.LinkSecureCodeConfig.Prefix">
+            <summary>
+            Prefisso argomento
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.Net.Model.LinkSecureCodeConfig.Sep">
+            <summary>
+            Separatore del codice con parte Hash
+            </summary>
+        </member>
+        <member name="P:Xilium.WebLib.Net.Model.LinkSecureCodeConfig.Suffix">
+            <summary>
+            Suffisso argomento
+            </summary>
         </member>
         <member name="T:Xilium.WebLib.Net.Model.MailSendQueueResult">
             <summary>

@@ -1200,6 +1200,13 @@
             <param name="node"></param>
             <returns></returns>
         </member>
+        <member name="M:Xilium.UmbLib.Helper.XubHelperBase.GetNodeUrlTarget(Umbraco.Core.Models.IPublishedContent)">
+            <summary>
+            Restituisce l'informazione Target per il Link al nodo.
+            </summary>
+            <param name="node"></param>
+            <returns></returns>
+        </member>
         <member name="M:Xilium.UmbLib.Helper.XubHelperBase.GetNodeHash(Umbraco.Core.Models.IPublishedContent)">
             <summary>
             Restituisce il percorso HASH del nodo indicato.

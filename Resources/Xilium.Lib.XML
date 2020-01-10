@@ -1708,6 +1708,34 @@
             <param name="moveToList">Elenco dei movimenti, in metri. Verrà restituita una coordinata per ciascun item dell'argomento; valori positivi corrispondono alla direzione NORD-EST.</param>
             <returns></returns>
         </member>
+        <member name="T:Xilium.Lib.Environment.ApplicationHelper">
+            <summary>
+            Metodi di Helper per l'applicazione in esecuzione
+            </summary>
+        </member>
+        <member name="M:Xilium.Lib.Environment.ApplicationHelper.KillApplicationAfter(System.TimeSpan)">
+            <summary>
+            Esegue la chiusura dell'applicazione dopo `delay` dalla chiamata del metodo.
+            </summary>
+            <param name="delay">Ritardo dopo il quale eseguire la chiusura.</param>
+        </member>
+        <member name="M:Xilium.Lib.Environment.ApplicationHelper.KillApplicationAfter1sec">
+            <summary>
+            Esegue la chiusura dell'applicazione dopo 1 sec dalla chiamata del metodo.
+            </summary>
+        </member>
+        <member name="M:Xilium.Lib.Environment.Hardware.ProcessorId">
+            <summary>
+            Restituisce il valore Id della prima CPU
+            </summary>
+            <returns>Valore Id della prima CPU</returns>
+        </member>
+        <member name="M:Xilium.Lib.Environment.Hardware.ProcessorIds">
+            <summary>
+            Restituisce un array con i valori Id delle CPU rilevate nel sistema, ovvero quelle riconosciute dal sistema operativo.
+            </summary>
+            <returns>Array di tipo string contenente i valori Id delle CPU riconosciute dal sistema operativo.</returns>
+        </member>
         <member name="T:Xilium.Lib.Extensions.Check">
             <summary>
             Estensioni di controllo valore
@@ -2988,18 +3016,6 @@
             <param name="direction">Direzione della label, passata (es. "5 giorni fa") o futura (es. "fra 5 giorni")</param>
             <param name="distance">Distanza rispetto ad oggi, es. "1 minuto", "N ore"</param>
             <returns></returns>
-        </member>
-        <member name="M:Xilium.Lib.Environment.Hardware.ProcessorId">
-            <summary>
-            Restituisce il valore Id della prima CPU
-            </summary>
-            <returns>Valore Id della prima CPU</returns>
-        </member>
-        <member name="M:Xilium.Lib.Environment.Hardware.ProcessorIds">
-            <summary>
-            Restituisce un array con i valori Id delle CPU rilevate nel sistema, ovvero quelle riconosciute dal sistema operativo.
-            </summary>
-            <returns>Array di tipo string contenente i valori Id delle CPU riconosciute dal sistema operativo.</returns>
         </member>
         <member name="T:Xilium.Lib.Globalization.CultureInfo">
             <summary>
@@ -5823,6 +5839,13 @@
             <param name="search"></param>
             <param name="startAt"></param>
             <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xilium.Lib.Text.Library.RemoveDiacritics(System.String)">
+            <summary>
+            Rimuove i caratteri accentati (à, è, é, ù...), sostituendoli con quelli ASCII.
+            </summary>
+            <param name="text"></param>
             <returns></returns>
         </member>
         <member name="M:Xilium.Lib.Text.Library.RemoveHtml(System.Web.IHtmlString)">
