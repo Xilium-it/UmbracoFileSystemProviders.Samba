@@ -15,6 +15,8 @@ namespace Our.Umbraco.FileSystemProviders.Samba.Net {
     /// </summary>
     public sealed class SafeTokenHandle : SafeHandleZeroOrMinusOneIsInvalid
     {
+        private bool _isHandleReleased = false;
+
         private SafeTokenHandle()
             : base(true)
         {
@@ -28,6 +30,9 @@ namespace Our.Umbraco.FileSystemProviders.Samba.Net {
 
         protected override bool ReleaseHandle()
         {
+            if (this._isHandleReleased) return false;
+
+            this._isHandleReleased = true;
             return CloseHandle(handle);
         }
 
